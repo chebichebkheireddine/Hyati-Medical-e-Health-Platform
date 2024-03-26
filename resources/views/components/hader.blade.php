@@ -16,9 +16,31 @@
                 <i class="ti ti-mail fs-6"></i>
                 <div class="notification bg-primary rounded-circle"></div>
             </a>
+        </li>
+
     </ul>
     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+            <li class="nav-item  dropdown ">
+                <a class="nav-link nav-icon-hover " href="#" id="drop3" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <button type="button" class="btn btn-outline-primary btn-sm m-1">
+                        <i class="ti ti-user fs-6 "></i>
+                    </button>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop3">
+                    <div class="message-body">
+                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                            <i class="ti ti-user fs-6"></i>
+                            <p class="mb-0 fs-3">Add new one </p>
+                        </a>
+                        <a href="javascript:void(0)" class="d-flex align-items-center gap-2 dropdown-item">
+                            <i class="ti ti-mail fs-6"></i>
+                            <p class="mb-0 fs-3">Test </p>
+                        </a>
+                    </div>
+                </div>
+            </li>
             <li class="nav-item dropdown">
                 <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown"
                     aria-expanded="false">
@@ -45,6 +67,7 @@
                     </div>
                 </div>
             </li>
+
         </ul>
     </div>
 </nav>
