@@ -24,7 +24,8 @@ Route::get('/admin', function () {
 // rejuster the uaer
 Route::get("/register", [sessionController::class, 'register'])->middleware('guest')->name('Register');
 Route::post("/register", [sessionController::class, 'registerSave'])->middleware('guest')->name('Register');
-// logout the user from the nav 
+// logout the user from the nav
+Route::get("/logout", [sessionController::class, 'logout'])->middleware('auth')->name('logout');
 
 Route::get("/login", [sessionController::class, 'start'])->middleware('guest')->name('login');
 Route::post("/login", [sessionController::class, 'create'])->middleware('guest')->name('login_post');

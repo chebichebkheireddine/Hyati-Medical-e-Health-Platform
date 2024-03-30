@@ -26,7 +26,7 @@ class sessionController extends Controller
         if (auth()->attempt($user)) {
             // remove The attached session
             session()->regenerate();
-            return redirect()->route('/admin');
+            return redirect("/admin");
             // return back()->withErrors($user);
         }
         return back()->withErrors([
@@ -46,5 +46,11 @@ class sessionController extends Controller
         $users = User::create($user);
         auth()->login($users);
         return redirect("admin");
+    }
+    // logout function
+    public function logout()
+    {
+        auth()->logout();
+        return redirect('login');
     }
 }
