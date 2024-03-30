@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\sessionController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -12,13 +13,18 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+// Route::get('/doctor', function () {
+//     return view('index');
+// })->name('doctor');
+// sessionController
 
-Route::get('/', function () {
-    return view('welcome');
-});
-Route::get('/index-test', function () {
+Route::get('/admin', function () {
     return view('index');
-})->name('index-test');
-Route::get('/doctor', function () {
-    return view('index');
-})->name('doctor');
+})->name('Dashboard')->middleware('auth');
+// rejuster the uaer
+Route::get("/register", [sessionController::class, 'register'])->middleware('guest')->name('Register');
+Route::post("/register", [sessionController::class, 'registerSave'])->middleware('guest')->name('Register');
+// logout the user from the nav 
+
+Route::get("/login", [sessionController::class, 'start'])->middleware('guest')->name('login');
+Route::post("/login", [sessionController::class, 'create'])->middleware('guest')->name('login_post');

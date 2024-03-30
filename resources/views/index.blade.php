@@ -1,48 +1,25 @@
-<!doctype html>
-<html lang="en">
+@include('layout.app')
 
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Hyati medical
-    </title>
-    <link rel="shortcut icon" type="image/png" href="" />
-    <link rel="stylesheet" href="./assets/css/styles.min.css" />
-</head>
+<!-- Sidebar Start -->
+<x-slide-bar>
+</x-slide-bar>
+<!--  Sidebar End -->
+<!--  Main wrapper -->
+<div class="body-wrapper">
+    <!--  Header Start -->
+    <header class="app-header">
+        <x-nav-bar>
+        </x-nav-bar>
+    </header>
+    <!--  Header End -->
+    <div class="container-fluid">
+        @if (Route::currentRouteName() == 'index-test')
+            <x-content></x-content>
+        @elseif (Route::currentRouteName() == 'doctor')
+            <x-doctor></x-doctor>
+        @endif
 
-<body>
-    <!--  Body Wrapper -->
-    <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed">
-        <!-- Sidebar Start -->
-        <x-slide-bar>
-        </x-slide-bar>
-        <!--  Sidebar End -->
-        <!--  Main wrapper -->
-        <div class="body-wrapper">
-            <!--  Header Start -->
-            <header class="app-header">
-                <x-hader>
-                </x-hader>
-            </header>
-            <!--  Header End -->
-            <div class="container-fluid">
-                @if (Route::currentRouteName() == 'index-test')
-                    <x-content></x-content>
-                @elseif (Route::currentRouteName() == 'doctor')
-                    <x-doctor></x-doctor>
-                @endif
-
-            </div>
-        </div>
     </div>
-    <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/sidebarmenu.js"></script>
-    <script src="./assets/js/app.min.js"></script>
-    <script src="./assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="./assets/libs/simplebar/dist/simplebar.js"></script>
-    <script src="./assets/js/dashboard.js"></script>
-</body>
-
-</html>
+</div>
+</div>
+@include('layout.footer')
