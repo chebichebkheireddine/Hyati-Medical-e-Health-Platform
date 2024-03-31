@@ -13,7 +13,7 @@
     </header>
     <!--  Header End -->
     <div class="container-fluid">
-        @if (Route::currentRouteName() == 'index-test')
+        @if (Route::currentRouteName() == 'Dashboard')
             <x-content></x-content>
         @elseif (Route::currentRouteName() == 'doctor')
             <x-doctor></x-doctor>

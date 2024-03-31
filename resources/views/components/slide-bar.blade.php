@@ -1,4 +1,4 @@
-<aside class="left-sidebar">
+<aside class=" left-sidebar  border-t-0 border-bottom border-solid">
     <!-- Sidebar scroll-->
     <div>
         @include('layout.logo')
@@ -26,7 +26,7 @@
                         <span>
                             <i class="fa-solid fa-user-doctor"></i>
                         </span>
-                        <span class="hide-menu">Doctor </span>
+                        <span class="hide-menu">Platform Users </span>
                     </a>
                 </li>
 

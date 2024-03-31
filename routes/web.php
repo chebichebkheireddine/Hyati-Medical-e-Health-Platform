@@ -27,5 +27,12 @@ Route::post("/register", [sessionController::class, 'registerSave'])->middleware
 // logout the user from the nav
 Route::get("/logout", [sessionController::class, 'logout'])->middleware('auth')->name('logout');
 
+Route::get("/", [sessionController::class, 'start'])->middleware('guest')->name('login');
 Route::get("/login", [sessionController::class, 'start'])->middleware('guest')->name('login');
 Route::post("/login", [sessionController::class, 'create'])->middleware('guest')->name('login_post');
+
+
+
+
+// Route for Users
+// Route::get("/users", [::class, 'users'])->middleware('auth')->name('users');
