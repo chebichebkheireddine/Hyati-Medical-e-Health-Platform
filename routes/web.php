@@ -23,13 +23,13 @@ Route::get('/admin', function () {
 })->name('Dashboard')->middleware('auth');
 // rejuster the uaer
 Route::get("/register", [sessionController::class, 'register'])->middleware('guest')->name('Register');
-Route::post("/register", [sessionController::class, 'registerSave'])->middleware('guest')->name('Register');
+Route::post("/register", [sessionController::class, 'store'])->middleware('guest')->name('Register');
 // logout the user from the nav
-Route::get("/logout", [sessionController::class, 'logout'])->middleware('auth')->name('logout');
+Route::get("/logout", [sessionController::class, 'destroy'])->middleware('auth')->name('logout');
 
-Route::get("/", [sessionController::class, 'start'])->middleware('guest')->name('login');
-Route::get("/login", [sessionController::class, 'start'])->middleware('guest')->name('login');
-Route::post("/login", [sessionController::class, 'create'])->middleware('guest')->name('login_post');
+Route::get("/", [sessionController::class, 'login'])->middleware('guest')->name('login');
+Route::get("/login", [sessionController::class, 'login'])->middleware('guest')->name('login');
+Route::post("/login", [sessionController::class, 'display'])->middleware('guest')->name('login_post');
 
 
 

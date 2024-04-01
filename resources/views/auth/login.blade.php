@@ -1,15 +1,17 @@
 @include('layout.app')
 <div
     class="position-relative overflow-hidden radial-gradient min-vh-100 d-flex align-items-center justify-content-center">
-    <div class="d-flex align-items-center justify-content-center w-100">
-        <div class="row justify-content-center w-100">
-            <div class="col-md-8 col-lg-6 col-xxl-3">
+    <div class="d-flex align-items-center justify-content-center col-md-10">
+        <div class="row justify-content-center col-10">
+            <div class="col-md-8 col-lg-6 col-md-10">
                 <div class="card mb-0">
                     <div class="card-body">
                         {{-- add Logo from the navbar --}}
-                        <div class="text-nowrap logo-img text-center d-block py-3 w-100 ">
-                            <x-logo-v1></x-logo-v1>
+                        <div class="d-flex align-items-center justify-content-between flex-col">
+                            <x-svg.logo></x-svg.logo>
                         </div>
+
+
                         <form method="Post" action="/login">
                             @csrf
                             <div class="mb-3">

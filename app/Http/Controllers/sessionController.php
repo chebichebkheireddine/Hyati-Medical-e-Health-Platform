@@ -13,11 +13,11 @@ class sessionController extends Controller
     {
         return view('auth.register');
     }
-    public function start()
+    public function login()
     {
         return view('auth.login');
     }
-    public function create(Request $reqest)
+    public function display(Request $reqest)
     {
         $user = $reqest->validate([
             'email' => 'required|email|exists:users,email',
@@ -34,7 +34,7 @@ class sessionController extends Controller
         ]);
         // var_dump(request()->all());
     }
-    public function registerSave(Request $reqest)
+    public function store(Request $reqest)
     {
         $user = $reqest->validate([
             'name' => 'required|string|max:255',
@@ -42,13 +42,14 @@ class sessionController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|max:80'
         ]);
+        $user['role_id'] = 0;
         $user['password'] = bcrypt($user['password']);
         $users = User::create($user);
         auth()->login($users);
         return redirect("admin");
     }
     // logout function
-    public function logout()
+    public function destroy()
     {
         auth()->logout();
         return redirect('login');

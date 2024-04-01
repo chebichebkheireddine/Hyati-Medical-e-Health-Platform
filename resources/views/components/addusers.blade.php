@@ -12,7 +12,6 @@
                 <h4 class="modal-title"></h4>
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
-
             <!-- Modal body -->
             <div class="modal-body">
                 <div class="mb-3">

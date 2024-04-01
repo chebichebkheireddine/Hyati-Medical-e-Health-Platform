@@ -1,4 +1,4 @@
-<svg width="80.000mm" height="70.00mm" viewBox="0 0 142.32375 105.02045" version="1.1" id="svg1"
+<svg width="60.000mm" height="60.00mm" viewBox="0 0 142.32375 105.02045" version="1.1" id="svg1"
     sodipodi:docname="Hyati medical.svg" xml:space="preserve" inkscape:version="1.3.2 (091e20e, 2023-11-25, custom)"
     xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
     xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd" xmlns:xlink="http://www.w3.org/1999/xlink"
