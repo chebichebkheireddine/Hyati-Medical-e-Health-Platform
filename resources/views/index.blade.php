@@ -1,22 +1,22 @@
 @include('layout.app')
 
 <!-- Sidebar Start -->
-<x-slide-bar>
-</x-slide-bar>
+<x-nav.slide-bar>
+</x-nav.slide-bar>
 <!--  Sidebar End -->
 <!--  Main wrapper -->
 <div class="body-wrapper">
     <!--  Header Start -->
     <header class="app-header">
-        <x-nav-bar>
-        </x-nav-bar>
+        <x-nav.nav-bar>
+        </x-nav.nav-bar>
     </header>
     <!--  Header End -->
     <div class="container-fluid">
         @if (Route::currentRouteName() == 'Dashboard')
-            <x-content></x-content>
-        @elseif (Route::currentRouteName() == 'doctor')
-            <x-doctor></x-doctor>
+            <x-.admin.body></x-.admin.body>
+        @elseif (Route::currentRouteName() == 'control')
+            <x-admin.control></x-admin.control>
         @endif
 
     </div>

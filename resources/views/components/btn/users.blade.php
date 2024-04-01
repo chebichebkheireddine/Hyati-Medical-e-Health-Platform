@@ -13,17 +13,15 @@
                 <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
             </div>
             <!-- Modal body -->
-            <div class="modal-body">
-                <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
-                    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+            <form method="Post" action="/role/add">
+                @csrf
+                <x-form.input name="name"></x-form.input>
+                <x-form.input name="description"></x-form.input>
+                <!-- Modal footer -->
+                <div class="modal-footer">
+                    <button type="submit" class="btn btn-success " data-bs-dismiss="modal">Add</button>
                 </div>
-            </div>
-
-            <!-- Modal footer -->
-            <div class="modal-footer">
-                <button type="button" class="btn btn-success " data-bs-dismiss="modal">Close</button>
-            </div>
+            </form>
 
         </div>
     </div>

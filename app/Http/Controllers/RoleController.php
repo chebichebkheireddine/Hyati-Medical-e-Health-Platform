@@ -7,4 +7,8 @@ use Illuminate\Http\Request;
 class RoleController extends Controller
 {
     //
+    public function create()
+    {
+        ddd(request()->all());
+    }
 }

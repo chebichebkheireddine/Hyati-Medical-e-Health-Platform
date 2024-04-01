@@ -22,11 +22,11 @@
                     <span class="hide-menu">Panel Control</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/doctor" aria-expanded="false">
+                    <a class="sidebar-link" href="/control" aria-expanded="false">
                         <span>
                             <i class="fa-solid fa-user-doctor"></i>
                         </span>
-                        <span class="hide-menu">Platform Users </span>
+                        <span class="hide-menu">Panel control </span>
                     </a>
                 </li>
 
