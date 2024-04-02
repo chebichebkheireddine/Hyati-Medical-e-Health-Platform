@@ -36,7 +36,7 @@ Route::get("/", [sessionController::class, 'login'])->middleware('guest')->name(
 Route::get("/login", [sessionController::class, 'login'])->middleware('guest')->name('login');
 Route::post("/login", [sessionController::class, 'display'])->middleware('guest')->name('login_post');
 
-Route::post("/role/add", [RoleController::class, 'create'])->middleware('auth')->name('admin');
+Route::post("/role/add", [RoleController::class, 'create'])->middleware('auth')->name('role_add');
 
 
 // Route for Users

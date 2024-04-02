@@ -16,7 +16,9 @@
             <form method="Post" action="/role/add">
                 @csrf
                 <x-form.input name="name"></x-form.input>
-                <x-form.input name="description"></x-form.input>
+                {{-- <x-form.input name="description"></x-form.input> --}}
+                <x-form.textarea name="description"></x-form.textarea>
+
                 <!-- Modal footer -->
                 <div class="modal-footer">
                     <button type="submit" class="btn btn-success " data-bs-dismiss="modal">Add</button>
