@@ -19,13 +19,24 @@ use Illuminate\Support\Facades\Route;
 // })->name('doctor');
 // sessionController
 
-Route::get('/admin', function () {
-    return view('index');
-})->name('Dashboard')->middleware('auth');
-// List of user page
-Route::get('/control', function () {
-    return view('index');
-})->name('control')->middleware('auth');
+
+//  gropu of the admin
+Route::group(['middleware' => 'admin'], function () {
+    Route::get('/admin', function () {
+        return view('admin.index');
+    })->name('Dashboard');
+    // List of user page
+    Route::get('/control', function () {
+        return view('admin.index');
+    })->name('control');
+});
+// Route::get('/admin', function () {
+//     return view('index');
+// })->name('Dashboard');
+// // List of user page
+// Route::get('/control', function () {
+//     return view('index');
+// })->name('control');
 // rejuster the uaer
 Route::get("/register", [sessionController::class, 'register'])->middleware('guest')->name('Register');
 Route::post("/register", [sessionController::class, 'store'])->middleware('guest')->name('Register');
