@@ -7,6 +7,15 @@ use Illuminate\Http\Request;
 
 class sessionController extends Controller
 {
+
+
+    // The index function
+    public function index()
+    {
+        return view('welcome.index');
+    }
+
+
     //This is register function
 
     public function register()
