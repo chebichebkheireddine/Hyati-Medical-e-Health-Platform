@@ -19,7 +19,7 @@ class Adminmiddleware
         if (auth()->user()->role_id == 0) {
             return $next($request);
         }
-        // This is just for test 
+        // This is just for test
         if (auth()->user()->role_id > 5) {
             abort(403);
         }
