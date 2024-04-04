@@ -21,14 +21,16 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Panel Control</span>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="/control" aria-expanded="false">
-                        <span>
-                            <i class="fa-solid fa-user-doctor"></i>
-                        </span>
-                        <span class="hide-menu">Panel control </span>
-                    </a>
-                </li>
+                @can('create-admin')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="/control" aria-expanded="false">
+                            <span>
+                                <i class="fa-solid fa-user-doctor"></i>
+                            </span>
+                            <span class="hide-menu">Panel control </span>
+                        </a>
+                    </li>
+                @endcan
 
 
         </nav>
