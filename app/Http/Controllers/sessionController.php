@@ -20,13 +20,13 @@ class sessionController extends Controller
 
     public function register()
     {
-        return view('auth.register');
+        return view('auth.admin.register');
     }
-    public function login()
+    public function display()
     {
-        return view('auth.login');
+        return view('auth.admin.login');
     }
-    public function display(Request $reqest)
+    public function login(Request $reqest)
     {
         $user = $reqest->validate([
             'email' => 'required|email|exists:users,email',
@@ -61,6 +61,6 @@ class sessionController extends Controller
     public function destroy()
     {
         auth()->logout();
-        return redirect('login');
+        return redirect('/');
     }
 }

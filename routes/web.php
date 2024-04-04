@@ -34,13 +34,21 @@ Route::get('/control', function () {
 })->name('control');
 
 
-// rejuster the uaer
-Route::get("/register", [sessionController::class, 'register'])->middleware('guest')->name('Register');
-Route::post("/register", [sessionController::class, 'store'])->middleware('guest')->name('Register');
-// logout the user from the nav
-Route::get("/logout", [sessionController::class, 'destroy'])->middleware('auth')->name('logout');
+// Crate  the user
+Route::get("/register", [sessionController::class, 'register'])
+    ->middleware('guest')->name('Register');
 
-Route::get("/login", [sessionController::class, 'login'])->middleware('guest')->name('admin.login');
-Route::post("/login", [sessionController::class, 'display'])->middleware('guest')->name('admin.login_post');
+Route::post("/register", [sessionController::class, 'store'])
+    ->middleware('guest')->name('Register');
+
+// logout the users from The nav
+Route::get("/logout", [sessionController::class, 'destroy'])
+    ->middleware('auth')->name('logout');
+
+// login page
+Route::get("/login", [sessionController::class, 'display'])
+    ->middleware('guest')->name('admin.login');
+Route::post("/login", [sessionController::class, 'login'])
+    ->middleware('guest')->name('admin.login_post');
 
 // Route::post("/role/add", [RoleController::class, 'create'])->middleware('auth')->name('role_add');
