@@ -11,7 +11,8 @@
                                 <x-svg.logo></x-svg.logo>
                             </div>
 
-                            <form method="Post" action="{{ route('admin.login_post') }}">
+
+                            <form method="Post" action="#">
                                 @csrf
                                 <x-form.panel>
                                     <x-form.label name="email"></x-form.label>
@@ -34,5 +35,6 @@
 
 
 
+    {{-- @include('layout.footer') --}}
 
 </x-layout.app>

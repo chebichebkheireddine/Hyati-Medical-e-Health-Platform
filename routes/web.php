@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // This is main page
-Route::get("/", [sessionController::class, 'index'])->middleware('guest')->name('welcome.index');
+Route::get("/", [SessionController::class, 'index'])->middleware('guest')->name('welcome.index');
 
 // // this route for add user
 Route::get(
@@ -35,18 +35,18 @@ Route::get('/control', function () {
 
 
 // Crate  the user
-Route::get("/register", [sessionController::class, 'register'])
+Route::get("/register", [SessionController::class, 'register'])
     ->middleware('guest')->name('Register');
 
-Route::post("/register", [sessionController::class, 'store'])
+Route::post("/register", [SessionController::class, 'store'])
     ->middleware('guest')->name('Register');
 
 // logout the users from The nav
-Route::get("/logout", [sessionController::class, 'destroy'])
+Route::get("/logout", [SessionController::class, 'destroy'])
     ->middleware('auth')->name('logout');
 
 // login page
-Route::get("/login", [sessionController::class, 'display'])
+Route::get("/login", [SessionController::class, 'display'])
     ->middleware('guest')->name('admin.login');
 Route::post("/login", [sessionController::class, 'login'])
     ->middleware('guest')->name('admin.login_post');

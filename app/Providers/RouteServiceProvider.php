@@ -46,6 +46,10 @@ class RouteServiceProvider extends ServiceProvider
             Route::middleware('web')
                 ->namespace($this->namespace)
                 ->group(base_path('routes/web.php'));
+            // don't forget to add this line to load the Doctor routes with midel where web
+            Route::middleware('web')
+                ->namespace($this->namespace)
+                ->group(base_path('routes/doctor.php'));
         });
     }
 

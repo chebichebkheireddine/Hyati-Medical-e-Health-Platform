@@ -15,9 +15,15 @@
             <!-- Modal body -->
             <form method="Post" action="/role/add">
                 @csrf
-                <x-form.input name="name"></x-form.input>
-                {{-- <x-form.input name="description"></x-form.input> --}}
-                <x-form.textarea name="description"></x-form.textarea>
+                <div class="modal-body">
+                    <x-form.panel>
+                        <x-form.label name="name"></x-form.label>
+                        <x-form.input name="name"></x-form.input>
+                    </x-form.panel>
+                </div>
+                <div class="modal-body">
+                    <x-form.textarea name="description"></x-form.textarea>
+                </div>
 
                 <!-- Modal footer -->
                 <div class="modal-footer">

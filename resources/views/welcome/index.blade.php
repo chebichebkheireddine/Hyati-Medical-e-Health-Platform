@@ -17,8 +17,7 @@
 
                                         <img src="./assets/images/icon/docteur.png" class="bg-blue-300 rounded-full "
                                             alt="" width="100">
-                                        <a href="/doctor/logein"
-                                            class="text-blue-400 text-center font-semibold text-3xl">
+                                        <a href="/doctor" class="text-blue-400 text-center font-semibold text-3xl">
                                             Doctor
                                         </a>
 
@@ -35,7 +34,7 @@
                                         <img src="./assets/images/icon/pharmacien.png" class="bg-blue-300 rounded-full "
                                             alt=""width="100">
                                         <a class="text-blue-400 text-lg-center font-semibold text-3xl">
-                                            Phacmacist
+                                            Pharmasict
                                         </a>
 
                                     </div>
