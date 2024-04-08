@@ -16,6 +16,8 @@
                 <x-.admin.body></x-.admin.body>
             @elseif (Route::currentRouteName() == 'control')
                 <x-admin.control></x-admin.control>
+            @elseif (Route::currentRouteName() == 'admin.doctor.create')
+                <x-admin.doctor.index></x-admin.doctor.index>
             @endif
         </div>
     </div>

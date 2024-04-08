@@ -1,12 +1,12 @@
 <div class="row">
-    <div class="col-5">
+    <div class="col-12">
         <div class="card ">
             <div class="card-body   rounded-xl ">
-                <h2 class="card-title fw-semibold mb-4 ">Healthe Provider Roles</h2>
-                <p class=" mb-3">This Page for Add health care provider
+                <h2 class="card-title fw-semibold mb-4 ">Doctor Information</h2>
+                <p class=" mb-3">This Page for Add doctor To the system
                 </p>
                 {{-- this is temolet to add user --}}
-                <x-form.model name="Add" id="addMe">
+                <x-form.model name="Add doctor" id="doctidq1">
                     <form method="Post" action="/role/add">
                         @csrf
                         <div class="modal-body">

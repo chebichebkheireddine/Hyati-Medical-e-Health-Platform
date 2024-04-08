@@ -27,7 +27,17 @@
                             <span>
                                 <i class="fa-solid fa-user-doctor"></i>
                             </span>
-                            <span class="hide-menu">Panel control </span>
+                            <span class="hide-menu"> Permission & Roles </span>
+                        </a>
+                    </li>
+                @endcan
+                @can('create-doctor')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('admin.doctor.create') }}" aria-expanded="false">
+                            <span>
+                                <i class="fa-solid fa-user-doctor"></i>
+                            </span>
+                            <span class="hide-menu">Doctors Information </span>
                         </a>
                     </li>
                 @endcan

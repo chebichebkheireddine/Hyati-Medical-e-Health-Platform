@@ -3,6 +3,7 @@
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\sessionController;
 use App\Http\Controllers\UserController;
+use App\Models\Doctor;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -32,7 +33,9 @@ Route::get('/admin', function () {
 Route::get('/control', function () {
     return view('admin.index');
 })->name('control');
-
+Route::get('/doctorcreate', function () {
+    return view('admin.index');
+})->middleware('can:create-doctor')->name('admin.doctor.create');
 
 // Crate  the user
 Route::get("/register", [SessionController::class, 'register'])

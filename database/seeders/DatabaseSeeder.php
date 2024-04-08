@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
@@ -16,11 +17,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call([
-        //     RoleAndPermissionSeeder::class,
-        // ]);
-        // this is old way to create
 
+        // Create Permissions
         Permission::create(['name' => 'create-admin']);
         Permission::create(['name' => 'edit-admin']);
         Permission::create(['name' => 'delete-admin']);
@@ -29,10 +27,10 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'edit-doctor']);
         Permission::create(['name' => 'delete-doctor']);
 
-
+        // Create Roles
         $superadminRole = Role::create(['name' => 'super-admin']);
         $adminRole = Role::create(['name' => 'admin']);
-
+        // Assign Permissions to Roles
         $superadminRole->givePermissionTo([
             'create-admin',
             'edit-admin',
@@ -46,8 +44,32 @@ class DatabaseSeeder extends Seeder
             'edit-doctor',
             'delete-doctor',
         ]);
+        // Create a Role for user
+
+        // $user->givePermissionTo('edit articles');
+
+
         $password = bcrypt('1234567890');
-        User::factory()->create(["name" => "chebicheb", "username" => "khiro", "email" => "test@gmail.com", "password" => $password]);
+        User::factory()->create([
+            "name" => "chebicheb", "username" => "khiro",
+            "email" => "test@gmail.com", "password" => $password
+        ])->assignRole('super-admin');
+
+        Specialization::factory()->create([
+            "specialization_name" => "Cardiology",
+            "specialization_description" => "Heart Specialist"
+        ]);
+
+        Specialization::factory()->create([
+            "specialization_name" => "Dermatology",
+            "specialization_description" => "Skin Specialist"
+        ]);
+
+        Specialization::factory()->create([
+            "specialization_name" => "Orthopedics",
+            "specialization_description" => "Bone Specialist"
+        ]);
+
         // \App\Models\User::factory(10)->create();
     }
 }

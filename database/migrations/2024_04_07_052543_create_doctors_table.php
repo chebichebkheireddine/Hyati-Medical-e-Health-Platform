@@ -14,11 +14,7 @@ class CreateDoctorsTable extends Migration
     public function up()
     {
         Schema::create('doctors', function (Blueprint $table) {
-            $table->id();
-            $table->foreignId('role_id')->default(0);
-            $table->foreignId('specialization_id');
-            $table->foreignId('department_id')->default(0);
-            $table->foreignId('hospital_id')->default(0);
+            $table->id("doctor_id");
             $table->string('username')->unique();
             $table->string('email')->unique();
             $table->string('password');
@@ -33,6 +29,14 @@ class CreateDoctorsTable extends Migration
         Schema::create('specializations', function (Blueprint $table) {
             $table->id('specialization_id');
             $table->string('specialization_name');
+            $table->string('specialization_description');
+        });
+
+        // Table of Specialization
+        Schema::create('doctor_specializations', function (Blueprint $table) {
+            $table->foreignId('doctor_id')->constrained('doctors', 'doctor_id')->cascadeOnDelete();
+            $table->foreignId('specialization_id')->constrained('specializations', 'specialization_id')->cascadeOnDelete();
+            $table->primary(['doctor_id', 'specialization_id']);
         });
     }
 
@@ -43,7 +47,8 @@ class CreateDoctorsTable extends Migration
      */
     public function down()
     {
+        Schema::dropIfExists('doctor_specializations');
         Schema::dropIfExists('doctors');
-        Schema::dropIfExists('specialization');
+        Schema::dropIfExists('specializations');
     }
 }
