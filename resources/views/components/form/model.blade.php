@@ -5,7 +5,7 @@
 </button>
 <!-- The Modal -->
 <div class="modal" id="{{ $id }}">
-    <div class="modal-dialog">
+    <div class="">
         <div class="modal-content">
 
             <!-- Modal Header -->

@@ -9,15 +9,43 @@
                 <x-form.model name="Add doctor" id="doctidq1">
                     <form method="Post" action="/role/add">
                         @csrf
-                        <div class="modal-body">
+                        <x-form.modal-body>
                             <x-form.panel>
                                 <x-form.label name="name"></x-form.label>
                                 <x-form.input name="name"></x-form.input>
                             </x-form.panel>
-                        </div>
-                        <div class="modal-body">
-                            <x-form.textarea name="description"></x-form.textarea>
-                        </div>
+                        </x-form.modal-body>
+                        <x-form.modal-body>
+                            <x-form.panel>
+                                <x-form.label name="user Name"></x-form.label>
+                                <x-form.input name="username"></x-form.input>
+                            </x-form.panel>
+                        </x-form.modal-body>
+                        <x-form.modal-body>
+                            <x-form.panel>
+                                <x-form.label name="email"></x-form.label>
+                                <x-form.input name="email" type="email"></x-form.input>
+                            </x-form.panel>
+                        </x-form.modal-body>
+                        <x-form.modal-body>
+                            <x-form.panel>
+                                <x-form.label name="Phon Number"></x-form.label>
+                                <x-form.input name="phone_number" type="tel"></x-form.input>
+                            </x-form.panel>
+                        </x-form.modal-body>
+                        <x-form.modal-body>
+                            <x-form.panel>
+                                <x-form.label name="addresse"></x-form.label>
+                                <x-form.input name="addresse"></x-form.input>
+                            </x-form.panel>
+                        </x-form.modal-body>
+                        <x-form.modal-body>
+                            <x-form.panel>
+                                <x-form.label name="Ppassword"></x-form.label>
+                                <x-form.input name="password" type="password"></x-form.input>
+                            </x-form.panel>
+                        </x-form.modal-body>
+
 
                         <!-- Modal footer -->
                         <div class="modal-footer">
