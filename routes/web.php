@@ -4,6 +4,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\sessionController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
+use App\Models\Specialization;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -33,9 +34,15 @@ Route::get('/admin', function () {
 Route::get('/admin/control', function () {
     return view('admin.index');
 })->name('admin.control');
-Route::get('admin/doctor/index', function () {
-    return view('admin.index');
-})->name('admin.doctor.index');
+
+Route::get(
+    'admin/doctor/index',
+    [UserController::class, "test"]
+)->name('admin.doctor.index');
+
+// Route::get('admin/doctor/index', function () {
+//     return view('admin.index', ["test1" => Specialization::all()]);
+// })->name('admin.doctor.index');
 
 // Crate  the user
 Route::get("/register/admin", [SessionController::class, 'register'])
@@ -54,4 +61,4 @@ Route::get("/login/admin", [SessionController::class, 'display'])
 Route::post("/login/admin", [sessionController::class, 'login'])
     ->middleware('guest')->name('admin.login_post');
 
-// Route::post("/role/add", [RoleController::class, 'create'])->middleware('auth')->name('role_add');
+Route::post("/admin/doctor/create", [UserController::class, "create"])->name("admin.doctor.create");

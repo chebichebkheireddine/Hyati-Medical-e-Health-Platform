@@ -1,6 +1,6 @@
 <aside class=" left-sidebar  border-t-0 border-bottom border-solid">
     <!-- Sidebar scroll-->
-    <div>
+    <div class="bg-blue-50">
         @include('layout.logo')
         <!-- Sidebar navigation-->
         <nav class="sidebar-nav scroll-sidebar" data-simplebar="">

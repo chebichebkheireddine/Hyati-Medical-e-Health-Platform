@@ -9,6 +9,8 @@
     <link rel="shortcut icon" type="image/png" href="" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/assets/css/styles.min.css') }}" />
+    <link rel="stylesheet" href="{{ asset('/assets/css/multi-select-tag.css') }}" />
+
     {{-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> --}}
 </head>
 
@@ -25,6 +27,10 @@
     <script src="{{ asset('/assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
     <script src="{{ asset('/assets/libs/simplebar/dist/simplebar.js') }}"></script>
     <script src="{{ asset('/assets/js/dashboard.js') }}"></script>
+    <script src="{{ asset('/assets/js/multi-select-tag.js') }}"></script>
+    <script>
+        new MultiSelectTag('specialization')
+    </script>
 </body>
 
 </html>
