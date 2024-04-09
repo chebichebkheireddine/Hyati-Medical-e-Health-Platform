@@ -10,7 +10,7 @@
                     <span class="hide-menu">Home</span>
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="/admin" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.dashboard') }}" aria-expanded="false">
                         <span>
                             <i class="ti ti-layout-dashboard"></i>
                         </span>
@@ -23,7 +23,7 @@
                 </li>
                 @can('create-admin')
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="/control" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('admin.control') }}" aria-expanded="false">
                             <span>
                                 <i class="fa-solid fa-user-doctor"></i>
                             </span>
@@ -33,11 +33,11 @@
                 @endcan
                 @can('create-doctor')
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.doctor.create') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('admin.doctor.index') }}" aria-expanded="false">
                             <span>
                                 <i class="fa-solid fa-user-doctor"></i>
                             </span>
-                            <span class="hide-menu">Doctors Information </span>
+                            <span class="hide-menu">Doctors Information</span>
                         </a>
                     </li>
                 @endcan

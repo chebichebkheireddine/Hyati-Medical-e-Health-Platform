@@ -8,7 +8,7 @@
     </title>
     <link rel="shortcut icon" type="image/png" href="" />
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="./assets/css/styles.min.css" />
+    <link rel="stylesheet" href="{{ asset('/assets/css/styles.min.css') }}" />
     {{-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> --}}
 </head>
 
@@ -18,13 +18,13 @@
         data-sidebar-position="fixed" data-header-position="fixed">
         {{ $slot }}
     </div>
-    <script src="./assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="./assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="./assets/js/sidebarmenu.js"></script>
-    <script src="./assets/js/app.min.js"></script>
-    <script src="./assets/libs/apexcharts/dist/apexcharts.min.js"></script>
-    <script src="./assets/libs/simplebar/dist/simplebar.js"></script>
-    <script src="./assets/js/dashboard.js"></script>
+    <script src="{{ asset('/assets/libs/jquery/dist/jquery.min.js') }}"></script>
+    <script src="{{ asset('/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
+    <script src="{{ asset('/assets/js/sidebarmenu.js') }}"></script>
+    <script src="{{ asset('/assets/js/app.min.js') }}"></script>
+    <script src="{{ asset('/assets/libs/apexcharts/dist/apexcharts.min.js') }}"></script>
+    <script src="{{ asset('/assets/libs/simplebar/dist/simplebar.js') }}"></script>
+    <script src="{{ asset('/assets/js/dashboard.js') }}"></script>
 </body>
 
 </html>

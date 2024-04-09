@@ -15,4 +15,4 @@ use Illuminate\Support\Facades\Route;
 */
 //Doctor ro
 // This is main page
-Route::get("/doctor", [SessionController::class, 'index']);
+Route::get("/login/doctor", [SessionController::class, 'index'])->name("doctor.login");

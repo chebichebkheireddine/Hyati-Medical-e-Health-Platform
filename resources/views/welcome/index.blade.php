@@ -17,7 +17,8 @@
 
                                         <img src="./assets/images/icon/docteur.png" class="bg-blue-300 rounded-full "
                                             alt="" width="100">
-                                        <a href="/doctor" class="text-blue-400 text-center font-semibold text-3xl">
+                                        <a href="{{ route('doctor.login') }}"
+                                            class="text-blue-400 text-center font-semibold text-3xl">
                                             Doctor
                                         </a>
 

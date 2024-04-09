@@ -13,11 +13,14 @@
         <!--  Header End -->
         <div class="container-fluid">
             @if (Route::currentRouteName() == 'Dashboard')
-                <x-.admin.body></x-.admin.body>
+                {{-- <x-.admin.body></x-.admin.body> --}}
+                @include("components.admin.body")
             @elseif (Route::currentRouteName() == 'control')
-                <x-admin.control></x-admin.control>
+                {{-- <x-admin.control></x-admin.control> --}}
+                @include("components.admin.control")
             @elseif (Route::currentRouteName() == 'admin.doctor.create')
-                <x-admin.doctor.index></x-admin.doctor.index>
+                {{-- <x-admin.doctor.index></x-admin.doctor.index> --}}
+                @include("components.admin.doctor.index")
             @endif
         </div>
     </div>

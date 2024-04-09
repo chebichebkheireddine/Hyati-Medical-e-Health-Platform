@@ -28,30 +28,30 @@ Route::get(
 
 Route::get('/admin', function () {
     return view('admin.index');
-})->name('Dashboard');
+})->name('admin.dashboard');
 // List of user page
-Route::get('/control', function () {
+Route::get('/admin/control', function () {
     return view('admin.index');
-})->name('control');
-Route::get('/doctorcreate', function () {
+})->name('admin.control');
+Route::get('admin/doctor/index', function () {
     return view('admin.index');
-})->middleware('can:create-doctor')->name('admin.doctor.create');
+})->name('admin.doctor.index');
 
 // Crate  the user
-Route::get("/register", [SessionController::class, 'register'])
-    ->middleware('guest')->name('Register');
+Route::get("/register/admin", [SessionController::class, 'register'])
+    ->middleware('guest')->name('Register.admin');
 
-Route::post("/register", [SessionController::class, 'store'])
-    ->middleware('guest')->name('Register');
+Route::post("/register/admin", [SessionController::class, 'store'])
+    ->middleware('guest')->name('Register.admin');
 
 // logout the users from The nav
 Route::get("/logout", [SessionController::class, 'destroy'])
     ->middleware('auth')->name('logout');
 
 // login page
-Route::get("/login", [SessionController::class, 'display'])
+Route::get("/login/admin", [SessionController::class, 'display'])
     ->middleware('guest')->name('admin.login');
-Route::post("/login", [sessionController::class, 'login'])
+Route::post("/login/admin", [sessionController::class, 'login'])
     ->middleware('guest')->name('admin.login_post');
 
 // Route::post("/role/add", [RoleController::class, 'create'])->middleware('auth')->name('role_add');
