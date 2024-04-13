@@ -100,7 +100,8 @@ return [
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
-        ], 'doctors' => [
+        ],
+        'doctors' => [
             'provider' => 'doctors',
             'table' => 'password_doctor_resets',
             'expire' => 60,

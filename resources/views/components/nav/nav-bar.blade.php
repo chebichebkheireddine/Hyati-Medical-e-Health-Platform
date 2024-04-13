@@ -46,8 +46,8 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <x-nav.linkdropdownAdmin></x-nav.linkdropdownAdmin>
-                <x-nav.dropDownAdmin></x-nav.dropDownAdmin>
+                <x-nav.admin.linkdropdownAdmin></x-nav.admin.linkdropdownAdmin>
+                <x-nav.admin.dropDownAdmin></x-nav.admin.dropDownAdmin>
             </li>
 
         </ul>

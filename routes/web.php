@@ -35,11 +35,13 @@ Route::get('/admin/control', function () {
     return view('admin.index');
 })->name('admin.control');
 
-Route::get(
-    'admin/doctor/index',
-    [UserController::class, "test"]
-)->name('admin.doctor.index');
 
+Route::get("admin/dotor/add", [UserController::class, 'test'])->name('admin.doctor.index');
+Route::post("admin/dotor/add", [UserController::class, "add"])->name("admin.doctor.create");
+
+
+// This is for spesfication ADD
+Route::Post("/admin/control", [UserController::class, 'make'])->name('admin.specialization.index');
 // Route::get('admin/doctor/index', function () {
 //     return view('admin.index', ["test1" => Specialization::all()]);
 // })->name('admin.doctor.index');
@@ -60,5 +62,3 @@ Route::get("/login/admin", [SessionController::class, 'display'])
     ->middleware('guest')->name('admin.login');
 Route::post("/login/admin", [sessionController::class, 'login'])
     ->middleware('guest')->name('admin.login_post');
-
-Route::post("/admin/doctor/create", [UserController::class, "create"])->name("admin.doctor.create");

@@ -7,16 +7,16 @@
                 </p>
                 {{-- this is temolet to add user --}}
                 <x-form.model name="Add" id="addMe">
-                    <form method="Post" action="/role/add">
+                    <form method="Post" action="{{ route('admin.specialization.index') }}">
                         @csrf
                         <div class="modal-body">
                             <x-form.panel>
-                                <x-form.label name="name"></x-form.label>
-                                <x-form.input name="name"></x-form.input>
+                                <x-form.label name="name" />
+                                <x-form.input name="specialization_name" />
                             </x-form.panel>
                         </div>
                         <div class="modal-body">
-                            <x-form.textarea name="description"></x-form.textarea>
+                            <x-form.textarea name="specialization_description"></x-form.textarea>
                         </div>
 
                         <!-- Modal footer -->

@@ -51,7 +51,7 @@ class SessionController extends Controller
             'email' => 'required|email|unique:users,email',
             'password' => 'required|min:6|max:80'
         ]);
-        $user['role_id'] = 0;
+        // $user['role_id'] = 0;
         $user['password'] = bcrypt($user['password']);
         $users = User::create($user);
         auth()->login($users);

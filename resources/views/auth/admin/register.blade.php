@@ -12,14 +12,10 @@
                             </div>
                             <form method="Post" action="{{ route('Register.admin') }}">
                                 @csrf
-                                <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Name</label>
-                                    <input type="name" class="form-control" id="exampleInputEmail1"name="name"
-                                        value="{{ old('name') }}" aria-describedby="emailHelp">
-                                    @error('name')
-                                        <div class="alert alert-danger">{{ $message }}</div>
-                                    @enderror
-                                </div>
+                                <x-form.panel>
+                                    <x-form.label name="Name"></x-form.label>
+                                    <x-form.input name="name"></x-form.input>
+                                </x-form.panel>
                                 <div class="mb-3">
                                     <label for="exampleInputEmail1" class="form-label">User Name</label>
                                     <input type="name" class="form-control" id="exampleInputEmail1"name="username"
