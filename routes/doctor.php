@@ -17,4 +17,4 @@ use Illuminate\Support\Facades\Route;
 //Doctor ro
 // This is main page
 Route::get("/login/doctor", [SessionController::class, 'index'])->name("doctor.login");
-Route::post("admin/doctor/index", [UserController::class, "create"])->name("admin.doctor.create");
+// Route::post("admin/doctor/index", [UserController::class, "create"])->name("admin.doctor.create");

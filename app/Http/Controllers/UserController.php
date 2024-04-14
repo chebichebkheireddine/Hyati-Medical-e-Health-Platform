@@ -20,17 +20,17 @@ class UserController extends Controller
 
     public function add()
     {
-
         $att = request()->validate([
             'name' => 'required|string|max:255',
             'user_name' => 'required|string|max:255|unique:doctors,user_name',
             'email' => 'required|email|unique:doctors,email',
-            'password' => 'required|min:6|max:80',
-            'phone_number' => 'required|min:3|max:255',
-            'address' => 'required|min:3|max:255',
+            'password' => 'required|max:80',
+            'phone_number' => 'required|max:255',
+            'address' => 'required|max:255',
         ]);
+        $att['password'] = bcrypt($att['password']);
         Doctor::create($att);
-        return redirect("/");
+        return redirect("admin");
     }
     public function make()
     {

@@ -6,7 +6,7 @@
                 <p class=" mb-3">This Page for Add health care provider
                 </p>
                 {{-- this is temolet to add user --}}
-                <x-form.model name="Add" id="addMe">
+                <x-form.model name="Add Spesfcation" id="addMe">
                     <form method="Post" action="{{ route('admin.specialization.index') }}">
                         @csrf
                         <div class="modal-body">

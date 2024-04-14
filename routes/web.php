@@ -37,7 +37,7 @@ Route::get('/admin/control', function () {
 
 
 Route::get("admin/dotor/add", [UserController::class, 'test'])->name('admin.doctor.index');
-Route::post("admin/dotor/add", [UserController::class, "add"])->name("admin.doctor.create");
+Route::post("admin/dotor/add", [UserController::class, 'add'])->name("admin.doctor.create");
 
 
 // This is for spesfication ADD

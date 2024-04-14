@@ -12,13 +12,13 @@
                     </p>
                     <div class="">
 
-                        {{-- <x-form.model name="Add doctor" id="doctidq1"> --}}
-                        <form method="POST" action="/admin/doctor/add">
-                            @csrf
-                            <div class="row">
-                                <div class="col-md-6">
-                                    {{--  --}}
-                                    {{-- <x-form.modal-body>
+                        <x-form.model name="Add doctor" id="doctidq1">
+                            <form method="POST" action="{{ route('admin.doctor.create') }}">
+                                @csrf
+                                <div class="row">
+                                    <div class="col-md-6">
+                                        {{--  --}}
+                                        {{-- <x-form.modal-body>
                                         <x-form.label name="specialization"></x-form.label>
                                         <select name="specializations[]" id="specialization" multiple>
 
@@ -28,56 +28,56 @@
                                             @endforeach
                                         </select>
                                     </x-form.modal-body> --}}
-                                    {{-- {{--  --}}
-                                    {{-- <x-form.modal-body> --}}
-                                    <x-form.panel>
-                                        <x-form.label name="name" />
-                                        <x-form.input name="name" />
-                                    </x-form.panel>
-                                    {{-- </x-form.modal-body> --}}
-                                    {{-- <x-form.modal-body> --}}
-                                    <x-form.panel>
-                                        <x-form.label name="user Name" />
-                                        <x-form.input name="user_name" />
-                                    </x-form.panel>
-                                    {{-- </x-form.modal-body> --}}
-                                    {{-- <x-form.modal-body> --}}
-                                    <x-form.panel>
-                                        <x-form.label name="email" />
-                                        <x-form.input name="email" type="email" />
-                                    </x-form.panel>
-                                    {{-- </x-form.modal-body> --}}
+                                        {{-- {{--  --}}
+                                        <x-form.modal-body>
+                                            <x-form.panel>
+                                                <x-form.label name="name" />
+                                                <x-form.input name="name" />
+                                            </x-form.panel>
+                                        </x-form.modal-body>
+                                        <x-form.modal-body>
+                                            <x-form.panel>
+                                                <x-form.label name="user Name" />
+                                                <x-form.input name="user_name" />
+                                            </x-form.panel>
+                                        </x-form.modal-body>
+                                        <x-form.modal-body>
+                                            <x-form.panel>
+                                                <x-form.label name="email" />
+                                                <x-form.input name="email" type="email" />
+                                            </x-form.panel>
+                                        </x-form.modal-body>
 
+                                    </div>
+                                    <div class="col-md-6">
+                                        <x-form.modal-body>
+                                            <x-form.panel>
+                                                <x-form.label name="Phon Number" />
+                                                <x-form.input name="phone_number" />
+                                            </x-form.panel>
+                                        </x-form.modal-body>
+                                        <x-form.modal-body>
+                                            <x-form.panel>
+                                                <x-form.label name="address" />
+                                                <x-form.input name="address" />
+                                            </x-form.panel>
+                                        </x-form.modal-body>
+                                        <x-form.modal-body>
+                                            <x-form.panel>
+                                                <x-form.label name="password" />
+                                                <x-form.input name="password" type="password" />
+                                            </x-form.panel>
+                                        </x-form.modal-body>
+                                    </div>
                                 </div>
-                                <div class="col-md-6">
-                                    {{-- <x-form.modal-body> --}}
-                                    <x-form.panel>
-                                        <x-form.label name="Phon Number" />
-                                        <x-form.input name="phone_number" />
-                                    </x-form.panel>
-                                    {{-- </x-form.modal-body> --}}
-                                    {{-- <x-form.modal-body> --}}
-                                    <x-form.panel>
-                                        <x-form.label name="addresse" />
-                                        <x-form.input name="addresse" />
-                                    </x-form.panel>
-                                    {{-- </x-form.modal-body> --}}
-                                    {{-- <x-form.modal-body> --}}
-                                    <x-form.panel>
-                                        <x-form.label name="password" />
-                                        <x-form.input name="password" type="password" />
-                                    </x-form.panel>
-                                    {{-- </x-form.modal-body> --}}
+                                <!-- Modal footer -->
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success " data-bs-dismiss="modal">Add</button>
                                 </div>
-                            </div>
-                            <!-- Modal footer -->
-                            {{-- <div class="modal-footer"> --}}
-                            <button type="submit" class="btn btn-success " data-bs-dismiss="modal">Add</button>
-                            {{-- </div> --}}
-                        </form>
+                            </form>
                     </div>
 
-                    {{-- </x-form.model> --}}
+                    </x-form.model>
                     <button type="button" class="btn btn-outline-success  m-1 mt-3 py-3   uppercase ">
                         <i class="ti ti-edit fs-6 "> Edite</i>
                     </button>

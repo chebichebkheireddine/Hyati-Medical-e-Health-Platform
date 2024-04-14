@@ -27,7 +27,7 @@
                             <span>
                                 <i class="fa-solid fa-user-doctor"></i>
                             </span>
-                            <span class="hide-menu"> Permission & Roles </span>
+                            <span class="hide-menu"> More information </span>
                         </a>
                     </li>
                 @endcan
