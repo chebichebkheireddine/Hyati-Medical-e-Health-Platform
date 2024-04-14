@@ -1,6 +1,7 @@
 @props(['name', 'id'])
-<button type="button" class="btn btn-outline-primary m-1 mt-3 py-3 uppercase" data-bs-toggle="modal"
+<button type="button" class="btn btn-outline-primary btn-md m-1 mt-3 py-3 uppercase" data-bs-toggle="modal"
     data-bs-target="#{{ $id }}">
+
     <i class="ti ti-user fs-6 ">{{ $name }}</i>
 </button>
 <!-- The Modal -->

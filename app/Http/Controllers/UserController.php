@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doctor;
 use App\Models\Specialization;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class UserController extends Controller
 {
@@ -13,6 +14,7 @@ class UserController extends Controller
     {
         return view("admin.index", [
             "specializations" => Specialization::all(),
+            "doctors" => Doctor::all(),
         ]);
     }
 
@@ -30,7 +32,7 @@ class UserController extends Controller
         ]);
         $att['password'] = bcrypt($att['password']);
         Doctor::create($att);
-        return redirect("admin");
+        return redirect(Route('admin.doctor.index'));
     }
     public function make()
     {
@@ -39,6 +41,6 @@ class UserController extends Controller
             'specialization_description' => 'required|string|max:255',
         ]);
         Specialization::create($att);
-        return redirect("/");
+        return redirect(Route('admin.doctor.index'));
     }
 }
