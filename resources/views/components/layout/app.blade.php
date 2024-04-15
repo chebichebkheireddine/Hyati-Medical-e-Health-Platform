@@ -7,6 +7,7 @@
     <title>Hyati medical
     </title>
     <link rel="shortcut icon" type="image/png" href="" />
+    <script src="https://kit.fontawesome.com/3c5df3e96c.js" crossorigin="anonymous"></script>
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/multi-select-tag.css') }}" />

@@ -16,8 +16,8 @@
         <div class="container-fluid">
             @if (Route::currentRouteName() == 'admin.dashboard')
                 <x-.admin.body></x-.admin.body>
-            @elseif (Route::currentRouteName() == 'admin.control')
-                <x-admin.control></x-admin.control>
+            @elseif (Route::currentRouteName() == 'admin.config')
+                <x-admin.config></x-admin.config>
             @elseif (Route::currentRouteName() == 'admin.doctor.index')
                 {{-- You must pass to any parameter to do it with simple --}}
                 <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors">

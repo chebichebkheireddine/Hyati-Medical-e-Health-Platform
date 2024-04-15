@@ -9,25 +9,25 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Home</span>
                 </li>
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.dashboard') }}" aria-expanded="false">
-                        <span>
-                            <i class="ti ti-layout-dashboard"></i>
-                        </span>
-                        <span class="hide-menu">Dashboard</span>
-                    </a>
-                </li>
-                <li class="nav-small-cap">
-                    <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                    <span class="hide-menu">Panel Control</span>
-                </li>
                 @can('create-admin')
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.control') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('admin.dashboard') }}" aria-expanded="false">
+                            <span>
+                                <i class="ti ti-layout-dashboard"></i>
+                            </span>
+                            <span class="hide-menu">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-small-cap">
+                        <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                        <span class="hide-menu">Panel Control</span>
+                    </li>
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('admin.config') }}" aria-expanded="false">
                             <span>
                                 <i class="fa-solid fa-user-doctor"></i>
                             </span>
-                            <span class="hide-menu"> More information </span>
+                            <span class="hide-menu">Configaration</span>
                         </a>
                     </li>
                 @endcan
@@ -37,11 +37,18 @@
                             <span>
                                 <i class="fa-solid fa-user-doctor"></i>
                             </span>
-                            <span class="hide-menu">Doctors Information</span>
+                            <span class="hide-menu">Doctor Panel</span>
                         </a>
                     </li>
                 @endcan
-
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#" aria-expanded="false">
+                        <span>
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </span>
+                        <span class="hide-menu">Medical assistant Panel</span>
+                    </a>
+                </li>
 
         </nav>
         <!-- End Sidebar navigation -->

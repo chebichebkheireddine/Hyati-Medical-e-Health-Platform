@@ -33,7 +33,7 @@ Route::get('/admin', function () {
 // List of user page
 Route::get('/admin/control', function () {
     return view('admin.index');
-})->name('admin.control');
+})->name('admin.config');
 
 
 Route::get("admin/dotor/add", [UserController::class, 'test'])->name('admin.doctor.index');
