@@ -5,7 +5,7 @@ namespace App\View\Components;
 use App\Models\Specialization;
 use Illuminate\View\Component;
 
-class model extends Component
+class DataPass extends Component
 {
     /**
      * Create a new component instance.
@@ -24,6 +24,6 @@ class model extends Component
      */
     public function render()
     {
-        return view('components.form.model');
+        return view('components.admin.doctor.index', ["specializations" => Specialization::all()]);
     }
 }

@@ -31,7 +31,7 @@ Route::get('/admin', function () {
     return view('admin.index');
 })->name('admin.dashboard');
 // List of user page
-Route::get('/admin/control', function () {
+Route::get('/admin/config', function () {
     return view('admin.index');
 })->name('admin.config');
 
@@ -41,7 +41,7 @@ Route::post("admin/dotor/add", [UserController::class, 'add'])->name("admin.doct
 
 
 // This is for spesfication ADD
-Route::Post("/admin/control", [UserController::class, 'make'])->name('admin.specialization.index');
+Route::Post("/admin/config", [UserController::class, 'make'])->name('admin.specialization.index');
 // Route::get('admin/doctor/index', function () {
 //     return view('admin.index', ["test1" => Specialization::all()]);
 // })->name('admin.doctor.index');
