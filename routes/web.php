@@ -36,8 +36,9 @@ Route::get('/admin/config', function () {
 })->name('admin.config');
 
 
-Route::get("admin/dotor/add", [UserController::class, 'test'])->name('admin.doctor.index');
-Route::post("admin/dotor/add", [UserController::class, 'add'])->name("admin.doctor.create");
+Route::get("admin/doctor/add", [UserController::class, 'test'])->name('admin.doctor.index');
+Route::post("admin/doctor/add", [UserController::class, 'add'])->name("admin.doctor.create");
+Route::delete("admin/doctor/delete/{doctor}", [UserController::class, 'deleteDoctor'])->name("admin.doctor.delete");
 
 
 // This is for spesfication ADD

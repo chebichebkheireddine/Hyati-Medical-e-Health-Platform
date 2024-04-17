@@ -61,4 +61,9 @@ class UserController extends Controller
         Specialization::create($att);
         return redirect(Route('admin.doctor.index'));
     }
+    public function deleteDoctor(Doctor $doctor)
+    {
+        $doctor->delete();
+        return redirect(Route('admin.doctor.index'));
+    }
 }

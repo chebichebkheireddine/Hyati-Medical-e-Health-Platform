@@ -129,8 +129,13 @@
 
                             <a href="#"
                                 class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">Edit</a>
-                            <a href="#"
-                                class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">Remove</a>
+                            <form method="post" action="{{ route('admin.doctor.delete', ['doctor' => $doctor->id]) }}">
+                                @csrf
+                                @method('DELETE')
+
+                                <button
+                                    class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">Remove</button>
+                            </form>
                             {{-- doctor add --}}
                             <a href="#" class="rounded  hover:text-sky-400 pl-4">
                             </a>
