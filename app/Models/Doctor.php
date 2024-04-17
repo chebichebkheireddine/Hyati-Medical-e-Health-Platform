@@ -24,6 +24,6 @@ class Doctor extends Authenticatable
     public $timestamps = false;
     public function specialization()
     {
-        $this->belongsToMany(Specialization::class, "doctor_specializations");
+        return $this->belongsToMany(Specialization::class, 'doctor_specializations', 'doctor_id', 'specialization_id');
     }
 }

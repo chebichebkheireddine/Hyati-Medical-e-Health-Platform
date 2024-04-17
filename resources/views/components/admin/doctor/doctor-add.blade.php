@@ -17,6 +17,7 @@
                         @csrf
                         <div class="row">
                             <div class="col-md-6">
+
                                 {{--  --}}
                                 <x-form.modal-body>
                                     <x-form.label name="specialization"></x-form.label>
@@ -89,7 +90,7 @@
                     <th class="p-3 text-gray-800 text-center border border-b">Email</th>
                     <th class="p-3 text-gray-800 text-center border border-b">Phone Number</th>
                     <th class="p-3 text-gray-800 text-center border border-b">Address</th>
-                    <th class="p-3 text-gray-800 text-center border border-b">Status</th>
+                    <th class="p-3 text-gray-800 text-center border border-b">specializations</th>
                     <th class="p-2 text-gray-800 text-center border border-b">Actions</th>
                 </tr>
             </thead>
@@ -118,8 +119,10 @@
                         </td>
                         <td
                             class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-
-                            <span class="rounded bg-green-300 py-1 px-3 text-xs font-bold">Active</span>
+                            @foreach ($doctor->specialization as $spec)
+                                <span
+                                    class="rounded bg-green-300 py-1 px-3 text-xs font-bold">{{ $spec->specialization_name }}</span>
+                            @endforeach
                         </td>
                         <td
                             class="w-full lg:w-auto p-2 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">

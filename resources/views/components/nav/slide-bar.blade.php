@@ -25,8 +25,7 @@
                     <li class="sidebar-item">
                         <a class="sidebar-link" href="{{ route('admin.config') }}" aria-expanded="false">
                             <span>
-                                <i class="fa-solid fa-user-doctor"></i>
-                            </span>
+                                <i class="fa-solid fa-gears"></i> </span>
                             <span class="hide-menu">Configaration</span>
                         </a>
                     </li>
@@ -44,7 +43,7 @@
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="#" aria-expanded="false">
                         <span>
-                            <i class="fa-solid fa-user-doctor"></i>
+                            <i class="fa-solid fa-user-nurse"></i>
                         </span>
                         <span class="hide-menu">Medical assistant Panel</span>
                     </a>

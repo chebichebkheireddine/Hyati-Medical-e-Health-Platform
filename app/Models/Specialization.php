@@ -11,8 +11,11 @@ class Specialization extends Model
     use HasFactory;
     public $timestamps = false;
     protected $table = 'specializations';
-    public function doctor()
+    protected $primaryKey = 'specialization_id';
+
+
+    public function doctors()
     {
-        $this->belongsToMany(Doctor::class, "doctor_specializations");
+        return $this->belongsToMany(Doctor::class, 'doctor_specializations', 'specialization_id', 'doctor_id');
     }
 }
