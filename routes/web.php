@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\sessionController;
+use App\Http\Controllers\SpecializationController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
 use App\Models\Specialization;
@@ -36,10 +37,12 @@ Route::get('/admin/config', function () {
 })->name('admin.config');
 
 
+// TODO: change this to doctor controller
 Route::get("admin/doctor/add", [UserController::class, 'test'])->name('admin.doctor.index');
 Route::post("admin/doctor/add", [UserController::class, 'add'])->name("admin.doctor.create");
 Route::delete("admin/doctor/delete/{doctor}", [UserController::class, 'deleteDoctor'])->name("admin.doctor.delete");
-
+// Route for the Specialization
+Route::delete("admin/specialization/delete/{specialization}", [SpecializationController::class, 'delete'])->name("admin.specialization.delete");
 
 // This is for spesfication ADD
 Route::Post("/admin/config", [UserController::class, 'make'])->name('admin.specialization.index');
