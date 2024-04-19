@@ -11,7 +11,7 @@
                         <x-slot name="button">
                             <i class="fa fa-user">add</i>
                         </x-slot>
-                        <form method="Post" action="{{ route('admin.specialization.index') }}">
+                        <form method="Post" action="{{ route('admin.confg.index') }}">
                             @csrf
                             <div class="modal-body">
                                 <x-form.panel>

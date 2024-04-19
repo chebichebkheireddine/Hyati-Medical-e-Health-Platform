@@ -20,7 +20,7 @@
                                 <x-slot name="button">
                                     <i class="fa fa-star"> specialization</i>
                                 </x-slot>
-                                <form method="Post" action="{{ route('admin.specialization.index') }}">
+                                <form method="Post" action="{{ route('admin.specialization.create') }}">
                                     @csrf
                                     <div class="modal-body">
                                         <x-form.panel>

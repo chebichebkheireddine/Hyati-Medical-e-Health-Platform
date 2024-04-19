@@ -1,7 +1,6 @@
-@props(['name', 'id', 'button'])
+@props(['name', 'id', 'button', 'class' => 'btn btn-outline-primary btn-md m-1  uppercase'])
 {{-- @props(['test']) --}}
-<button type="button" class="btn btn-outline-primary btn-md m-1  uppercase" data-bs-toggle="modal"
-    data-bs-target="#{{ $id }}">
+<button type="button" class="{{ $class }}" data-bs-toggle="modal" data-bs-target="#{{ $id }}">
 
 
     {{ $button ?? '' }}

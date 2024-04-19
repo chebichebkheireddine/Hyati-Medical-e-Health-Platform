@@ -1,8 +1,9 @@
 <?php
 
+use App\Http\Controllers\Doctor\DoctorManageController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\sessionController;
-use App\Http\Controllers\SpecializationController;
+use App\Http\Controllers\Specialization\SpecializationController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
 use App\Models\Specialization;
@@ -37,18 +38,24 @@ Route::get('/admin/config', function () {
 })->name('admin.config');
 
 
-// TODO: change this to doctor controller
-Route::get("admin/doctor/add", [UserController::class, 'test'])->name('admin.doctor.index');
-Route::post("admin/doctor/add", [UserController::class, 'add'])->name("admin.doctor.create");
-Route::delete("admin/doctor/delete/{doctor}", [UserController::class, 'deleteDoctor'])->name("admin.doctor.delete");
-// Route for the Specialization
-Route::delete("admin/specialization/delete/{specialization}", [SpecializationController::class, 'delete'])->name("admin.specialization.delete");
+// Doctor controler
+Route::get("admin/doctor", [DoctorManageController::class, 'index'])
+    ->name('admin.doctor.index');
+Route::post("admin/doctor/add", [DoctorManageController::class, 'create'])
+    ->name("admin.doctor.create");
+Route::delete("admin/doctor/delete/{doctor}", [DoctorManageController::class, 'delete'])
+    ->name("admin.doctor.delete");
+Route::patch("admin/doctor/update/{doctor}", [DoctorManageController::class, 'update'])
+    ->name("admin.doctor.update");
 
-// This is for spesfication ADD
-Route::Post("/admin/config", [UserController::class, 'make'])->name('admin.specialization.index');
-// Route::get('admin/doctor/index', function () {
-//     return view('admin.index', ["test1" => Specialization::all()]);
-// })->name('admin.doctor.index');
+// specialization Doctor
+Route::delete("admin/specialization/add", [SpecializationController::class, 'create'])
+    ->name("admin.specialization.create");
+Route::delete("admin/specialization/delete/{specialization}", [SpecializationController::class, 'delete'])
+    ->name("admin.specialization.delete");
+
+// TODO: change the Conntroller
+Route::Post("/admin/config", [UserController::class, 'create'])->name('admin.config.index');
 
 // Crate  the user
 Route::get("/register/admin", [SessionController::class, 'register'])
@@ -66,3 +73,8 @@ Route::get("/login/admin", [SessionController::class, 'display'])
     ->middleware('guest')->name('admin.login');
 Route::post("/login/admin", [sessionController::class, 'login'])
     ->middleware('guest')->name('admin.login_post');
+
+
+    // Route::get('admin/doctor/index', function () {
+//     return view('admin.index', ["test1" => Specialization::all()]);
+// })->name('admin.doctor.index');
