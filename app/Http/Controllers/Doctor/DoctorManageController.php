@@ -52,8 +52,37 @@ class DoctorManageController extends Controller
         return redirect(Route('admin.doctor.index'));
     }
     //update
-    public function update()
+    public function update(Doctor $doctor)
     {
+        // TODO fix  code updaet
+        $attrbutes = request()->validate([
+            'name' => 'required|string|max:255',
+            // 'specializations' => 'required',
+            'user_name' => 'required|string|max:255',
+            'email' => 'required|email|',
+            'password' => 'required|max:80',
+            'phone_number' => 'required|max:255',
+            'address' => 'required|max:255',
+        ]);
+
+        $attrbutes['password'] = bcrypt($attrbutes['password']);
+
+        $doctor->update($attrbutes);
+        // var_dump($doctor);
+        $specializations = request()->validate([
+            'specializations' => 'required',
+        ]);
+        foreach ($specializations as $specialization_ids) {
+            foreach ($specialization_ids as $specialization_id) {
+                DB::table('doctor_specializations')->update([
+                    'doctor_id' => $doctor->id,
+                    'specialization_id' => intval($specialization_id)
+                ]);
+            }
+        }
+        // Doctor specialization
+        // $doctor->specialization()->attach($spes['specializations']);
+        return redirect(Route('admin.doctor.index'));
     }
     //Delete
     public function delete(Doctor $doctor)

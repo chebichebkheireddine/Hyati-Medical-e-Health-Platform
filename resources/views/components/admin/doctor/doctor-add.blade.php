@@ -126,25 +126,28 @@
                         <td
                             class="w-full lg:w-auto p-2 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 
-                            {{-- TOOD:create lasr --}}
-                            <x-form.model name="add doctor" id="doctidq1"
+                            {{-- TOOD:create Function  --}}
+                            <x-form.model name="Edit Doctor" id="editDoc{{ $doctor->id }}"
                                 class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
 
                                 <x-slot name="button">
                                     Edit
                                 </x-slot>
 
-                                <form method="POST" action="{{ route('admin.doctor.create') }}">
+                                <form method="post"
+                                    action="{{ route('admin.doctor.update', ['doctor' => $doctor->id]) }}">
                                     @csrf
+                                    @method('patch')
                                     <div class="row">
                                         <div class="col-md-6">
-                                            {{--  --}}
+                                            {{--  TODO: change the update laren how to change it --}}
                                             <x-form.modal-body>
                                                 <x-form.label name="specialization"></x-form.label>
-                                                <select name="specializations[]" id="specialization" multiple>
-
+                                                <select name="specializations[]" id="specializationedit" multiple>
                                                     @foreach ($specializations as $sp)
                                                         <option value="{{ $sp->specialization_id }}">
+                                                            {{-- {{ old(value, default) }} --}}
+
                                                             {{ $sp->specialization_name }}</option>
                                                     @endforeach
                                                 </select>
@@ -153,19 +156,19 @@
                                             <x-form.modal-body>
                                                 <x-form.panel>
                                                     <x-form.label name="name" />
-                                                    <x-form.input name="name" />
+                                                    <x-form.input name="name" :value="old('name', $doctor->name)" />
                                                 </x-form.panel>
                                             </x-form.modal-body>
                                             <x-form.modal-body>
                                                 <x-form.panel>
                                                     <x-form.label name="user Name" />
-                                                    <x-form.input name="user_name" />
+                                                    <x-form.input name="user_name" :value="old('user_name', $doctor->user_name)" />
                                                 </x-form.panel>
                                             </x-form.modal-body>
                                             <x-form.modal-body>
                                                 <x-form.panel>
                                                     <x-form.label name="email" />
-                                                    <x-form.input name="email" type="email" />
+                                                    <x-form.input name="email" type="email" :value="old('email', $doctor->email)" />
                                                 </x-form.panel>
                                             </x-form.modal-body>
 
@@ -174,19 +177,19 @@
                                             <x-form.modal-body>
                                                 <x-form.panel>
                                                     <x-form.label name="Phon Number" />
-                                                    <x-form.input name="phone_number" />
+                                                    <x-form.input name="phone_number" :value="old('phone_number', $doctor->phone_number)" />
                                                 </x-form.panel>
                                             </x-form.modal-body>
                                             <x-form.modal-body>
                                                 <x-form.panel>
                                                     <x-form.label name="address" />
-                                                    <x-form.input name="address" />
+                                                    <x-form.input name="address" :value="old('address', $doctor->address)" />
                                                 </x-form.panel>
                                             </x-form.modal-body>
                                             <x-form.modal-body>
                                                 <x-form.panel>
                                                     <x-form.label name="password" />
-                                                    <x-form.input name="password" type="password" />
+                                                    <x-form.input name="password" type="password" :value="old('password', $doctor->password)" />
                                                 </x-form.panel>
                                             </x-form.modal-body>
                                         </div>
@@ -194,7 +197,7 @@
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-success "
-                                            data-bs-dismiss="modal">Add</button>
+                                            data-bs-dismiss="modal">Edite</button>
                                     </div>
                                 </form>
 
@@ -219,49 +222,14 @@
 
                                 <form method="POST" action="{{ route('admin.doctor.create') }}">
                                     @csrf
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="name" />
-                                                    <x-form.input name="name" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="user Name" />
-                                                    <x-form.input name="user_name" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="email" />
-                                                    <x-form.input name="email" type="email" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
 
-                                        </div>
-                                        <div class="col-md-6">
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="Phon Number" />
-                                                    <x-form.input name="phone_number" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="address" />
-                                                    <x-form.input name="address" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="password" />
-                                                    <x-form.input name="password" type="password" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                        </div>
-                                    </div>
+                                    <x-form.modal-body>
+                                        <x-form.panel>
+                                            <x-form.label name="name" />
+                                            <x-form.input name="name" />
+                                        </x-form.panel>
+                                    </x-form.modal-body>
+
                                     <!-- Modal footer -->
                                     <div class="modal-footer">
                                         <button type="submit" class="btn btn-success "

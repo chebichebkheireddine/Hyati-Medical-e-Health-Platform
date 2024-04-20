@@ -31,6 +31,7 @@
     <script src="{{ asset('/assets/js/multi-select-tag.js') }}"></script>
     <script>
         new MultiSelectTag('specialization')
+        new MultiSelectTag('specializationedit')
     </script>
 </body>
 
