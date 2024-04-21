@@ -31,7 +31,12 @@
     <script src="{{ asset('/assets/js/multi-select-tag.js') }}"></script>
     <script>
         new MultiSelectTag('specialization')
-        new MultiSelectTag('specializationedit')
+        // new MultiSelectTag("specializationedit")
+    </script>
+    <script>
+        @foreach ($tag as $item)
+            new MultiSelectTag('specializationedit{{ $item->id }}')
+        @endforeach
     </script>
 </body>
 

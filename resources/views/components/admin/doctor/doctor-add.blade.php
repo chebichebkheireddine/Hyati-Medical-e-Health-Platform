@@ -115,6 +115,7 @@
                             class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 
                             {{ $doctor->address }}
+
                         </td>
                         <td
                             class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
@@ -142,8 +143,10 @@
                                         <div class="col-md-6">
                                             {{--  TODO: change the update laren how to change it --}}
                                             <x-form.modal-body>
+                                                <script></script>
                                                 <x-form.label name="specialization"></x-form.label>
-                                                <select name="specializations[]" id="specializationedit" multiple>
+                                                <select name="specializations[]"
+                                                    id="specializationedit{{ $doctor->id }}" multiple>
                                                     @foreach ($specializations as $sp)
                                                         <option value="{{ $sp->specialization_id }}">
                                                             {{-- {{ old(value, default) }} --}}
@@ -151,6 +154,7 @@
                                                             {{ $sp->specialization_name }}</option>
                                                     @endforeach
                                                 </select>
+
                                             </x-form.modal-body>
                                             {{-- {{--  --}}
                                             <x-form.modal-body>

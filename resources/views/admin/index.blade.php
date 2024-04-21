@@ -1,4 +1,4 @@
-<x-layout.app>
+<x-layout.app :tag="$doctors">
     <x-nav.slide-bar>
 
     </x-nav.slide-bar>
@@ -18,11 +18,11 @@
                 <x-.admin.body></x-.admin.body>
             @elseif (Route::currentRouteName() == 'admin.config')
                 <x-admin.config></x-admipn.config>
-            @elseif (Route::currentRouteName() == 'admin.doctor.index')
-                {{-- You must pass to any parameter to do it with simple --}}
-                <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors">
+                @elseif (Route::currentRouteName() == 'admin.doctor.index')
+                    {{-- You must pass to any parameter to do it with simple --}}
+                    <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors">
 
-                </x-admin.doctor.index>
+                    </x-admin.doctor.index>
             @endif
         </div>
     </div>
