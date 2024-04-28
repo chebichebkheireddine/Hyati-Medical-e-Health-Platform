@@ -30,7 +30,7 @@ Route::get(
 //  gropu of the admin
 
 Route::get('/admin', function () {
-    return view('admin.index');
+    return view('admin.index', ["tag" => Doctor::all()]);
 })->name('admin.dashboard');
 // List of user page
 Route::get('/admin/config', function () {

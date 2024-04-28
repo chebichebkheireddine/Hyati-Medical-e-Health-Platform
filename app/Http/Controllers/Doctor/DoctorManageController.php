@@ -17,6 +17,7 @@ class DoctorManageController extends Controller
         return view("admin.index", [
             "specializations" => Specialization::all(),
             "doctors" => Doctor::all(),
+            "tag" => Doctor::all(),
         ]);
     }
     //create doctor with Speciazation

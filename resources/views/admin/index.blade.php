@@ -1,4 +1,5 @@
-<x-layout.app :tag="$doctors">
+{{-- @props(['tag_item', 'attributes']) --}}
+<x-layout.app>
     <x-nav.slide-bar>
 
     </x-nav.slide-bar>
@@ -26,5 +27,11 @@
             @endif
         </div>
     </div>
+    <x-slot name="tag_item">
+
+        @foreach ($tag as $item)
+            new MultiSelectTag('specializationedit{{ $item->id }}')
+        @endforeach
+    </x-slot>
 
 </x-layout.app>

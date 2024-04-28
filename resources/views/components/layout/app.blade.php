@@ -1,3 +1,5 @@
+@props(['tagitem'])
+
 <!doctype html>
 <html lang="en">
 
@@ -34,9 +36,7 @@
         // new MultiSelectTag("specializationedit")
     </script>
     <script>
-        @foreach ($tag as $item)
-            new MultiSelectTag('specializationedit{{ $item->id }}')
-        @endforeach
+        {{ $tagitem ?? ' ' }}
     </script>
 </body>
 
