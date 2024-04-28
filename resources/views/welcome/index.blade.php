@@ -28,16 +28,30 @@
                                             class="bg-blue-300 rounded-full  " alt=""width="100px">
                                         <a href="{{ route('admin.login') }}"
                                             class="text-blue-400 text-lg-center font-semibold text-3xl">
-                                            Maneger
+                                            Manager
                                         </a>
                                     </div>
                                     <div class="col-4  d-flex flex-column align-items-center justify-content-center ">
                                         <img src="./assets/images/icon/pharmacien.png" class="bg-blue-300 rounded-full "
                                             alt=""width="100">
                                         <a class="text-blue-400 text-lg-center font-semibold text-3xl">
-                                            Pharmasict
+                                            Pharmacist
                                         </a>
 
+                                    </div>
+                                    <div class="col-4  d-flex flex-column align-items-center justify-content-center ">
+                                        <img src="./assets/images/icon/pharmacien.png" class="bg-blue-300 rounded-full "
+                                            alt=""width="100">
+                                        <a class="text-blue-400 text-lg-center font-semibold text-3xl">
+                                            Nurse
+                                        </a>
+                                    </div>
+                                    <div class="col-4  d-flex flex-column align-items-center justify-content-center ">
+                                        <img src="./assets/images/icon/pharmacien.png" class="bg-blue-300 rounded-full "
+                                            alt=""width="100">
+                                        <a class="text-blue-400 text-lg-center font-semibold text-3xl">
+                                            Paramedical
+                                        </a>
                                     </div>
                                 </div>
                             </div>

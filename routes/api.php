@@ -21,6 +21,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+
 Route::get('/wilayas', [WilayaController::class, 'index']);
 Route::post('/wilayas', [WilayaController::class, 'store']);
 Route::get('/wilayas/{id}', [WilayaController::class, "show"]);
