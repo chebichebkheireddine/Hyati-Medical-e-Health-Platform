@@ -15,14 +15,18 @@ class WilayaController extends Controller
     }
     public function store(Request $request)
     {
-        $wilaya = new Wilaya();
-        $wilaya->id = $request->id;
-        $wilaya->code = $request->code;
-        $wilaya->name = $request->name;
-        $wilaya->arabic_name = $request->ar_name;
-        $wilaya->longitude = $request->longitude;
-        $wilaya->latitude = $request->latitude;
-        $wilaya->save();
-        return response()->json($wilaya);
+        $locationsData = $request->all();
+
+        foreach ($locationsData as $locationData) {
+            $wilaya = new Wilaya();
+            $wilaya->code = $locationData['code'];
+            $wilaya->name = $locationData['name'];
+            $wilaya->arabic_name = $locationData['ar_name'];
+            $wilaya->longitude = $locationData['longitude'];
+            $wilaya->latitude = $locationData['latitude'];
+            $wilaya->save();
+        }
+
+        return response()->json('Wilayas created successfully', 201);
     }
 }
