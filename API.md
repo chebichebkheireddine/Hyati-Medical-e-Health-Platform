@@ -12,11 +12,9 @@ This endpoint is used for Store Wilaya
 
 -   Method: POST
 -   URL: `/api/login`
--
 -   Body:
-    This json acsept Array or singl
     ```json
-    { "email": "kheireddine.chebicheb@univ-tiaret.dz", "password": 1234567890 }
+    { "email": "donJwo@example.com", "password": 1234567890 }
     ```
 
 ### Response
@@ -27,16 +25,18 @@ This endpoint is used for Store Wilaya
     ```json
     {
         "status": "success",
-        "token": "5|WLmC0FqpjWRWWCLy63MBsnqQziThOwsQMEezoIG2",
+        "token": "2|lLj1bExlwAhnzbRITP9rPO8Kmzbm1UwxYki5Ngia",
         "message": "Login successful",
         "patient": {
-            "id": 1,
-            "names": "JenniferAnderson",
-            "birthDate": "2024-04-11",
-            "phone": "224.770.0050",
-            "email": "kheireddine.chebicheb@univ-tiaret.dz",
+            "id": 7,
+            "firstName": "Enid",
+            "lastName": "Ziemann",
+            "birthDate": "1983-05-22",
+            "gender": "F",
+            "phone": "602-423-8937",
+            "email": "ankunding.leslie@example.com",
             "Address": {
-                "address": "54717 Homenick Land\nEast Leonor, MD 77713",
+                "address": "1230 Sigrid Row\nLake Marleetown, ND 61613",
                 "wilaya": {
                     "name": "Adrar",
                     "arabic_name": "أدرار"
