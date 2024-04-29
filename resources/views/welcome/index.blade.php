@@ -7,51 +7,63 @@
                     <div class="card mb-0 ">
                         <div class="card-body ">
                             {{-- add Logo from the navbar --}}
-                            <div class="d-flex align-items-center justify-content-between  flex-col ">
+                            <div class="d-flex align-items-center justify-content-between  flex-row ">
                                 <x-svg.logo class="w-full"></x-svg.logo>
 
-                            </div>
-                            <div class="container">
-                                <div class="row  ">
-                                    <div class="col-4 d-flex flex-column align-items-center justify-content-center ">
 
-                                        <img src="./assets/images/icon/docteur.png" class="bg-blue-300 rounded-full "
-                                            alt="" width="100">
-                                        <a href="{{ route('doctor.login') }}"
-                                            class="text-blue-400 text-center font-semibold text-3xl">
-                                            Doctor
-                                        </a>
+                                <div class="d-flex align-items-center justify-content-center flex-col ">
+                                    <h1 class="text-center text-4xl font-semibold text-blue-400">Welcome to the
+                                        HealthCare</h1>
+                                    <p class="text-center text-lg text-blue-400">Please select your role to login</p>
 
-                                    </div>
-                                    <div class="col-4 d-flex flex-column align-items-center justify-content-center  ">
-                                        <img src="./assets/images/icon/management.png"
-                                            class="bg-blue-300 rounded-full  " alt=""width="100px">
-                                        <a href="{{ route('admin.login') }}"
-                                            class="text-blue-400 text-lg-center font-semibold text-3xl">
-                                            Manager
-                                        </a>
-                                    </div>
-                                    <div class="col-4  d-flex flex-column align-items-center justify-content-center ">
-                                        <img src="./assets/images/icon/pharmacien.png" class="bg-blue-300 rounded-full "
-                                            alt=""width="100">
-                                        <a class="text-blue-400 text-lg-center font-semibold text-3xl">
-                                            Pharmacist
-                                        </a>
+                                    <div class="container">
+                                        <div class="row  ">
+                                            <div
+                                                class="col-4 d-flex flex-column align-items-center justify-content-center py-11">
 
-                                    </div>
-                                    <div class="col-4  d-flex flex-column align-items-center justify-content-center ">
-                                        <img src="./assets/images/icon/pharmacien.png" class="bg-blue-300 rounded-full "
-                                            alt=""width="100">
-                                        <a class="text-blue-400 text-lg-center font-semibold text-3xl">
-                                            Nurse
-                                        </a>
-                                    </div>
-                                    <div class="col-4  d-flex flex-column align-items-center justify-content-center ">
-                                        <img src="./assets/images/icon/pharmacien.png" class="bg-blue-300 rounded-full "
-                                            alt=""width="100">
-                                        <a class="text-blue-400 text-lg-center font-semibold text-3xl">
-                                            Paramedical
-                                        </a>
+                                                <img src="./assets/images/icon/docteur.png"
+                                                    class="bg-blue-300 rounded-full " alt="" width="100">
+                                                <a href="{{ route('doctor.login') }}"
+                                                    class="text-blue-400 text-center font-semibold text-3xl">
+                                                    Doctor
+                                                </a>
+
+                                            </div>
+                                            <div
+                                                class="col-4 d-flex flex-column align-items-center justify-content-center  py-11">
+                                                <img src="./assets/images/icon/management.png"
+                                                    class="bg-blue-300 rounded-full  " alt=""width="100px">
+                                                <a href="{{ route('admin.login') }}"
+                                                    class="text-blue-400 text-lg-center font-semibold text-3xl">
+                                                    Manager
+                                                </a>
+                                            </div>
+                                            <div
+                                                class="col-4  d-flex flex-column align-items-center justify-content-center py-11">
+                                                <img src="./assets/images/icon/pharmacien.png"
+                                                    class="bg-blue-300 rounded-full " alt=""width="100">
+                                                <a class="text-blue-400 text-lg-center font-semibold text-3xl">
+                                                    Pharmacist
+                                                </a>
+
+                                            </div>
+                                            <div
+                                                class="col-4  d-flex flex-column align-items-center justify-content-center  py-11">
+                                                <img src="./assets/images/icon/pharmacien.png"
+                                                    class="bg-blue-300 rounded-full " alt=""width="100">
+                                                <a class="text-blue-400 text-lg-center font-semibold text-3xl">
+                                                    Nurse
+                                                </a>
+                                            </div>
+                                            <div
+                                                class="col-4  d-flex flex-column align-items-center justify-content-center py-11">
+                                                <img src="./assets/images/icon/pharmacien.png"
+                                                    class="bg-blue-300 rounded-full " alt=""width="100">
+                                                <a class="text-blue-400 text-lg-center font-semibold text-3xl">
+                                                    Paramedical
+                                                </a>
+                                            </div>
+                                        </div>
                                     </div>
                                 </div>
                             </div>

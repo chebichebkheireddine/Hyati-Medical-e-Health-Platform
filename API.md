@@ -27,31 +27,24 @@ This endpoint is used for Store Wilaya
     ```json
     {
         "status": "success",
-        "token": "22|UPZILdDs5r69Nz9vKM9ZhiHAwHt7GIksuLNK5ubN",
+        "token": "5|WLmC0FqpjWRWWCLy63MBsnqQziThOwsQMEezoIG2",
         "message": "Login successful",
         "patient": {
             "id": 1,
-            "firstname": "Jeffery",
-            "lastname": "Kshlerin",
-            "phone": "(479) 298-6327",
-            "address": "7825 Kitty Corners\nLake Cathrine, DE 69821-3449",
+            "names": "JenniferAnderson",
+            "birthDate": "2024-04-11",
+            "phone": "224.770.0050",
             "email": "kheireddine.chebicheb@univ-tiaret.dz",
-            "wilaya": {
-                "id": 1,
-                "code": "1",
-                "name": "Adrar",
-                "arabic_name": "أدرار",
-                "longitude": "27.976616",
-                "latitude": "-0.203960"
-            },
-            "commune": {
-                "id": 64,
-                "name": "Laghouat",
-                "arabic_name": "الأغواط",
-                "post_code": "03001",
-                "wilaya_id": 3,
-                "longitude": "33.793952",
-                "latitude": "2.836850"
+            "Address": {
+                "address": "54717 Homenick Land\nEast Leonor, MD 77713",
+                "wilaya": {
+                    "name": "Adrar",
+                    "arabic_name": "أدرار"
+                },
+                "commune": {
+                    "name": "Charouine",
+                    "arabic_name": "شروين"
+                }
             }
         }
     }

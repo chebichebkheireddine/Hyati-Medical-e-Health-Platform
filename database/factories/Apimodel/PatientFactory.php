@@ -17,11 +17,12 @@ class PatientFactory extends Factory
     {
         return [
             //
-            "firstname" => $this->faker->firstName(),
-            "lastname" => $this->faker->lastName(),
+            "names" => $this->faker->firstName() . $this->faker->lastName(),
             "email" => "kheireddine.chebicheb@univ-tiaret.dz",
             "password" => Hash::make('1234567890'),
+            "gender" => $this->faker->randomElement(['M', 'F']),
             "phone" => $this->faker->phoneNumber(),
+            "birthDate" => $this->faker->date('Y_m_d'),
             "address" => $this->faker->address(),
             "id_commune" => $this->faker->numberBetween(1, 48),
             "id_wilaya" => $this->faker->numberBetween(1, 48),
