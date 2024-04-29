@@ -22,14 +22,15 @@ class Patientcontroller extends Controller
         if (!$user || !Hash::check($request->password, $user->password)) {
         }
         $token = $user->createToken(request("email"))->plainTextToken;
-
+        // query builder to attempt id wilaya and id commune
         $wilaya = Wilaya::find($user->id_wilaya);
         $commune = Commune::where('wilaya_id', $user->id_commune)->first();
+        // end
         return response()->json([
+            'status' => 'success',
             'token' => $token,
-
+            'message' => 'Login successful',
             'patient' => array_merge($user->only(['id', 'firstname', 'lastname', 'phone', 'address', 'email']), ['wilaya' => $wilaya, 'commune' => $commune]),
-
         ]);
     }
 }

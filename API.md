@@ -26,7 +26,9 @@ This endpoint is used for Store Wilaya
 
     ```json
     {
-        "token": "21|lSI0Dd5v3fKVdVkx8qQWs2HUQq71QPE0cVPkjfWc",
+        "status": "success",
+        "token": "22|UPZILdDs5r69Nz9vKM9ZhiHAwHt7GIksuLNK5ubN",
+        "message": "Login successful",
         "patient": {
             "id": 1,
             "firstname": "Jeffery",
