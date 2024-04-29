@@ -18,7 +18,7 @@ class CreatePatientsTable extends Migration
             $table->string('firstname');
             $table->string('lastname');
             $table->string('email');
-            $table->string('passsword');
+            $table->string('password');
             $table->string('phone');
             $table->string('address');
             $table->foreignId('id_commune');

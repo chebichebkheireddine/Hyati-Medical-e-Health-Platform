@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\Patientcontroller;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\WilayaController;
 use App\Models\Role;
@@ -31,3 +32,7 @@ Route::put('/wilayas/{id}', [WilayaController::class, 'edit']);
 // This route API for communes in algeria
 Route::get('/communes', [CommuneController::class, 'index']);
 Route::post('/communes', [CommuneController::class, 'store']);
+Route::group(['middleware' => ['auth:sanctum']], function () {
+    Route::get('/test/{id}', [WilayaController::class, "show"]);
+});
+Route::post('/login', [Patientcontroller::class, 'login']);

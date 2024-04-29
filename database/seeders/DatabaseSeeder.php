@@ -2,6 +2,7 @@
 
 namespace Database\Seeders;
 
+use App\Models\Apimodel\Patient;
 use App\Models\Specialization;
 use App\Models\User;
 use Illuminate\Database\Seeder;
@@ -70,6 +71,6 @@ class DatabaseSeeder extends Seeder
             "specialization_description" => "Bone Specialist"
         ]);
 
-        // \App\Models\User::factory(10)->create();
+        Patient::factory(1)->create();
     }
 }
