@@ -24,14 +24,14 @@ class Patientcontroller extends Controller
         $token = $user->createToken(request("email"))->plainTextToken;
         // query builder to attempt id wilaya and id commune
         $wilaya = Wilaya::find($user->id_wilaya);
-        $commune = Commune::where('wilaya_id', $user->id_wilaya,)->where('id', $user->id_commune)->first();
+        $commune = Commune::where('wilaya_id', $user->id_wilaya)->where('id', $user->id_commune)->first();
         // end
         return response()->json([
             'status' => 'success',
             'token' => $token,
             'message' => 'Login successful',
             'patient' => array_merge(
-                $user->only(['id', 'names', 'birthDate', 'phone', 'email']),
+                $user->only(['id', 'firstName', 'lastName', 'birthDate', 'gender', 'phone', 'email']),
                 [
                     "Address" => [
                         'address' => $user->address,

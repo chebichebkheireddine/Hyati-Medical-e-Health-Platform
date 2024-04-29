@@ -71,6 +71,6 @@ class DatabaseSeeder extends Seeder
             "specialization_description" => "Bone Specialist"
         ]);
 
-        Patient::factory(1)->create();
+        Patient::factory(10)->create();
     }
 }
