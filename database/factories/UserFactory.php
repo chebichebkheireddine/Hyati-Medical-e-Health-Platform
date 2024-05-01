@@ -15,9 +15,17 @@ class UserFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $this->faker->name(),
+            // 'sysId' => $this->faker->unique()->numberBetween(1000000000, 9999999999),
+            'orgID' => 0,
+            'nationalID' => $this->faker->numberBetween(1000000000, 9999999999),
+            'firstName' => $this->faker->firstName(),
+            'lastname' => $this->faker->lastName(),
             'username' => $this->faker->userName(),
             'email' => $this->faker->unique()->safeEmail(),
+            'phone' => $this->faker->phoneNumber(),
+            'address' => $this->faker->address(),
+            'id_commune' => 1,
+            'id_wilaya' => 1,
             // 'role_id' => $this->faker->numberBetween(0, 2),
             'email_verified_at' => now(),
             'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password

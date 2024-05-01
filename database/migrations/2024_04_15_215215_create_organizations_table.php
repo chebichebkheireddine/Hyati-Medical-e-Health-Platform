@@ -19,10 +19,11 @@ class CreateOrganizationsTable extends Migration
             $table->string("org_email");
             $table->string("org_phone");
             $table->string("org_address");
-            $table->string("org_city");
+            $table->string("org_wilaya");
+            $table->string("org_baldya");
             $table->string("org_type");
         });
-        Schema::create('types', function (Blueprint $table) {
+        Schema::create('organization_types', function (Blueprint $table) {
             $table->id("type_id");
             $table->string("type_name");
             $table->string("type_des");
@@ -37,6 +38,6 @@ class CreateOrganizationsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('organizations');
-        Schema::dropIfExists('types');
+        Schema::dropIfExists('organization_types');
     }
 }

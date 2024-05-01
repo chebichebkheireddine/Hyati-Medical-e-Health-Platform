@@ -3,8 +3,12 @@
 namespace Database\Seeders;
 
 use App\Models\Apimodel\Patient;
+use App\Models\information\organisationtype;
+use App\Models\information\organization;
+use App\Models\information\organizationType;
 use App\Models\Specialization;
 use App\Models\User;
+use Database\Factories\OrganizationTypeFactory;
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -52,8 +56,19 @@ class DatabaseSeeder extends Seeder
 
         $password = bcrypt('1234567890');
         User::factory()->create([
-            "name" => "chebicheb", "username" => "khiro",
-            "email" => "test@gmail.com", "password" => $password
+            "orgID" => 0,
+            "name"=>"chebiceh",
+            "firstName" => "chebicheb",
+            "lastname" => "khiro",
+            "username" => "khiro",
+            "nationalID" => "1234567890",
+            "email" => "test@gmail.com",
+            "phone" => "0555555555",
+            "address" => "test address",
+            // "email_verified_at" => now(),
+            "id_commune" => 1,
+            "id_wilaya" => 1,
+            "password" => $password
         ])->assignRole('super-admin');
 
         Specialization::factory()->create([
@@ -71,6 +86,10 @@ class DatabaseSeeder extends Seeder
             "specialization_description" => "Bone Specialist"
         ]);
 
+
         Patient::factory(10)->create();
+        // Orge
+        organization::factory()->create();
+        organizationType::factory()->create();
     }
 }

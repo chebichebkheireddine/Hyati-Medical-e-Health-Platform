@@ -20,15 +20,16 @@ use Illuminate\Support\Facades\Route;
 |
 */
 // This is main page
-Route::get("/", [SessionController::class, 'index'])->middleware('guest')->name('welcome.index');
+Route::get("/", [SessionController::class, 'index'])
+    ->middleware('guest')->name('welcome.index');
 
 // // this route for add user
 Route::get(
     '/admin/create',
     [UserController::class, 'create']
 )->middleware('can:create-users');
-//  gropu of the admin
 
+//  gropu of the admin
 Route::get('/admin', function () {
     return view('admin.index', ["tag" => Doctor::all()]);
 })->name('admin.dashboard');
@@ -71,10 +72,5 @@ Route::get("/logout", [SessionController::class, 'destroy'])
 // login page
 Route::get("/login/admin", [SessionController::class, 'display'])
     ->middleware('guest')->name('admin.login');
-Route::post("/login/admin", [sessionController::class, 'login'])
-    ->middleware('guest')->name('admin.login_post');
-
-
-    // Route::get('admin/doctor/index', function () {
-//     return view('admin.index', ["test1" => Specialization::all()]);
-// })->name('admin.doctor.index');
+Route::post("/login/admin", [sessionController::class, 'login'])->middleware('guest')
+    ->name('admin.login_post');

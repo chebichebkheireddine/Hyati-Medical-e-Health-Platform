@@ -6,11 +6,15 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    {{-- @vite('resources/css/app.css') --}}
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <title>Hyati medical
     </title>
+
     <link rel="shortcut icon" type="image/png" href="" />
     <script src="https://kit.fontawesome.com/3c5df3e96c.js" crossorigin="anonymous"></script>
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    {{-- <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet"> --}}
+    <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/multi-select-tag.css') }}" />
 
