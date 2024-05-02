@@ -1,4 +1,4 @@
-@props(['tagitem'])
+@props(['tag'])
 
 <!doctype html>
 <html lang="en">
@@ -17,6 +17,7 @@
     <link href="{{ asset('resources/css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('/assets/css/styles.min.css') }}" />
     <link rel="stylesheet" href="{{ asset('/assets/css/multi-select-tag.css') }}" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 
     {{-- <link rel="stylesheet" href="path/to/font-awesome/css/font-awesome.min.css"> --}}
 </head>
@@ -36,9 +37,9 @@
     <script src="{{ asset('/assets/js/dashboard.js') }}"></script>
     <script src="{{ asset('/assets/js/multi-select-tag.js') }}"></script>
     <script>
-        new MultiSelectTag('specialization')
-        // new MultiSelectTag("specializationedit")
+        new MultiSelectTag('specialization');
     </script>
+
     <script>
         {{ $tagitem ?? ' ' }}
     </script>

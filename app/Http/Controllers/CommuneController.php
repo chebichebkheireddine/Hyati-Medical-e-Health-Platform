@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Commune;
+use App\Models\Wilaya;
 use Illuminate\Http\Request;
 
 class CommuneController extends Controller
@@ -45,5 +46,15 @@ class CommuneController extends Controller
             $commune->save();
         }
         return response()->json('Communes created successfully', 201);
+    }
+    public function show($id)
+    {
+        $commune = Commune::find($id);
+        return response()->json($commune);
+    }
+    public function showcommun($id)
+    {
+        $commune = Wilaya::find($id);
+        return response()->json($commune->communes);
     }
 }

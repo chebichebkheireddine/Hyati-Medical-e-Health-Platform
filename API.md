@@ -1,12 +1,12 @@
 # API Endpoints
 
-This API for Communes and wilaya in Algeria
+This API for Hayati Medical Integration System
 
 ## Endpoint 1
 
 ### Description
 
-This endpoint is used for Store Wilaya
+This endpoint is used for Acsses Patient to The system
 
 ### Request
 
@@ -49,3 +49,45 @@ This endpoint is used for Store Wilaya
         }
     }
     ```
+
+## Endpoint 2
+
+### Description
+
+This endpoint isfor select Baldya based on Wilay
+
+### Request
+
+-   Method:GET
+-   URL: `/api/wilayas/baldya/{id}`
+
+### Response
+
+-   Status Code: 200 (OK)
+-   Body:
+
+    ````json
+
+        ```
+        [
+    {
+        "id": 487,
+        "name": "Tizi Ouzou",
+        "arabic_name": "تيزي وزو",
+        "post_code": "15001",
+        "wilaya_id": 15,
+        "longitude": "36.700186",
+        "latitude": "4.005917"
+    },
+    {
+        "id": 488,
+        "name": "Ain El Hammam",
+        "arabic_name": "عين الحمام",
+        "post_code": "15002",
+        "wilaya_id": 15,
+        "longitude": "36.572550",
+        "latitude": "4.246757"
+    },
+    ....]
+
+    ````

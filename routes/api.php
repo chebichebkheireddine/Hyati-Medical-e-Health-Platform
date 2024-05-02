@@ -3,6 +3,7 @@
 use App\Http\Controllers\API\Patientcontroller;
 use App\Http\Controllers\CommuneController;
 use App\Http\Controllers\WilayaController;
+use App\Models\Commune;
 use App\Models\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -24,6 +25,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 
 Route::get('/wilayas', [WilayaController::class, 'index']);
+Route::get('/wilayas/baldya/{id}', [WilayaController::class, 'showbaldya']);
 Route::post('/wilayas', [WilayaController::class, 'store']);
 Route::get('/wilayas/{id}', [WilayaController::class, "show"]);
 Route::put('/wilayas/{id}', [WilayaController::class, 'update']);
@@ -32,6 +34,7 @@ Route::put('/wilayas/{id}', [WilayaController::class, 'edit']);
 // This route API for communes in algeria
 Route::get('/communes', [CommuneController::class, 'index']);
 Route::post('/communes', [CommuneController::class, 'store']);
+Route::post('/communesW/{id}', [CommuneController::class, 'showcommun']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/test/{id}', [WilayaController::class, "show"]);
 });

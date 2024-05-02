@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commune;
 use App\Models\Wilaya;
 use Illuminate\Http\Request;
 
@@ -61,6 +62,11 @@ class WilayaController extends Controller
     public function show($id)
     {
         $wilaya = Wilaya::find($id);
+        return response()->json($wilaya);
+    }
+    public function showbaldya($id)
+    {
+        $wilaya = Commune::where('wilaya_id', $id)->get();
         return response()->json($wilaya);
     }
     public function update(Request $request, $id)

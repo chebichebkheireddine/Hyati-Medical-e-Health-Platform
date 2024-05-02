@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
     {
 
         // Create Permissions
+        // Permission::create(['name' => 'create-admin']);
         Permission::create(['name' => 'create-admin']);
         Permission::create(['name' => 'edit-admin']);
         Permission::create(['name' => 'delete-admin']);
@@ -31,9 +32,13 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'create-doctor']);
         Permission::create(['name' => 'edit-doctor']);
         Permission::create(['name' => 'delete-doctor']);
+        // Users
+        Permission::create(['name' => 'create-users']);
+        Permission::create(['name' => 'edit-users']);
+        Permission::create(['name' => 'delete-users']);
 
         // Create Roles
-        $superadminRole = Role::create(['name' => 'super-admin']);
+        $superadminRole = Role::create(['name' => 'super admin']);
         $adminRole = Role::create(['name' => 'admin']);
         // Assign Permissions to Roles
         $superadminRole->givePermissionTo([
@@ -43,11 +48,18 @@ class DatabaseSeeder extends Seeder
             'create-doctor',
             'edit-doctor',
             'delete-doctor',
+            'create-users',
+            'edit-users',
+            'delete-users',
         ]);
+
 
         $adminRole->givePermissionTo([
             'edit-doctor',
             'delete-doctor',
+            'create-users',
+            'edit-users',
+            'delete-users',
         ]);
         // Create a Role for user
 
@@ -57,7 +69,6 @@ class DatabaseSeeder extends Seeder
         $password = bcrypt('1234567890');
         User::factory()->create([
             "orgID" => 0,
-            "name"=>"chebiceh",
             "firstName" => "chebicheb",
             "lastname" => "khiro",
             "username" => "khiro",
@@ -69,7 +80,7 @@ class DatabaseSeeder extends Seeder
             "id_commune" => 1,
             "id_wilaya" => 1,
             "password" => $password
-        ])->assignRole('super-admin');
+        ])->assignRole('super admin');
 
         Specialization::factory()->create([
             "specialization_name" => "Cardiology",

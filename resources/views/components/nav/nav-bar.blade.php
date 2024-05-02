@@ -22,7 +22,7 @@
     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
             <li class="nav-item">
-                <span class="nav-link nav-icon-hover">Welcome,{{ auth()->user()->name }}</span>
+                <span class="nav-link nav-icon-hover">Welcome,{{ auth()->user()->firstName }}</span>
             </li>
 
             <li class="nav-item  dropdown ">

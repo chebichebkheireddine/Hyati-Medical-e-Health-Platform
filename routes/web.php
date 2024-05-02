@@ -7,6 +7,7 @@ use App\Http\Controllers\Specialization\SpecializationController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
 use App\Models\Specialization;
+use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -42,12 +43,22 @@ Route::get('/admin/config', function () {
 // Doctor controler
 Route::get("admin/doctor", [DoctorManageController::class, 'index'])
     ->name('admin.doctor.index');
+
 Route::post("admin/doctor/add", [DoctorManageController::class, 'create'])
     ->name("admin.doctor.create");
+
 Route::delete("admin/doctor/delete/{doctor}", [DoctorManageController::class, 'delete'])
     ->name("admin.doctor.delete");
 Route::patch("admin/doctor/update/{doctor}", [DoctorManageController::class, 'update'])
     ->name("admin.doctor.update");
+
+//Users controller
+Route::get("admin/users", [UserController::class, 'index'])
+
+    ->name('admin.users.index');
+Route::post("admin/users/add", [UserController::class, 'create'])
+    ->name('admin.users.create');
+
 
 // specialization Doctor
 Route::delete("admin/specialization/add", [SpecializationController::class, 'create'])

@@ -40,14 +40,16 @@
                         </a>
                     </li>
                 @endcan
-                <li class="sidebar-item">
-                    <a class="sidebar-link" href="#" aria-expanded="false">
-                        <span>
-                            <i class="fa-solid fa-user-nurse"></i>
-                        </span>
-                        <span class="hide-menu">Medical assistant Panel</span>
-                    </a>
-                </li>
+                @can('create-users')
+                    <li class="sidebar-item">
+                        <a class="sidebar-link" href="{{ route('admin.users.index') }}" aria-expanded="false">
+                            <span>
+                                <i class="fa-solid fa-user-nurse"></i>
+                            </span>
+                            <span class="hide-menu">Create healthcare Users</span>
+                        </a>
+                    </li>
+                @endcan
 
         </nav>
         <!-- End Sidebar navigation -->

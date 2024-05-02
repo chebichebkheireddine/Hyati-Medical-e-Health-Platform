@@ -242,3 +242,23 @@ function MultiSelectTag (el, customs = {shadow: false, rounded:true}) {
         })
     }
 }
+
+
+// This code is for the select wilaya and baladya
+$('#SelectW').change(function() {
+    var wilayaId = $(this).val();
+
+    $.ajax({
+        url: '/api/wilayas/baldya/' + wilayaId,
+        type: 'GET',
+        success: function(response) {
+            var baldyaSelect = $('#SelectBaldya');
+            baldyaSelect.empty();
+
+            $.each(response, function(index, baldyaid) {
+                baldyaSelect.append('<option value="' + baldyaid.id + '">' + baldyaid
+                    .name + '</option>');
+            });
+        }
+    });
+});

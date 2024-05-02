@@ -1,4 +1,4 @@
-{{-- @props(['tag_item', 'attributes']) --}}
+{{-- @props(['tag_item']) --}}
 <x-layout.app>
     <x-nav.slide-bar>
 
@@ -16,14 +16,15 @@
         <!--  Header End -->
         <div class="container-fluid">
             @if (Route::currentRouteName() == 'admin.dashboard')
-                <x-.admin.body></x-.admin.body>
+                <x-admin.body></x-admin.body>
             @elseif (Route::currentRouteName() == 'admin.config')
-                <x-admin.config></x-admipn.config>
-                @elseif (Route::currentRouteName() == 'admin.doctor.index')
-                    {{-- You must pass to any parameter to do it with simple --}}
-                    <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors">
-
-                    </x-admin.doctor.index>
+                <x-admin.config></x-admin.config>
+            @elseif (Route::currentRouteName() == 'admin.doctor.index')
+                {{-- You must pass to any parameter to do it with simple --}}
+                <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors"></x-admin.doctor.index>
+            @elseif (Route::currentRouteName() == 'admin.users.index')
+                <x-admin.users.index :users="$users" :organization="$organization" :wilaya="$wilaya"
+                    :roles="$roles"></x-admin.users.index>
             @endif
         </div>
     </div>
