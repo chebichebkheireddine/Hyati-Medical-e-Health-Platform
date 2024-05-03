@@ -50,12 +50,7 @@
                                         <x-form.input name="lastname" />
                                     </x-form.panel>
                                 </x-form.modal-body>
-                                <x-form.modal-body>
-                                    <x-form.panel>
-                                        <x-form.label name="User name" />
-                                        <x-form.input name="username" />
-                                    </x-form.panel>
-                                </x-form.modal-body>
+
                                 @can('create-admin')
                                     <x-form.modal-body>
                                         <x-form.panel>
@@ -71,6 +66,12 @@
                                 @endcan
                             </div>
                             <div class="col-md-6">
+                                <x-form.modal-body>
+                                    <x-form.panel>
+                                        <x-form.label name="User name" />
+                                        <x-form.input name="username" />
+                                    </x-form.panel>
+                                </x-form.modal-body>
 
                                 <x-form.modal-body>
                                     <x-form.panel>
