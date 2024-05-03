@@ -1,4 +1,4 @@
-@props(['name', 'id', 'button', 'class' => 'btn btn-outline-primary btn-md m-1  uppercase'])
+@props(['name', 'id', 'button', 'class' => 'btn btn-outline-primary btn-md m-3 ', 'size' => ' '])
 {{-- @props(['test']) --}}
 <button type="button" class="{{ $class }}" data-bs-toggle="modal" data-bs-target="#{{ $id }}">
 
@@ -8,7 +8,7 @@
 </button>
 <!-- The Modal -->
 <div class="modal fade" id="{{ $id }}">
-    <div class="modal-dialog modal-lg ">
+    <div class="modal-dialog {{ $size }}">
         <div class="modal-content">
 
             <!-- Modal Header -->

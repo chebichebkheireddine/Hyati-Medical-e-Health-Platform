@@ -534,6 +534,9 @@ video {
     max-width: 1536px;
   }
 }
+.collapse {
+  visibility: collapse;
+}
 .fixed {
   position: fixed;
 }
@@ -583,6 +586,15 @@ video {
 .table {
   display: table;
 }
+.hidden {
+  display: none;
+}
+.w-1\/4 {
+  width: 25%;
+}
+.w-1\/6 {
+  width: 16.666667%;
+}
 .w-full {
   width: 100%;
 }
@@ -621,6 +633,11 @@ video {
 }
 .overflow-hidden {
   overflow: hidden;
+}
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 .text-nowrap {
   text-wrap: nowrap;

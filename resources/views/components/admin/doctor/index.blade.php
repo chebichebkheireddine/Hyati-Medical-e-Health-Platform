@@ -43,54 +43,58 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-12">
-                            <table class="border-collapse w-full">
-                                <thead>
-                                    <tr>
-                                        <th class="p-3 text-gray-800 text-center border border-b">Specialization Name
-                                        </th>
-                                        <th class="p-3 text-gray-800 text-center border border-b">Description</th>
-                                        <th class="p-3 text-gray-800 text-center border border-b">Status</th>
-                                        <th class="p-2 text-gray-800 text-center border border-b">Actions</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach ($specializations as $sp)
-                                        <tr
-                                            class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                                            <td
-                                                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                                {{ $sp->specialization_name }}
-                                            </td>
-                                            <td
-                                                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                        <div class="col-6">
+                            <div class="table-responsive-sm"> <!-- For screens less than 576px wide -->
 
-                                                {{ $sp->specialization_description }}
-                                            </td>
-                                            <td
-                                                class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-
-                                                <span
-                                                    class="rounded bg-green-300 py-1 px-3 text-xs font-bold">Active</span>
-                                            </td>
-                                            <td
-                                                class="w-full lg:w-auto p-2 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-
-                                                <a href="#"
-                                                    class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">Edit</a>
-                                                <form method="post"
-                                                    action="{{ route('admin.specialization.delete', ['specialization' => $sp->specialization_id]) }}">
-                                                    @csrf
-                                                    @method('DELETE')
-
-                                                    <button
-                                                        class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">Remove</button>
-                                                </form>
-                                            </td>
+                                <table class="border-collapse w-full">
+                                    <thead>
+                                        <tr>
+                                            <th class="p-3 text-gray-800 text-center border border-b">Specialization
+                                                Name
+                                            </th>
+                                            <th class="p-3 text-gray-800 text-center border border-b">Description</th>
+                                            <th class="p-3 text-gray-800 text-center border border-b">Status</th>
+                                            <th class="p-2 text-gray-800 text-center border border-b">Actions</th>
                                         </tr>
-                                    @endforeach
-                                </tbody>
-                            </table>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($specializations as $sp)
+                                            <tr
+                                                class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                                <td
+                                                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                                    {{ $sp->specialization_name }}
+                                                </td>
+                                                <td
+                                                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+
+                                                    {{ $sp->specialization_description }}
+                                                </td>
+                                                <td
+                                                    class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+
+                                                    <span
+                                                        class="rounded bg-green-300 py-1 px-3 text-xs font-bold">Active</span>
+                                                </td>
+                                                <td
+                                                    class="w-full lg:w-auto p-2 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+
+                                                    <a href="#"
+                                                        class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">Edit</a>
+                                                    <form method="post"
+                                                        action="{{ route('admin.specialization.delete', ['specialization' => $sp->specialization_id]) }}">
+                                                        @csrf
+                                                        @method('DELETE')
+
+                                                        <button
+                                                            class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">Remove</button>
+                                                    </form>
+                                                </td>
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
                 </div>

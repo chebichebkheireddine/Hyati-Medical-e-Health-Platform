@@ -7,7 +7,7 @@
                 <p class=" mb-3">This Page for Add users To the system</p>
             </div>
             <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
-                <x-form.model name="Add user" id="UserID1">
+                <x-form.model name="Add user" id="UserID1" size="modal-lg">
 
                     <x-slot name="button">
                         <i class="ti ti-user fs-6">Add User</i>
@@ -90,26 +90,7 @@
                                         <x-form.input name="address" />
                                     </x-form.panel>
                                 </x-form.modal-body>
-                                <x-form.modal-body>
-                                    <x-form.panel>
-                                        <x-form.label name="wilaya" />
-                                        <select name="wilayaId" id="SelectW"class="form-select">
 
-                                            @foreach ($wilaya as $item1)
-                                                <option value="{{ $item1->id }}">
-                                                    {{ $item1->name }}</option>
-                                            @endforeach
-                                        </select>
-                                    </x-form.panel>
-                                </x-form.modal-body>
-                                <x-form.modal-body>
-                                    <x-form.panel>
-                                        <x-form.label name="baldya" />
-                                        <select name="baldyaid" id="SelectBaldya" class="form-select">
-
-                                        </select>
-                                    </x-form.panel>
-                                </x-form.modal-body>
                                 <x-form.modal-body>
                                     <x-form.panel>
                                         <x-form.label name="password" />

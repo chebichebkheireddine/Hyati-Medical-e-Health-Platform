@@ -4,6 +4,7 @@ use App\Http\Controllers\Doctor\DoctorManageController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\sessionController;
 use App\Http\Controllers\Specialization\SpecializationController;
+use App\Http\Controllers\System\ConfigController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
 use App\Models\Specialization;
@@ -34,10 +35,10 @@ Route::get(
 Route::get('/admin', function () {
     return view('admin.index', ["tag" => Doctor::all()]);
 })->name('admin.dashboard');
-// List of user page
-Route::get('/admin/config', function () {
-    return view('admin.index');
-})->name('admin.config');
+// List of Configaraton System
+Route::get('/admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
+Route::post('/admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');
+Route::post('/admin/config/oganzationType', [ConfigController::class, 'createType'])->name('admin.config.oganzationType');
 
 
 // Doctor controler

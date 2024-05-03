@@ -7,7 +7,7 @@
                 <p class=" mb-3">This Page for Add doctor To the system</p>
             </div>
             <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
-                <x-form.model name="add doctor" id="doctidq1">
+                <x-form.model name="add doctor" id="doctidq1" size="modal-lg">
 
                     <x-slot name="button">
                         <i class="ti ti-user fs-6">Add</i>
@@ -81,176 +81,177 @@
                 </x-form.model>
             </div>
         </div>
+        <style>
+            .truncate {
+                width: 60px;
+                /* Adjust as needed */
+                white-space: nowrap;
+                overflow: hidden;
+                text-overflow: ellipsis;
+            }
+        </style>
+        <div class="table-responsive-md">
+            <table class="border-collapse w-full">
+                <thead>
+                    <tr>
+                        <th class="p-3 text-gray-800 text-center w-1/6">Name</th>
+                        <th class="p-3 text-gray-800 text-center w-1/6">Email</th>
+                        <th class="p-3 text-gray-800 text-center w-1/6">Phone Number</th>
+                        <th class="p-3 text-gray-800 text-center w-1/6">Address</th>
+                        <th class="p-3 text-gray-800 text-center w-1/6">Specializations</th>
+                        <th class="p-3 text-gray-800 text-center w-1/6">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach ($doctors as $doctor)
+                        <tr
+                            class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                            <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->name }}</td>
+                            <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->email }}</td>
+                            <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->phone_number }}</td>
+                            <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->address }}</td>
+                            <td class="p-3 text-gray-800 text-center flex flex-col">
+                                @foreach ($doctor->specialization as $spec)
+                                    <span
+                                        class="rounded bg-green-300 py-1 px-3 text-xs font-bold m-1">{{ $spec->specialization_name }}</span>
+                                @endforeach
+                            </td>
+                            <td
+                                class="w-1/4 p-2 text-gray-800 text-center text-center block lg:table-cell relative lg:static">
+                                {{-- TOOD:create Function  --}}
+                                <div
+                                    class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
+                                    <x-form.model name="Edit Doctor" id="editDoc{{ $doctor->id }}"
+                                        class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
 
-        <table class="border-collapse w-full">
-            <thead>
-                <tr>
-                    <th class="p-3 text-gray-800 text-center border border-b">Name</th>
-                    <th class="p-3 text-gray-800 text-center border border-b">Email</th>
-                    <th class="p-3 text-gray-800 text-center border border-b">Phone Number</th>
-                    <th class="p-3 text-gray-800 text-center border border-b">Address</th>
-                    <th class="p-3 text-gray-800 text-center border border-b">specializations</th>
-                    <th class="p-2 text-gray-800 text-center border border-b">Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($doctors as $doctor)
-                    <tr
-                        class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                        <td
-                            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                            {{ $doctor->name }}
-                        </td>
-                        <td
-                            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                        <x-slot name="button">
+                                            Edit
+                                        </x-slot>
 
-                            {{ $doctor->email }}
-                        </td>
-                        <td
-                            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                        <form method="post"
+                                            action="{{ route('admin.doctor.update', ['doctor' => $doctor->id]) }}">
+                                            @csrf
+                                            @method('patch')
+                                            <div class="row">
+                                                <div class="col-md-6">
+                                                    {{--  TODO: change the update laren how to change it --}}
+                                                    <x-form.modal-body>
+                                                        <script></script>
+                                                        <x-form.label name="specialization"></x-form.label>
+                                                        <select name="specializations[]"
+                                                            id="specializationedit{{ $doctor->id }}" multiple>
+                                                            @foreach ($specializations as $sp)
+                                                                <option value="{{ $sp->specialization_id }}">
+                                                                    {{-- {{ old(value, default) }} --}}
 
-                            {{ $doctor->phone_number }}
-                        </td>
-                        <td
-                            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                                                    {{ $sp->specialization_name }}</option>
+                                                            @endforeach
+                                                        </select>
 
-                            {{ $doctor->address }}
+                                                    </x-form.modal-body>
+                                                    {{-- {{--  --}}
+                                                    <x-form.modal-body>
+                                                        <x-form.panel>
+                                                            <x-form.label name="name" />
+                                                            <x-form.input name="name" :value="old('name', $doctor->name)" />
+                                                        </x-form.panel>
+                                                    </x-form.modal-body>
+                                                    <x-form.modal-body>
+                                                        <x-form.panel>
+                                                            <x-form.label name="user Name" />
+                                                            <x-form.input name="user_name" :value="old('user_name', $doctor->user_name)" />
+                                                        </x-form.panel>
+                                                    </x-form.modal-body>
+                                                    <x-form.modal-body>
+                                                        <x-form.panel>
+                                                            <x-form.label name="email" />
+                                                            <x-form.input name="email" type="email"
+                                                                :value="old('email', $doctor->email)" />
+                                                        </x-form.panel>
+                                                    </x-form.modal-body>
 
-                        </td>
-                        <td
-                            class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
-                            @foreach ($doctor->specialization as $spec)
-                                <span
-                                    class="rounded bg-green-300 py-1 px-3 text-xs font-bold">{{ $spec->specialization_name }}</span>
-                            @endforeach
-                        </td>
-                        <td
-                            class="w-full lg:w-auto p-2 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <x-form.modal-body>
+                                                        <x-form.panel>
+                                                            <x-form.label name="Phon Number" />
+                                                            <x-form.input name="phone_number" :value="old('phone_number', $doctor->phone_number)" />
+                                                        </x-form.panel>
+                                                    </x-form.modal-body>
+                                                    <x-form.modal-body>
+                                                        <x-form.panel>
+                                                            <x-form.label name="address" />
+                                                            <x-form.input name="address" :value="old('address', $doctor->address)" />
+                                                        </x-form.panel>
+                                                    </x-form.modal-body>
+                                                    <x-form.modal-body>
+                                                        <x-form.panel>
+                                                            <x-form.label name="password" />
+                                                            <x-form.input name="password" type="password"
+                                                                :value="old('password', $doctor->password)" />
+                                                        </x-form.panel>
+                                                    </x-form.modal-body>
+                                                </div>
+                                            </div>
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success "
+                                                    data-bs-dismiss="modal">Edite</button>
+                                            </div>
+                                        </form>
 
-                            {{-- TOOD:create Function  --}}
-                            <x-form.model name="Edit Doctor" id="editDoc{{ $doctor->id }}"
-                                class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
 
-                                <x-slot name="button">
-                                    Edit
-                                </x-slot>
 
-                                <form method="post"
-                                    action="{{ route('admin.doctor.update', ['doctor' => $doctor->id]) }}">
-                                    @csrf
-                                    @method('patch')
-                                    <div class="row">
-                                        <div class="col-md-6">
-                                            {{--  TODO: change the update laren how to change it --}}
-                                            <x-form.modal-body>
-                                                <script></script>
-                                                <x-form.label name="specialization"></x-form.label>
-                                                <select name="specializations[]"
-                                                    id="specializationedit{{ $doctor->id }}" multiple>
-                                                    @foreach ($specializations as $sp)
-                                                        <option value="{{ $sp->specialization_id }}">
-                                                            {{-- {{ old(value, default) }} --}}
+                                    </x-form.model>
+                                </div>
+                                <div
+                                    class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
+                                    <form method="post"
+                                        action="{{ route('admin.doctor.delete', ['doctor' => $doctor->id]) }}">
+                                        @csrf
+                                        @method('DELETE')
 
-                                                            {{ $sp->specialization_name }}</option>
-                                                    @endforeach
-                                                </select>
+                                        <button
+                                            class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">Remove</button>
+                                    </form>
+                                    {{-- doctor add --}}
+                                </div>
+                                <div
+                                    class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
+                                    <x-form.model name="Permission" id="permision" class="rounded  py-1 px-2 ">
 
-                                            </x-form.modal-body>
-                                            {{-- {{--  --}}
+                                        <x-slot name="button">
+                                            <span><i class="fa-solid fa-gear"></i></span>
+                                        </x-slot>
+
+                                        <form method="POST" action="{{ route('admin.doctor.create') }}">
+                                            @csrf
+
                                             <x-form.modal-body>
                                                 <x-form.panel>
                                                     <x-form.label name="name" />
-                                                    <x-form.input name="name" :value="old('name', $doctor->name)" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="user Name" />
-                                                    <x-form.input name="user_name" :value="old('user_name', $doctor->user_name)" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="email" />
-                                                    <x-form.input name="email" type="email" :value="old('email', $doctor->email)" />
+                                                    <x-form.input name="name" />
                                                 </x-form.panel>
                                             </x-form.modal-body>
 
-                                        </div>
-                                        <div class="col-md-6">
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="Phon Number" />
-                                                    <x-form.input name="phone_number" :value="old('phone_number', $doctor->phone_number)" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="address" />
-                                                    <x-form.input name="address" :value="old('address', $doctor->address)" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                            <x-form.modal-body>
-                                                <x-form.panel>
-                                                    <x-form.label name="password" />
-                                                    <x-form.input name="password" type="password" :value="old('password', $doctor->password)" />
-                                                </x-form.panel>
-                                            </x-form.modal-body>
-                                        </div>
-                                    </div>
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success "
-                                            data-bs-dismiss="modal">Edite</button>
-                                    </div>
-                                </form>
+                                            <!-- Modal footer -->
+                                            <div class="modal-footer">
+                                                <button type="submit" class="btn btn-success "
+                                                    data-bs-dismiss="modal">Add</button>
+                                            </div>
+                                        </form>
 
 
 
-                            </x-form.model>
+                                    </x-form.model>
 
-                            <form method="post"
-                                action="{{ route('admin.doctor.delete', ['doctor' => $doctor->id]) }}">
-                                @csrf
-                                @method('DELETE')
+                                </div>
 
-                                <button
-                                    class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">Remove</button>
-                            </form>
-                            {{-- doctor add --}}
-                            <x-form.model name="Permission" id="permision" class="rounded  py-1 px-2 ">
-
-                                <x-slot name="button">
-                                    <span><i class="fa-solid fa-gear"></i></span>
-                                </x-slot>
-
-                                <form method="POST" action="{{ route('admin.doctor.create') }}">
-                                    @csrf
-
-                                    <x-form.modal-body>
-                                        <x-form.panel>
-                                            <x-form.label name="name" />
-                                            <x-form.input name="name" />
-                                        </x-form.panel>
-                                    </x-form.modal-body>
-
-                                    <!-- Modal footer -->
-                                    <div class="modal-footer">
-                                        <button type="submit" class="btn btn-success "
-                                            data-bs-dismiss="modal">Add</button>
-                                    </div>
-                                </form>
-
-
-
-                            </x-form.model>
-
-
-
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+                            </td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>

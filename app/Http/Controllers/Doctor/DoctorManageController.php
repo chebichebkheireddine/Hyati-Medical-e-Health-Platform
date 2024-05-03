@@ -24,7 +24,7 @@ class DoctorManageController extends Controller
     public function create()
     {
         $attrbutes = request()->validate([
-            'name' => 'required|string|max:255',
+            'name' => 'required|string|max:150',
             // 'specializations' => 'required',
             'user_name' => 'required|string|max:255|unique:doctors,user_name',
             'email' => 'required|email|unique:doctors,email',

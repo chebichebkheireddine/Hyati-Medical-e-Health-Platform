@@ -23,7 +23,7 @@
                         <span class="hide-menu">Panel Control</span>
                     </li>
                     <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.config') }}" aria-expanded="false">
+                        <a class="sidebar-link" href="{{ route('admin.config.index') }}" aria-expanded="false">
                             <span>
                                 <i class="fa-solid fa-gears"></i> </span>
                             <span class="hide-menu">Configaration</span>
@@ -40,16 +40,29 @@
                         </a>
                     </li>
                 @endcan
-                @can('create-users')
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.users.index') }}" aria-expanded="false">
-                            <span>
-                                <i class="fa-solid fa-user-nurse"></i>
-                            </span>
-                            <span class="hide-menu">Create healthcare Users</span>
-                        </a>
-                    </li>
-                @endcan
+
+                <li class="sidebar-item">
+                    <a href="{{ route('admin.users.index') }}" class="sidebar-link" data-toggle="collapse"
+                        data-target="#users" aria-expanded="false"><!-- a href begin -->
+
+                        <span>
+                            <i class="fa-solid fa-user-nurse"></i>
+                        </span>
+                        <span class="hide-menu">Create healthcare Users</span>
+                    </a>
+                    <ul id="users" class="collapse"><!-- collapse begin -->
+                        <li><!-- li begin -->
+
+                            <a class="sidebar-link" href="#" aria-expanded="false">
+                                <span>
+                                    <i class="fa-solid fa-user-nurse"></i>
+                                </span>
+                                <span class="hide-menu">Create Pharmacy</span>
+                            </a>
+                        </li><!-- li finish -->
+                    </ul><!-- collapse finish -->
+                </li>
+
 
         </nav>
         <!-- End Sidebar navigation -->
