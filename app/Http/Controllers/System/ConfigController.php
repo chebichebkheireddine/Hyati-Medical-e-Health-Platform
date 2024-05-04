@@ -4,6 +4,7 @@ namespace App\Http\Controllers\System;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
+use Spatie\Permission\Models\Role;
 use App\Models\information\organization;
 use App\Models\information\organizationType;
 use Spatie\Permission\Models\Permission;
@@ -20,6 +21,7 @@ class ConfigController extends Controller
             "typeOrg" => organizationType::all(),
             "wilaya" => Wilaya::all(),
             "permissions" => Permission::all(),
+            "roles" => Role::all(),
         ]);
     }
     public function create(Request $request)

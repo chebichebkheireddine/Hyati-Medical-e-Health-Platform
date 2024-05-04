@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Commune;
 use App\Models\Doctor;
 use App\Models\information\organization;
-use App\Models\Role;
+use Spatie\Permission\Models\Role;
 use App\Models\Specialization;
 use App\Models\User;
 use App\Models\Wilaya;
@@ -15,6 +15,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
+    // TODO: change role use
     //This is genaral code to use it
     public function index()
     {

@@ -30,7 +30,7 @@
                     :roles="$roles"></x-admin.users.index>
                 {{-- This is for confige --}}
             @elseif (Route::currentRouteName() == 'admin.config.permmistion.index')
-                <x-admin.permmistion.index :permissions="$permissions">
+                <x-admin.permmistion.index :permissions="$permissions" :roles="$roles">
                 </x-admin.permmistion.index>
             @endif
         </div>

@@ -45,7 +45,9 @@ Route::get('/admin/config/permestion', [ConfigController::class, 'index'])->name
 Route::post('/admin/config/permestion/add', [PermissionController::class, 'create'])->name('admin.config.permmistion.create');
 Route::patch('/admin/config/permestion/edit/{id}', [PermissionController::class, 'update'])->name('admin.config.permmistion.update');
 Route::delete('/admin/config/permestion/delete/{id}', [PermissionController::class, 'delete'])->name('admin.config.permmistion.delete');
-
+// Route for the role
+Route::post('/admin/config/role/add', [RoleController::class, 'create'])->name('admin.config.role.create');
+Route::patch('/admin/config/role/edit/{id}', [RoleController::class, 'update'])->name('admin.config.role.update');
 
 
 
