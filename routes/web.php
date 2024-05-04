@@ -5,6 +5,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\sessionController;
 use App\Http\Controllers\Specialization\SpecializationController;
 use App\Http\Controllers\System\ConfigController;
+use App\Http\Controllers\System\PermissionController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
 use App\Models\Specialization;
@@ -39,6 +40,13 @@ Route::get('/admin', function () {
 Route::get('/admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
 Route::post('/admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');
 Route::post('/admin/config/oganzationType', [ConfigController::class, 'createType'])->name('admin.config.oganzationType');
+Route::get('/admin/config/permestion', [ConfigController::class, 'index'])->name('admin.config.permmistion.index');
+// Route for the permmmistion
+Route::post('/admin/config/permestion/add', [PermissionController::class, 'create'])->name('admin.config.permmistion.create');
+Route::patch('/admin/config/permestion/edit/{id}', [PermissionController::class, 'update'])->name('admin.config.permmistion.update');
+Route::delete('/admin/config/permestion/delete/{id}', [PermissionController::class, 'delete'])->name('admin.config.permmistion.delete');
+
+
 
 
 // Doctor controler

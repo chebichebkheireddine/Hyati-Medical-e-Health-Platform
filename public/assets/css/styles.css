@@ -19910,3 +19910,14 @@ ul {
 .timeline-widget .timeline-item .timeline-badge.badge-primary {
     border: 2px solid rgb(96 165 250)
 }
+
+
+/* Table Permmesstion */
+thead.stickyt {
+    position: sticky;
+    top: 0;
+    background-color: #edf2f7;
+    /* Adjust the background color as needed */
+    z-index: 999;
+    /* Ensure the header is above other content */
+}

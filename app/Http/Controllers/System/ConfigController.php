@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\information\organization;
 use App\Models\information\organizationType;
+use Spatie\Permission\Models\Permission;
 use App\Models\Wilaya;
 use Illuminate\Http\Request;
 
@@ -18,6 +19,7 @@ class ConfigController extends Controller
             "tag" => Doctor::all(),
             "typeOrg" => organizationType::all(),
             "wilaya" => Wilaya::all(),
+            "permissions" => Permission::all(),
         ]);
     }
     public function create(Request $request)

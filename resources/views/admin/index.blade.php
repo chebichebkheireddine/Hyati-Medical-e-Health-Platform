@@ -16,15 +16,22 @@
         <!--  Header End -->
         <div class="container-fluid">
             @if (Route::currentRouteName() == 'admin.dashboard')
-                <x-admin.body></x-admin.body>
+                <x-admin.body>
+
+                </x-admin.body>
             @elseif (Route::currentRouteName() == 'admin.config.index')
-                <x-admin.config :wilaya="$wilaya" :typeOrg="$typeOrg"></x-admin.config>
+                <x-admin.config :wilaya="$wilaya" :typeOrg="$typeOrg">
+                </x-admin.config>
             @elseif (Route::currentRouteName() == 'admin.doctor.index')
-                {{-- You must pass to any parameter to do it with simple --}}
-                <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors"></x-admin.doctor.index>
+                <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors">
+                </x-admin.doctor.index>
             @elseif (Route::currentRouteName() == 'admin.users.index')
                 <x-admin.users.index :users="$users" :organization="$organization" :wilaya="$wilaya"
                     :roles="$roles"></x-admin.users.index>
+                {{-- This is for confige --}}
+            @elseif (Route::currentRouteName() == 'admin.config.permmistion.index')
+                <x-admin.permmistion.index :permissions="$permissions">
+                </x-admin.permmistion.index>
             @endif
         </div>
     </div>

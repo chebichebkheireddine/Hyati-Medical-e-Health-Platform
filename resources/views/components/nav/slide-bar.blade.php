@@ -22,7 +22,8 @@
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Panel Control</span>
                     </li>
-                    <li class="sidebar-item">
+                    <li
+                        class="sidebar-item {{ Route::currentRouteName() == 'admin.config.permmistion.index' ? 'selected' : '' }}">
                         <a class="sidebar-link" href="{{ route('admin.config.index') }}" aria-expanded="false">
                             <span>
                                 <i class="fa-solid fa-gears"></i> </span>
