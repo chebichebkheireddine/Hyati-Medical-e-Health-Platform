@@ -25,27 +25,31 @@ This endpoint is used for Acsses Patient to The system
 -   Status Code: 200 (OK)
 -   Body:
 
-        ```json
+            ```json
 
-    {
-    "status": "success",
-    "token": "2|AzeIKsr2LxNWQf9vc4m1oJC45OhGXw70nnwbyaol",
-    "message": "Login successful",
-    "patient": {
-    "healthId": 1,
-    "firstName": "Anjali",
-    "lastName": "Treutel",
-    "email": "bridgette88@example.net",
-    "phone": "+1-918-310-6262",
-    "street": "1788 Ryan Road Suite 204\nLake Theodoraville, MI 36024",
-    "wilaya": 3,
-    "baldya": 1,
-    "generalMedicalRecord": 1,
-    "card": 1
+        {[
+            {
+        "status": "success",
+        "token": "2|AzeIKsr2LxNWQf9vc4m1oJC45OhGXw70nnwbyaol",
+        "message": "Login successful",
+        "patient": {
+            "healthId": 1,
+            "firstName": "Anjali",
+            "lastName": "Treutel",
+            "email": "bridgette88@example.net",
+            "phone": "+1-918-310-6262",
+            "street": "1788 Ryan Road Suite 204\nLake Theodoraville, MI 36024",
+            "wilaya": 3,
+            "baldya": 1,
+            "generalMedicalRecord": 1,
+            "card": 1
+        }
+
     }
+    ]
     }
 
-        ```
+            ```
 
 ## Endpoint 2
 
