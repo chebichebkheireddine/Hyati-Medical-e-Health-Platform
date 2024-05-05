@@ -18,6 +18,7 @@ class ConfigController extends Controller
     {
         return view('admin.index', [
             "tag" => Doctor::all(),
+            "itemPermission" => Permission::all(),
             "typeOrg" => organizationType::all(),
             "wilaya" => Wilaya::all(),
             "permissions" => Permission::all(),

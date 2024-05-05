@@ -5,6 +5,7 @@ namespace App\Http\Controllers\System;
 use App\Http\Controllers\Controller;
 use Spatie\Permission\Models\Permission;
 use Illuminate\Http\Request;
+use League\CommonMark\Node\Block\Document;
 
 class PermissionController extends Controller
 {
@@ -19,19 +20,23 @@ class PermissionController extends Controller
         ]);
         return redirect()->back()->with("success", "Permission Created Successfully");
     }
-    public function update(Permission $permissions)
+    public function update(Request $request, Permission $permissions)
     {
-        $data = request()->validate([
+        $dat = $request->validate([
             "name" => "required",
         ]);
         $permissions->update([
-            "name" => $data["name"],
+            "name" => $dat['name'],
         ]);
-        return redirect()->back()->with("success", "Permission Updated Successfully");
+        return redirect()->back();
     }
     public function delete(Permission $permissions)
     {
         $permissions->delete();
         return redirect()->back()->with("success", "Permission Deleted Successfully");
+    }
+    public function index()
+    {
+        $ddoc = new Document();
     }
 }

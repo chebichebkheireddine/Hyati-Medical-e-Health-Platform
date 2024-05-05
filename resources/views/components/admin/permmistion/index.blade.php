@@ -1,4 +1,4 @@
-@props(['permissions', 'roles'])
+@props(['permissions', 'roles', 'itemPermission'])
 <div class="row">
     <div class="col-6">
         <div class="card ">
@@ -10,7 +10,7 @@
                             <i class="fa fa-plus"> </i>
                             Add Permmistion
                         </x-slot>
-                        <form method="Post" action="{{ route('admin.config.permmistion.create') }}">
+                        <form method="Post" action="{{ route('admin.config.permissions.create') }}">
                             @csrf
                             <x-form.modal-body>
                                 <x-form.panel>
@@ -42,38 +42,34 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach ($permissions as $sp)
+                            @foreach ($permissions as $perme)
                                 <tr
                                     class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
                                     <td
                                         class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
-                                        {{ $sp->name }}
+                                        {{ $perme->name }}
                                     </td>
                                     <td
                                         class="w-full lg:w-auto p-2 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 
                                         <div
                                             class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
-                                            <x-form.model name="Edit Doctor" id="editPermisstion{{ $sp->id }}"
+                                            <x-form.model name="Edit Permisstion"
+                                                id="editPermisstion{{ $perme->id }}"
                                                 class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
 
                                                 <x-slot name="button">
                                                     Edit
                                                 </x-slot>
 
-                                                <form method="post"
-                                                    action="{{ route('admin.config.permmistion.update', ['id' => $sp->id]) }}">
+                                                <form method="POST"
+                                                    action="{{ route('admin.config.permissions.update', ['permissions' => $perme->id]) }}">
                                                     @csrf
-                                                    @method('patch')
-
-                                                    {{--  TODO: change the update laren how to change it --}}
-
-                                                    {{-- {{--  --}}
-
+                                                    @method('PATCH')
                                                     <x-form.modal-body>
                                                         <x-form.panel>
                                                             <x-form.label name="name" />
-                                                            <x-form.input name="name" :value="old('name', $sp->name)" />
+                                                            <x-form.input name="name" :value="old('name', $perme->name)" />
                                                         </x-form.panel>
                                                     </x-form.modal-body>
 
@@ -84,14 +80,12 @@
                                                     </div>
                                                 </form>
 
-
-
                                             </x-form.model>
                                         </div>
                                         <div
                                             class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
-                                            <form method="post"
-                                                action="{{ route('admin.config.permmistion.delete', ['id' => $sp->id]) }}">
+                                            <form method="POST"
+                                                action="{{ route('admin.config.permissions.delete', ['permissions' => $perme->id]) }}">
                                                 @csrf
                                                 @method('DELETE')
 
@@ -170,13 +164,9 @@
                                                 </x-slot>
 
                                                 <form method="post"
-                                                    action="{{ route('admin.config.role.update', ['id' => $role->id]) }}">
+                                                    action="{{ route('admin.config.role.update', ['roles' => $role->id]) }}">
                                                     @csrf
-                                                    @method('patch')
-
-                                                    {{--  TODO: change the update laren how to change it --}}
-
-                                                    {{-- {{--  --}}
+                                                    @method('PATCH')
 
                                                     <x-form.modal-body>
                                                         <x-form.panel>
@@ -199,7 +189,7 @@
                                         <div
                                             class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
                                             <form method="post"
-                                                action="{{ route('admin.config.permmistion.delete', ['id' => $role->id]) }}">
+                                                action="{{ route('admin.config.role.delete', ['roles' => $role->id]) }}">
                                                 @csrf
                                                 @method('DELETE')
 
@@ -217,5 +207,93 @@
             </div>
         </div>
     </div>
+</div>
+{{-- this to assing rile to permissions --}}
+<div class="row">
+    <div class="col-12">
+        <div class="card ">
+            <div class="card-body rounded-xl ">
+                <div class="d-flex justify-content-between align-items-center mb-3">
+                    <h2 class="card-title fw-semibold mb-4">Assing role to perrmistion </h2>
+                </div>
 
+                <div class="table-responsive-sm"style="max-height: 300px; overflow-y: auto;">
+                    <!-- For screens less than 576px wide -->
+
+                    <table class="border-collapse w-full">
+                        <thead class=" stickyt top-0 bg-gray-200 z-50">
+                            <tr>
+                                <th class="p-3 text-gray-800 text-center border border-b">Name Role
+                                </th>
+                                <th class="p-3 text-gray-800 text-center border border-b">Permissions
+
+                                </th>
+                                <th class="p-2 text-gray-800 text-center border border-b">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach ($roles as $item3)
+                                <tr
+                                    class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
+                                    <td
+                                        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                        {{ $item3->name }}
+                                    </td>
+                                    <td
+                                        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                        @foreach ($item3->permissions->pluck('name') as $itemRole)
+                                            <span
+                                                class="block inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">{{ $itemRole }}</span>
+                                        @endforeach
+                                    </td>
+                                    <td
+                                        class="w-full lg:w-auto p-2 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
+
+                                        <div
+                                            class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
+                                            <x-form.model name="Edit Permisstion" id="hasRole{{ $item3->id }}"
+                                                class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
+
+                                                <x-slot name="button">
+                                                    Edit
+                                                </x-slot>
+
+                                                <form method="POST"
+                                                    action="{{ route('admin.config.permissions.update', ['permissions' => $item3->id]) }}">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <x-form.modal-body>
+                                                        <x-form.panel>
+                                                            <x-form.label name="Selected" />
+                                                            <select name="permestions[]"
+                                                                id="permissionedit{{ $item3->id }}" multiple>
+                                                                @foreach ($permissions as $sp)
+                                                                    <option value="{{ $sp->id }}">
+                                                                        {{-- {{ old(value, defaudoclt) }} --}}
+
+                                                                        {{ $sp->name }}</option>
+                                                                @endforeach
+                                                            </select>
+                                                        </x-form.panel>
+                                                    </x-form.modal-body>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success "
+                                                            data-bs-dismiss="modal">Edite</button>
+                                                    </div>
+                                                </form>
+
+                                            </x-form.model>
+                                        </div>
+
+                                    </td>
+                                </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

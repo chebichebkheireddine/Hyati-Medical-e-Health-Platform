@@ -1,4 +1,4 @@
-@props(['specializations', 'doctors'])
+@props(['specializations', 'doctors', 'wilaya'])
 <div class="card">
     <div class="card-body rounded-xl ">
         <div class="flex flex-wrap items-center">
@@ -41,15 +41,36 @@
                                         <x-form.input name="user_name" />
                                     </x-form.panel>
                                 </x-form.modal-body>
+
+                                <x-form.modal-body>
+                                    <x-form.panel>
+                                        <x-form.label name="wilaya" />
+                                        <select name="wilayaId" id="SelectW"class="form-select">
+
+                                            @foreach ($wilaya as $item1)
+                                                <option value="{{ $item1->id }}">
+                                                    {{ $item1->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </x-form.panel>
+                                </x-form.modal-body>
+                                <x-form.modal-body>
+                                    <x-form.panel>
+                                        <x-form.label name="baldya" />
+                                        <select name="baldyaid" id="SelectBaldya" class="form-select">
+
+                                        </select>
+                                    </x-form.panel>
+                                </x-form.modal-body>
+
+                            </div>
+                            <div class="col-md-6">
                                 <x-form.modal-body>
                                     <x-form.panel>
                                         <x-form.label name="email" />
                                         <x-form.input name="email" type="email" />
                                     </x-form.panel>
                                 </x-form.modal-body>
-
-                            </div>
-                            <div class="col-md-6">
                                 <x-form.modal-body>
                                     <x-form.panel>
                                         <x-form.label name="Phon Number" />

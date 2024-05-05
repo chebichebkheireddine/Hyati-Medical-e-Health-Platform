@@ -17,12 +17,17 @@ class RoleController extends Controller
         Role::create($data);
         return back();
     }
-    public function update(Role $role)
+    public function update(Role $roles)
     {
         $data = request()->validate([
             'name' => 'required|min:3|max:255',
         ]);
-        $role->update($data);
+        $roles->update($data);
+        return back();
+    }
+    public function delete(Role $roles)
+    {
+        $roles->delete();
         return back();
     }
 }

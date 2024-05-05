@@ -9,6 +9,7 @@ use App\Http\Controllers\System\PermissionController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
 use App\Models\Specialization;
+use App\Models\System\Permission;
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 
@@ -34,20 +35,23 @@ Route::get(
 
 //  gropu of the admin
 Route::get('/admin', function () {
-    return view('admin.index', ["tag" => Doctor::all()]);
+    return view('admin.index', ["tag" => Doctor::all(), "itemPermission" => Permission::all()]);
 })->name('admin.dashboard');
 // List of Configaraton System
-Route::get('/admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
-Route::post('/admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');
-Route::post('/admin/config/oganzationType', [ConfigController::class, 'createType'])->name('admin.config.oganzationType');
-Route::get('/admin/config/permestion', [ConfigController::class, 'index'])->name('admin.config.permmistion.index');
+Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
+Route::post('admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');
+Route::post('admin/config/oganzationType', [ConfigController::class, 'createType'])->name('admin.config.oganzationType');
+Route::get('admin/config/permestion', [ConfigController::class, 'index'])->name('admin.config.permmistion.index');
 // Route for the permmmistion
-Route::post('/admin/config/permestion/add', [PermissionController::class, 'create'])->name('admin.config.permmistion.create');
-Route::patch('/admin/config/permestion/edit/{id}', [PermissionController::class, 'update'])->name('admin.config.permmistion.update');
-Route::delete('/admin/config/permestion/delete/{id}', [PermissionController::class, 'delete'])->name('admin.config.permmistion.delete');
+Route::post('admin/config/permissions/add', [PermissionController::class, 'create'])->name('admin.config.permissions.create');
+Route::patch('admin/config/permissions/edit/{permissions}', [PermissionController::class, 'update'])
+    ->name('admin.config.permissions.update');
+Route::delete('admin/config/permissions/delete/{permissions}', [PermissionController::class, 'delete'])
+    ->name('admin.config.permissions.delete');
 // Route for the role
-Route::post('/admin/config/role/add', [RoleController::class, 'create'])->name('admin.config.role.create');
-Route::patch('/admin/config/role/edit/{id}', [RoleController::class, 'update'])->name('admin.config.role.update');
+Route::post('admin/config/role/add', [RoleController::class, 'create'])->name('admin.config.role.create');
+Route::patch('admin/config/role/edit/{roles}', [RoleController::class, 'update'])->name('admin.config.role.update');
+Route::delete('admin/config/role/delete/{roles}', [RoleController::class, 'delete'])->name('admin.config.role.delete');
 
 
 

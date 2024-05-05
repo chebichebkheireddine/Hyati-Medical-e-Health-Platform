@@ -1,4 +1,4 @@
-@props(['users', 'organization', 'wilaya', 'roles'])
+ogra@props(['users', 'organization', 'wilaya', 'roles'])
 <div class="row">
     <div class="col-12">
         <x-admin.users.manager :users="$users" :organization="$organization" :wilaya="$wilaya" :roles="$roles">

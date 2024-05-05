@@ -1,4 +1,4 @@
-@props(['tag'])
+@props(['tag', 'itemPermission'])
 
 <!doctype html>
 <html lang="en">
@@ -44,6 +44,9 @@
 
     <script>
         {{ $tagitem ?? ' ' }}
+    </script>
+    <script>
+        {{ $tag_permission ?? '' }}
     </script>
 </body>
 

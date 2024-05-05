@@ -7,6 +7,7 @@ use App\Models\Doctor;
 use App\Models\information\organization;
 use Spatie\Permission\Models\Role;
 use App\Models\Specialization;
+use App\Models\System\Permission;
 use App\Models\User;
 use App\Models\Wilaya;
 use Illuminate\Http\Request;
@@ -24,6 +25,7 @@ class UserController extends Controller
         $users = User::latest()->role('admin')->get();
         return view("admin.index", [
             "users" => $users,
+            "itemPermission" => Permission::all(),
             "organization" => organization::all(),
             "wilaya" => Wilaya::all(),
             "baldya" => Commune::all(),

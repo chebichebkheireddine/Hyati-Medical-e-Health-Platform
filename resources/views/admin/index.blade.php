@@ -23,22 +23,30 @@
                 <x-admin.config :wilaya="$wilaya" :typeOrg="$typeOrg">
                 </x-admin.config>
             @elseif (Route::currentRouteName() == 'admin.doctor.index')
-                <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors">
+                <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors" :wilaya="$wilaya">
                 </x-admin.doctor.index>
             @elseif (Route::currentRouteName() == 'admin.users.index')
-                <x-admin.users.index :users="$users" :organization="$organization" :wilaya="$wilaya"
-                    :roles="$roles"></x-admin.users.index>
+                <x-admin.users.index :users="$users" :organization="$organization" :roles="$roles"></x-admin.users.index>
                 {{-- This is for confige --}}
             @elseif (Route::currentRouteName() == 'admin.config.permmistion.index')
-                <x-admin.permmistion.index :permissions="$permissions" :roles="$roles">
+                <x-admin.permmistion.index :permissions="$permissions" :roles="$roles" :wilaya="$wilaya">
                 </x-admin.permmistion.index>
             @endif
         </div>
     </div>
     <x-slot name="tag_item">
 
+        @foreach ($permissions as $itemp)
+            new MultiSelectTag('permissionedit{{ $itemp->id }}')
+        @endforeach
         @foreach ($tag as $item)
             new MultiSelectTag('specializationedit{{ $item->id }}')
+        @endforeach
+    </x-slot>
+    <x-slot name="tag_permission">
+
+        @foreach ($permissions as $itemp)
+            new MultiSelectTag('permissionedit{{ $itemp->id }}')
         @endforeach
     </x-slot>
 

@@ -1,7 +1,7 @@
-@props(['specializations', 'doctors'])
+@props(['specializations', 'doctors', 'wilaya'])
 <div class="row">
     <div class="col-12">
-        <x-admin.doctor.doctor-add :specializations="$specializations" :doctors="$doctors">
+        <x-admin.doctor.doctor-add :specializations="$specializations" :doctors="$doctors" :wilaya="$wilaya">
         </x-admin.doctor.doctor-add>
     </div>
 

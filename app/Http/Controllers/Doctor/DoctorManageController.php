@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Specialization;
 use App\Models\Doctor;
+use App\Models\System\Permission;
+use App\Models\Wilaya;
 use Illuminate\Support\Facades\DB;
 
 class DoctorManageController extends Controller
@@ -18,6 +20,8 @@ class DoctorManageController extends Controller
             "specializations" => Specialization::all(),
             "doctors" => Doctor::all(),
             "tag" => Doctor::all(),
+            "permissions" => Permission::all(),
+            "wilaya" => Wilaya::all(),
         ]);
     }
     //create doctor with Speciazation
@@ -31,11 +35,23 @@ class DoctorManageController extends Controller
             'password' => 'required|max:80',
             'phone_number' => 'required|max:255',
             'address' => 'required|max:255',
+            "wilayaId" => "required",
+            "baldyaid" => "required",
         ]);
 
-        $attrbutes['password'] = bcrypt($attrbutes['password']);
 
-        $doctor = Doctor::create($attrbutes);
+
+        $doctor = Doctor::create([
+            'name' => $attrbutes['name'],
+            'user_name' => $attrbutes['user_name'],
+            'email' => $attrbutes['email'],
+            'password' =>  bcrypt($attrbutes['password']),
+            'phone_number' => $attrbutes['phone_number'],
+            'address' => $attrbutes['address'],
+            'id_wilaya' => $attrbutes['wilayaId'],
+            'id_commune' => $attrbutes['baldyaid'],
+
+        ]);
         // var_dump($doctor);
         $specializations = request()->validate([
             'specializations' => 'required',
