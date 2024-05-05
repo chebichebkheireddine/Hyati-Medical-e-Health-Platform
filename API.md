@@ -14,7 +14,10 @@ This endpoint is used for Acsses Patient to The system
 -   URL: `/api/login`
 -   Body:
     ```json
-    { "email": "donJwo@example.com", "password": 1234567890 }
+    {
+        "email": "bridgette88@example.net",
+        "password": 1234567890
+    }
     ```
 
 ### Response
@@ -22,33 +25,27 @@ This endpoint is used for Acsses Patient to The system
 -   Status Code: 200 (OK)
 -   Body:
 
-    ```json
+        ```json
+
     {
-        "status": "success",
-        "token": "2|lLj1bExlwAhnzbRITP9rPO8Kmzbm1UwxYki5Ngia",
-        "message": "Login successful",
-        "patient": {
-            "id": 7,
-            "firstName": "Enid",
-            "lastName": "Ziemann",
-            "birthDate": "1983-05-22",
-            "gender": "F",
-            "phone": "602-423-8937",
-            "email": "ankunding.leslie@example.com",
-            "Address": {
-                "address": "1230 Sigrid Row\nLake Marleetown, ND 61613",
-                "wilaya": {
-                    "name": "Adrar",
-                    "arabic_name": "أدرار"
-                },
-                "commune": {
-                    "name": "Charouine",
-                    "arabic_name": "شروين"
-                }
-            }
-        }
+    "status": "success",
+    "token": "2|AzeIKsr2LxNWQf9vc4m1oJC45OhGXw70nnwbyaol",
+    "message": "Login successful",
+    "patient": {
+    "healthId": 1,
+    "firstName": "Anjali",
+    "lastName": "Treutel",
+    "email": "bridgette88@example.net",
+    "phone": "+1-918-310-6262",
+    "street": "1788 Ryan Road Suite 204\nLake Theodoraville, MI 36024",
+    "wilaya": 3,
+    "baldya": 1,
+    "generalMedicalRecord": 1,
+    "card": 1
     }
-    ```
+    }
+
+        ```
 
 ## Endpoint 2
 

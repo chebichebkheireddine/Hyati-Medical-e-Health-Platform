@@ -15,17 +15,19 @@ class CreatePatientsTable extends Migration
     public function up()
     {
         Schema::create('patients', function (Blueprint $table) {
-            $table->id();
+            $table->id("healthId");
             $table->string('firstName');
             $table->string('lastName');
             $table->string('email');
+            $table->date('birthDate');
             $table->enum('gender', ["M", "F"]);
             $table->string('password');
             $table->string('phone');
-            $table->string('address');
-            $table->date('birthDate');
-            $table->foreignId('id_commune');
-            $table->foreignId('id_wilaya');
+            $table->string('street');
+            $table->foreignId('baldya');
+            $table->foreignId('wilaya');
+            $table->foreignId('generalMedicalRecord');
+            $table->foreignId('card');
             $table->timestamps();
         });
     }

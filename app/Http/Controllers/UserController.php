@@ -25,7 +25,7 @@ class UserController extends Controller
         $users = User::latest()->role('admin')->get();
         return view("admin.index", [
             "users" => $users,
-            "itemPermission" => Permission::all(),
+            "permissions" => Permission::all(),
             "organization" => organization::all(),
             "wilaya" => Wilaya::all(),
             "baldya" => Commune::all(),

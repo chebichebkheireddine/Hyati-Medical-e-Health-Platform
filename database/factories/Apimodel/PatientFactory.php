@@ -19,14 +19,16 @@ class PatientFactory extends Factory
             //
             "firstName" => $this->faker->firstName(),
             "lastName" => $this->faker->lastName(),
+            "birthDate" => $this->faker->date('Y_m_d'),
             "email" => $this->faker->unique()->safeEmail(),
             "password" => Hash::make('1234567890'),
             "gender" => $this->faker->randomElement(['M', 'F']),
             "phone" => $this->faker->phoneNumber(),
-            "birthDate" => $this->faker->date('Y_m_d'),
-            "address" => $this->faker->address(),
-            "id_commune" => 3,
-            "id_wilaya" => 1,
+            "street" => $this->faker->address(),
+            "wilaya" => 3,
+            "baldya" => 1,
+            "generalMedicalRecord" => 1,
+            "card" => 1,
         ];
     }
 }

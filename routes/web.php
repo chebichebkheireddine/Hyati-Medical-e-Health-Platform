@@ -35,7 +35,7 @@ Route::get(
 
 //  gropu of the admin
 Route::get('/admin', function () {
-    return view('admin.index', ["tag" => Doctor::all(), "itemPermission" => Permission::all()]);
+    return view('admin.index', ["tag" => Doctor::all(), "permissions" => Permission::all()]);
 })->name('admin.dashboard');
 // List of Configaraton System
 Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');

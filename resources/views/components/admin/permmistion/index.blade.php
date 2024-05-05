@@ -156,7 +156,7 @@
 
                                         <div
                                             class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
-                                            <x-form.model name="Edit Doctor" id="editRole{{ $role->id }}"
+                                            <x-form.model name="Edit Role" id="editRole{{ $role->id }}"
                                                 class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
 
                                                 <x-slot name="button">
@@ -240,22 +240,25 @@
                                         {{ $item3->name }}
                                     </td>
                                     <td
-                                        class="w-full lg:w-auto p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+                                        class="w-full lg:w-auto px-3 p-3 text-gray-800 text-center border border-b block lg:table-cell relative lg:static">
+
+
                                         @foreach ($item3->permissions->pluck('name') as $itemRole)
                                             <span
                                                 class="block inline-flex items-center rounded-md bg-red-50 px-2 py-1 text-xs font-medium text-red-700 ring-1 ring-inset ring-red-600/10">{{ $itemRole }}</span>
                                         @endforeach
+
                                     </td>
                                     <td
                                         class="w-full lg:w-auto p-2 text-gray-800 text-center border border-b text-center block lg:table-cell relative lg:static">
 
                                         <div
                                             class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
-                                            <x-form.model name="Edit Permisstion" id="hasRole{{ $item3->id }}"
+                                            <x-form.model name="Edit Permisstion" id="addhasRole{{ $item3->id }}"
                                                 class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
 
                                                 <x-slot name="button">
-                                                    Edit
+                                                    Add
                                                 </x-slot>
 
                                                 <form method="POST"
@@ -269,7 +272,6 @@
                                                                 id="permissionedit{{ $item3->id }}" multiple>
                                                                 @foreach ($permissions as $sp)
                                                                     <option value="{{ $sp->id }}">
-                                                                        {{-- {{ old(value, defaudoclt) }} --}}
 
                                                                         {{ $sp->name }}</option>
                                                                 @endforeach
@@ -285,8 +287,37 @@
                                                 </form>
 
                                             </x-form.model>
-                                        </div>
 
+                                        </div>
+                                        <div
+                                            class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
+                                            <x-form.model name="Edit Permisstion" id="hasRole{{ $item3->id }}"
+                                                class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
+
+                                                <x-slot name="button">
+                                                    Edite
+                                                </x-slot>
+
+                                                <form method="POST"
+                                                    action="{{ route('admin.config.permissions.update', ['permissions' => $item3->id]) }}">
+                                                    @csrf
+                                                    @method('PATCH')
+                                                    <x-form.modal-body>
+                                                        <x-form.panel>
+                                                            <x-form.label name="Selected" />
+
+                                                        </x-form.panel>
+                                                    </x-form.modal-body>
+
+                                                    <!-- Modal footer -->
+                                                    <div class="modal-footer">
+                                                        <button type="submit" class="btn btn-success "
+                                                            data-bs-dismiss="modal">Edite</button>
+                                                    </div>
+                                                </form>
+
+                                            </x-form.model>
+                                        </div>
                                     </td>
                                 </tr>
                             @endforeach

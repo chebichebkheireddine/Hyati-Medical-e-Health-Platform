@@ -9,6 +9,8 @@ use Laravel\Sanctum\HasApiTokens;
 class Patient extends Model
 {
     use HasFactory, HasApiTokens;
+    protected $table = 'patients';
+    protected $primaryKey = 'healthId';
 
     // protected $timestamps = false;
 }
