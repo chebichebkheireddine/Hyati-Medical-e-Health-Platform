@@ -17,7 +17,7 @@ class GeneralMedicalRecordFactory extends Factory
     {
         return [
             //
-            'patientId' => $this->faker->numberBetween(1, 10),
+            'patientId' => 3,
             'medicalHistory' => $this->faker->text(100),
             'familyHistory' => $this->faker->text(100),
             'height' => $this->faker->randomFloat(2, 1, 2),

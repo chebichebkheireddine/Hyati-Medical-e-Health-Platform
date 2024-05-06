@@ -6,6 +6,11 @@ use App\Models\Apimodel\Patient;
 use App\Models\information\organisationtype;
 use App\Models\information\organization;
 use App\Models\information\organizationType;
+use App\Models\MedicalRecords\CurrentMedication;
+use App\Models\MedicalRecords\EmergencyContact;
+use App\Models\MedicalRecords\family;
+use App\Models\MedicalRecords\FamilyMember;
+use App\Models\MedicalRecords\GeneralMedicalRecord;
 use App\Models\Specialization;
 use App\Models\User;
 use Database\Factories\OrganizationTypeFactory;
@@ -102,5 +107,13 @@ class DatabaseSeeder extends Seeder
         // Orge
         organization::factory()->create();
         organizationType::factory()->create();
+        GeneralMedicalRecord::factory(1)->create();
+        FamilyMember::factory(2)->create();
+        EmergencyContact::factory(10)->create();
+        CurrentMedication::factory(1)->create();
+        family::factory()->create(["name" => 'father']);
+        family::factory()->create(["name" => 'mother']);
+        family::factory()->create(["name" => 'brother']);
+        family::factory()->create(["name" => 'sisters']);
     }
 }

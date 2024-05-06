@@ -9,11 +9,17 @@ use Illuminate\Database\Eloquent\Model;
 class FamilyMember extends Model
 {
     use HasFactory;
+
     protected $table = 'familyMembers';
     protected $prymaryKey = 'id';
-    public function famly()
+    public $timestamps = false;
+    public function patients()
     {
         return $this->belongsTo(Patient::class, 'patientId', 'id');
+    }
+    public function family()
+    {
+        return $this->belongsTo(family::class, 'memberType', 'id');
     }
     public function memberHealth()
     {

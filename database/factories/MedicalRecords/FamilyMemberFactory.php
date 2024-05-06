@@ -2,6 +2,7 @@
 
 namespace Database\Factories\MedicalRecords;
 
+use App\Models\MedicalRecords\FamilyMember;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
 class FamilyMemberFactory extends Factory
@@ -11,10 +12,15 @@ class FamilyMemberFactory extends Factory
      *
      * @return array
      */
+    protected $model = FamilyMember::class;
     public function definition()
     {
         return [
             //
+            'memberType' => 1,
+            'patientId' => 3,
+            'memberHealthId' => $this->faker->numberBetween(1, 10),
+
         ];
     }
 }

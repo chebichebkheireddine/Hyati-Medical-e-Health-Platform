@@ -12,11 +12,11 @@ class CurrentMedication extends Model
     protected $prymaryKey = 'id';
     public function currentMedicationGeneralMedicalRecords()
     {
-        return $this->belongsTo(GeneralMedicalRecord::class, 'patientId', 'id');
+        return $this->belongsTo(GeneralMedicalRecord::class, 'patientId', 'patientId');
     }
     public function currentMedicationConsultationRecords()
     {
-        return $this->belongsTo(ConsultationRecord::class, 'patientId', 'id');
+        return $this->belongsTo(ConsultationRecord::class, 'patientId', 'patientId');
     }
     public function currentMedicationDrugs()
     {

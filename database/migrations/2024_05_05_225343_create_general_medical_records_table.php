@@ -24,24 +24,27 @@ class CreateGeneralMedicalRecordsTable extends Migration
             $table->double('diastolicBloodPressure');
             $table->double('systolicBloodPressure');
             $table->string('allergies');
-
-
             $table->timestamp('lastUpdateDate');
             $table->boolean('vitality');
             $table->timestamps();
         });
         Schema::create('familyMembers', function (Blueprint $table) {
             $table->id();
-            $table->string('memberType');
+            $table->foreignId('memberType');
             $table->foreignId('patientId');
-            $table->foreignId('memberHealthId');
-            $table->string('medicalHistory');
+            $table->foreignId('memberHealthId')->nullable();
+            
+        });
+        Schema::create('Typefamilys', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
         });
         Schema::create('emergencyContacts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('patientId');
             $table->string('name');
             $table->string('phoneNumber');
+            $table->timestamps();
         });
         Schema::create('consultationRecords', function (Blueprint $table) {
             $table->id();
@@ -111,7 +114,6 @@ class CreateGeneralMedicalRecordsTable extends Migration
             $table->id();
             $table->foreignId('patientId');
             $table->foreignId('drugId');
-
             $table->double('dosage');
             $table->integer('frequency');
             $table->date('startDate');
@@ -160,5 +162,6 @@ class CreateGeneralMedicalRecordsTable extends Migration
         Schema::dropIfExists('vaccinations');
         Schema::dropIfExists('currentMedications');
         Schema::dropIfExists('drugs');
+        Schema::dropIfExists('Typefamilys');
     }
 }
