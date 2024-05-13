@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'doctors',
         ],
+        'api' => [
+            'driver' => 'jwt',
+            'provider' => 'patients',
+        ],
     ],
     // ##TODO
     /*
@@ -71,6 +75,10 @@ return [
         'doctors' => [
             'driver' => 'eloquent',
             'model' => App\Models\Doctor::class,
+        ],
+        'patients' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Apimodel\Patient::class,
         ],
 
         // 'users' => [
@@ -104,6 +112,12 @@ return [
         'doctors' => [
             'provider' => 'doctors',
             'table' => 'password_doctor_resets',
+            'expire' => 60,
+            'throttle' => 60,
+        ],
+        'patients' => [
+            'provider' => 'patients',
+            'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],

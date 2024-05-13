@@ -3,9 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\Apimodel\Patient;
-use App\Models\information\organisationtype;
-use App\Models\information\organization;
-use App\Models\information\organizationType;
+
 use App\Models\MedicalRecords\CurrentMedication;
 use App\Models\MedicalRecords\EmergencyContact;
 use App\Models\MedicalRecords\family;
@@ -13,7 +11,7 @@ use App\Models\MedicalRecords\FamilyMember;
 use App\Models\MedicalRecords\GeneralMedicalRecord;
 use App\Models\Specialization;
 use App\Models\User;
-use Database\Factories\OrganizationTypeFactory;
+
 use Illuminate\Database\Seeder;
 use Spatie\Permission\Models\Permission;
 use Spatie\Permission\Models\Role;
@@ -105,8 +103,7 @@ class DatabaseSeeder extends Seeder
 
         Patient::factory(10)->create();
         // Orge
-        organization::factory()->create();
-        organizationType::factory()->create();
+
         GeneralMedicalRecord::factory(1)->create();
         FamilyMember::factory(2)->create();
         EmergencyContact::factory(10)->create();

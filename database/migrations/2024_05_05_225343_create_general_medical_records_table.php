@@ -33,7 +33,6 @@ class CreateGeneralMedicalRecordsTable extends Migration
             $table->foreignId('memberType');
             $table->foreignId('patientId');
             $table->foreignId('memberHealthId')->nullable();
-            
         });
         Schema::create('Typefamilys', function (Blueprint $table) {
             $table->id();

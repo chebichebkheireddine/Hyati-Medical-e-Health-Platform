@@ -835,10 +835,6 @@ video {
     display: table-row;
   }
 
-  .lg\:w-40 {
-    width: 10rem;
-  }
-
   .lg\:w-auto {
     width: auto;
   }

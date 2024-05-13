@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\MedicalRecord\CurrentMedicationController;
 use App\Http\Controllers\API\MedicalRecord\famelyController;
 use App\Http\Controllers\API\MedicalRecord\FamilyMemberController;
@@ -23,8 +24,14 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
+
+Route::post('login', [AuthController::class, 'login']);
+Route::post('register', [AuthController::class, 'register']);
+
+Route::middleware('auth:api')->group(function () {
+    Route::post('logout', [AuthController::class, 'logout']);
+
+    Route::post('user', [AuthController::class, 'patients']);
 });
 
 
@@ -50,7 +57,7 @@ Route::post('/medicalRecord/CurrentMedication/{id}', [CurrentMedicationControlle
 Route::put('/medicalRecord/CurrentMedication/{id}', [CurrentMedicationController::class, 'update']);
 Route::delete('/medicalRecord/CurrentMedication/{id}', [CurrentMedicationController::class, 'destroy']);
 Route::put('/medicalRecord/CurrentMedication/changeState/{id}', [CurrentMedicationController::class, 'changeState']);
-// Create a family 
+// Create a family
 Route::get('/medicalRecord/family/{name}', [famelyController::class, 'show']);
 Route::post('/medicalRecord/family', [famelyController::class, 'store']);
 Route::put('/medicalRecord/family/{name}', [famelyController::class, 'update']);
