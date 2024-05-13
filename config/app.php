@@ -176,7 +176,9 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
-        // Kerait\Laravel\Fierebase\ServiceProvider::class,
+        // Kerait\Laravel\Fierebase\::class,
+        // Kerait\Laravel\Firebase\ServiceProvider::class,
+
 
     ],
 

@@ -40,6 +40,7 @@ Route::get('/admin', function () {
 })->name('admin.dashboard');
 // This is for Test
 Route::get('/admin/test', [TestController::class, 'index'])->name('admin.test');
+Route::post('/admin/test/add', [TestController::class, 'store'])->name('admin.test.add');
 // List of Configaraton System
 Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
 Route::post('admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');

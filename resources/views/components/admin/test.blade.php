@@ -15,7 +15,7 @@
                             Add
 
                         </x-slot>
-                        <form method="Post" action="#">
+                        <form method="Post" action="{{ route('admin.test.add') }}">
                             @csrf
 
                             <x-form.modal-body>
