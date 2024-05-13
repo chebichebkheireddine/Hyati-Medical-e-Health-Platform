@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+
 use App\Models\Doctor;
 use Spatie\Permission\Models\Role;
 
@@ -11,8 +12,9 @@ use App\Models\Wilaya;
 use Illuminate\Http\Request;
 use Kreait\Firebase\Contract\Database;
 
-class TestController extends Controller
+class PatientController extends Controller
 {
+    //
     //
     public function __construct(Database $database)
     {
@@ -44,6 +46,6 @@ class TestController extends Controller
 
         $postRef = $this->database->getReference($this->tablename)->push($postData);
 
-        return response()->json(['success' => true]);
+        return redirect()->route('admin.patients.index')->with('success', 'Patient ' . $request->name . 'created successfully.');
     }
 }

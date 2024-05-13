@@ -54,11 +54,11 @@
 
                 </li>
                 <li class="sidebar-item">
-                    <a class="sidebar-link" href="{{ route('admin.test') }}" aria-expanded="false">
+                    <a class="sidebar-link" href="{{ route('admin.patients.index') }}" aria-expanded="false">
                         <span>
                             <i class="fa-solid fa-user-doctor"></i>
                         </span>
-                        <span class="hide-menu">Test Panel </span>
+                        <span class="hide-menu">Patient Manengement</span>
                     </a>
                 </li>
 

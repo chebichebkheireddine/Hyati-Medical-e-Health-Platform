@@ -32,9 +32,9 @@
             @elseif (Route::currentRouteName() == 'admin.config.permmistion.index')
                 <x-admin.permmistion.index :permissions="$permissions" :roles="$roles" :wilaya="$wilaya">
                 </x-admin.permmistion.index>
-            @elseif (Route::currentRouteName() == 'admin.test')
-                <x-admin.test>
-                </x-admin.test>
+            @elseif (Route::currentRouteName() == 'admin.patients.index')
+                <x-admin.patient.index>
+                </x-admin.patient.index>
             @endif
         </div>
     </div>
