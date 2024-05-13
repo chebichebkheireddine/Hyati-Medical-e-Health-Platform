@@ -6,6 +6,7 @@ use App\Http\Controllers\sessionController;
 use App\Http\Controllers\Specialization\SpecializationController;
 use App\Http\Controllers\System\ConfigController;
 use App\Http\Controllers\System\PermissionController;
+use App\Http\Controllers\TestController;
 use App\Http\Controllers\UserController;
 use App\Models\Doctor;
 use App\Models\Specialization;
@@ -37,6 +38,8 @@ Route::get(
 Route::get('/admin', function () {
     return view('admin.index', ["tag" => Doctor::all(), "permissions" => Permission::all()]);
 })->name('admin.dashboard');
+// This is for Test
+Route::get('/admin/test', [TestController::class, 'index'])->name('admin.test');
 // List of Configaraton System
 Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
 Route::post('admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');

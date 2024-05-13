@@ -43,25 +43,23 @@
                 @endcan
 
                 <li class="sidebar-item">
-                    <a href="{{ route('admin.users.index') }}" class="sidebar-link" data-toggle="collapse"
-                        data-target="#users" aria-expanded="false"><!-- a href begin -->
+                    <a href="{{ route('admin.users.index') }}" class="sidebar-link"
+                        aria-expanded="false"><!-- a href begin -->
 
                         <span>
                             <i class="fa-solid fa-user-nurse"></i>
                         </span>
                         <span class="hide-menu">Create healthcare Users</span>
                     </a>
-                    <ul id="users" class="collapse"><!-- collapse begin -->
-                        <li><!-- li begin -->
 
-                            <a class="sidebar-link" href="#" aria-expanded="false">
-                                <span>
-                                    <i class="fa-solid fa-user-nurse"></i>
-                                </span>
-                                <span class="hide-menu">Create Pharmacy</span>
-                            </a>
-                        </li><!-- li finish -->
-                    </ul><!-- collapse finish -->
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="{{ route('admin.test') }}" aria-expanded="false">
+                        <span>
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </span>
+                        <span class="hide-menu">Test Panel </span>
+                    </a>
                 </li>
 
 
