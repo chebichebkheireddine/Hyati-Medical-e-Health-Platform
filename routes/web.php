@@ -1,6 +1,8 @@
 <?php
 
 // use App\Http\Controllers\API\PatientController;
+
+use App\Http\Controllers\AuthControllerF;
 use App\Http\Controllers\Doctor\DoctorManageController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RoleController;
@@ -42,7 +44,8 @@ Route::get('/admin', function () {
 })->name('admin.dashboard');
 // This is for Patient information
 Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patients.index');
-Route::post('/admin/patient/add', [PatientController::class, 'store'])->name('admin.patient.add');
+// Route::post('/admin/patient/add', [PatientController::class, 'store'])->name('admin.patient.add');
+Route::post('/admin/patient/add', [AuthControllerF::class, 'store'])->name('admin.patient.add');
 // List of Configaraton System
 Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
 Route::post('admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');

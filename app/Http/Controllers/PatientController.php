@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-
 use App\Models\Doctor;
 use Spatie\Permission\Models\Role;
 
@@ -14,7 +13,6 @@ use Kreait\Firebase\Contract\Database;
 
 class PatientController extends Controller
 {
-    //
     //
     public function __construct(Database $database)
     {
@@ -36,7 +34,7 @@ class PatientController extends Controller
     {
         $request->validate([
             'name' => 'required|string|max:255',
-            // 'email' => 'required|email|max:255',
+            'email' => 'required|email|max:255',
         ]);
 
         $postData = [
@@ -46,6 +44,6 @@ class PatientController extends Controller
 
         $postRef = $this->database->getReference($this->tablename)->push($postData);
 
-        return redirect()->route('admin.patients.index')->with('success', 'Patient ' . $request->name . 'created successfully.');
+        return redirect()->route('admin.test')->with('success', 'Patient ' . $request->name . 'created successfully.');
     }
 }

@@ -24,13 +24,13 @@
                             <x-form.modal-body>
                                 <x-form.panel>
                                     <x-form.label name="name" />
-                                    <x-form.input name="name" />
+                                    <x-form.input name="email" type="email" />
                                 </x-form.panel>
                             </x-form.modal-body>
                             <x-form.modal-body>
                                 <x-form.panel>
-                                    <x-form.label name="Email" />
-                                    <x-form.input name="test" />
+                                    <x-form.label name="Password" />
+                                    <x-form.input name="Password" />
                                 </x-form.panel>
                             </x-form.modal-body>
                             <!-- Modal footer -->
