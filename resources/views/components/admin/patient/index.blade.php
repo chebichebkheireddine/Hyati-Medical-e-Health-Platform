@@ -8,6 +8,10 @@
                     <div class="alert alert-success mt-4">
                         {{ session('success') }}
                     </div>
+                @elseif (session('error'))
+                    <div class="alert alert-danger mt-4">
+                        {{ session('error') }}
+                    </div>
                 @endif
                 <div class="relative w-full px-4 max-w-full  ">
                     {{-- this is temolet to add user --}}
@@ -23,14 +27,20 @@
 
                             <x-form.modal-body>
                                 <x-form.panel>
-                                    <x-form.label name="name" />
+                                    <x-form.label name="Name" />
+                                    <x-form.input name="name" />
+                                </x-form.panel>
+                            </x-form.modal-body>
+                            <x-form.modal-body>
+                                <x-form.panel>
+                                    <x-form.label name="email" />
                                     <x-form.input name="email" type="email" />
                                 </x-form.panel>
                             </x-form.modal-body>
                             <x-form.modal-body>
                                 <x-form.panel>
                                     <x-form.label name="Password" />
-                                    <x-form.input name="Password" />
+                                    <x-form.input name="password" />
                                 </x-form.panel>
                             </x-form.modal-body>
                             <!-- Modal footer -->

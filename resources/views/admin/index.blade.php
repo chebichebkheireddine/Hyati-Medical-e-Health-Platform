@@ -23,7 +23,7 @@
                 <x-admin.config :wilaya="$wilaya" :typeOrg="$typeOrg">
                 </x-admin.config>
             @elseif (Route::currentRouteName() == 'admin.doctor.index')
-                <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors" :wilaya="$wilaya">
+                <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors" :wilaya="$wilaya" :organization="$organization">
                 </x-admin.doctor.index>
             @elseif (Route::currentRouteName() == 'admin.users.index')
                 <x-admin.users.index :users="$users" :organization="$organization" :roles="$roles"

@@ -1,13 +1,22 @@
-@props(['specializations', 'doctors', 'wilaya'])
+@props(['specializations', 'doctors', 'wilaya', 'organization'])
 <div class="card">
     <div class="card-body rounded-xl ">
         <div class="flex flex-wrap items-center">
             <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-left">
                 <h2 class="card-title fw-semibold mb-4 ">Doctor Information</h2>
                 <p class=" mb-3">This Page for Add doctor To the system</p>
+                @if (session('success'))
+                    <div class="alert alert-success mt-4">
+                        {{ session('success') }}
+                    </div>
+                @elseif (session('error'))
+                    <div class="alert alert-danger mt-4">
+                        {{ session('error') }}
+                    </div>
+                @endif
             </div>
             <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
-                <x-form.model name="add doctor" id="doctidq1" size="modal-lg">
+                <x-form.model name="add doctor" id="doctidq1" size="modal-xl">
 
                     <x-slot name="button">
                         <i class="ti ti-user fs-6">Add</i>
@@ -16,7 +25,7 @@
                     <form method="POST" action="{{ route('admin.doctor.create') }}">
                         @csrf
                         <div class="row">
-                            <div class="col-md-6">
+                            <div class="col-4">
                                 {{--  --}}
                                 <x-form.modal-body>
                                     <x-form.label name="specialization"></x-form.label>
@@ -31,17 +40,28 @@
                                 {{-- {{--  --}}
                                 <x-form.modal-body>
                                     <x-form.panel>
-                                        <x-form.label name="name" />
-                                        <x-form.input name="name" />
+                                        <x-form.label name="User Name" />
+                                        <x-form.input name="username" />
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
                                     <x-form.panel>
-                                        <x-form.label name="user Name" />
-                                        <x-form.input name="user_name" />
+                                        <x-form.label name="Last Name" />
+                                        <x-form.input name="lastName" />
+                                    </x-form.panel>
+                                </x-form.modal-body>
+                                <x-form.modal-body>
+                                    <x-form.panel>
+                                        <x-form.label name="First Name" />
+                                        <x-form.input name="firstName" />
                                     </x-form.panel>
                                 </x-form.modal-body>
 
+
+
+
+                            </div>
+                            <div class="col-4">
                                 <x-form.modal-body>
                                     <x-form.panel>
                                         <x-form.label name="wilaya" />
@@ -62,9 +82,28 @@
                                         </select>
                                     </x-form.panel>
                                 </x-form.modal-body>
+                                {{-- Oganzation --}}
+                                <x-form.modal-body>
+                                    <x-form.panel>
+                                        <x-form.label name="oganization"></x-form.label>
+                                        <select name="organization" id="oganization" class="form-select">
 
+                                            @foreach ($organization as $org)
+                                                <option value="{{ $org->org_id }}">
+                                                    {{ $org->org_name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </x-form.panel>
+                                </x-form.modal-body>
+                                <x-form.modal-body>
+                                    <x-form.panel>
+                                        <x-form.label name="National ID" />
+                                        <x-form.input name="nationalId" />
+                                    </x-form.panel>
+                                </x-form.modal-body>
                             </div>
-                            <div class="col-md-6">
+                            <div class="col-4">
+
                                 <x-form.modal-body>
                                     <x-form.panel>
                                         <x-form.label name="email" />
@@ -73,8 +112,8 @@
                                 </x-form.modal-body>
                                 <x-form.modal-body>
                                     <x-form.panel>
-                                        <x-form.label name="Phon Number" />
-                                        <x-form.input name="phone_number" />
+                                        <x-form.label name="Phone" />
+                                        <x-form.input name="phone" />
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
@@ -90,6 +129,7 @@
                                     </x-form.panel>
                                 </x-form.modal-body>
                             </div>
+
                         </div>
                         <!-- Modal footer -->
                         <div class="modal-footer">
@@ -127,7 +167,7 @@
                     @foreach ($doctors as $doctor)
                         <tr
                             class="bg-white lg:hover:bg-gray-100 flex lg:table-row flex-row lg:flex-row flex-wrap lg:flex-no-wrap mb-10 lg:mb-0">
-                            <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->name }}</td>
+                            <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->firstName }}</td>
                             <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->email }}</td>
                             <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->phone_number }}</td>
                             <td class="p-3 text-gray-800 text-center truncate">{{ $doctor->address }}</td>
@@ -142,7 +182,7 @@
                                 {{-- TOOD:create Function  --}}
                                 <div
                                     class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
-                                    <x-form.model name="Edit Doctor" id="editDoc{{ $doctor->id }}"
+                                    <x-form.model name="Edit Doctor" id="editDoc{{ $doctor->sysId }}"
                                         class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400">
 
                                         <x-slot name="button">
@@ -150,7 +190,7 @@
                                         </x-slot>
 
                                         <form method="post"
-                                            action="{{ route('admin.doctor.update', ['doctor' => $doctor->id]) }}">
+                                            action="{{ route('admin.doctor.update', ['doctor' => $doctor->sysId]) }}">
                                             @csrf
                                             @method('patch')
                                             <div class="row">
@@ -160,7 +200,7 @@
                                                         <script></script>
                                                         <x-form.label name="specialization"></x-form.label>
                                                         <select name="specializations[]"
-                                                            id="specializationedit{{ $doctor->id }}" multiple>
+                                                            id="specializationedit{{ $doctor->sysId }}" multiple>
                                                             @foreach ($specializations as $sp)
                                                                 <option value="{{ $sp->specialization_id }}">
                                                                     {{-- {{ old(value, default) }} --}}
@@ -174,13 +214,13 @@
                                                     <x-form.modal-body>
                                                         <x-form.panel>
                                                             <x-form.label name="name" />
-                                                            <x-form.input name="name" :value="old('name', $doctor->name)" />
+                                                            <x-form.input name="name" :value="old('name', $doctor->firstName)" />
                                                         </x-form.panel>
                                                     </x-form.modal-body>
                                                     <x-form.modal-body>
                                                         <x-form.panel>
                                                             <x-form.label name="user Name" />
-                                                            <x-form.input name="user_name" :value="old('user_name', $doctor->user_name)" />
+                                                            <x-form.input name="user_name" :value="old('user_name', $doctor->username)" />
                                                         </x-form.panel>
                                                     </x-form.modal-body>
                                                     <x-form.modal-body>
@@ -196,7 +236,7 @@
                                                     <x-form.modal-body>
                                                         <x-form.panel>
                                                             <x-form.label name="Phon Number" />
-                                                            <x-form.input name="phone_number" :value="old('phone_number', $doctor->phone_number)" />
+                                                            <x-form.input name="phone" :value="old('phone', $doctor->phone)" />
                                                         </x-form.panel>
                                                     </x-form.modal-body>
                                                     <x-form.modal-body>
@@ -228,7 +268,7 @@
                                 <div
                                     class="w-full lg:w-auto p-2 text-gray-800 text-center  text-center block lg:table-cell relative lg:static">
                                     <form method="post"
-                                        action="{{ route('admin.doctor.delete', ['doctor' => $doctor->id]) }}">
+                                        action="{{ route('admin.doctor.delete', ['doctor' => $doctor->sysId]) }}">
                                         @csrf
                                         @method('DELETE')
 

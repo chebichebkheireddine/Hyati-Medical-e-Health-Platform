@@ -21,6 +21,7 @@ class Doctor extends Authenticatable
 
     ];
     protected $table = "doctors";
+    protected $primaryKey = 'sysId';
     public $timestamps = false;
     public function specialization()
     {

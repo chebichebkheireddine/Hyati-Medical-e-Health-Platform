@@ -23,7 +23,7 @@ class CreateDoctorSpecializationsTable extends Migration
 
         // Table of Specialization
         Schema::create('doctor_specializations', function (Blueprint $table) {
-            $table->foreignId('doctor_id')->constrained('doctors', 'id')->cascadeOnDelete();
+            $table->foreignId('doctor_id')->constrained('doctors', 'sysId')->cascadeOnDelete();
             $table->foreignId('specialization_id')->constrained('specializations', 'specialization_id')->cascadeOnDelete();
             $table->primary(['doctor_id', 'specialization_id']);
         });
