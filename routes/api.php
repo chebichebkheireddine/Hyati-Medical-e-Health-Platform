@@ -45,7 +45,7 @@ Route::put('/wilayas/{id}', [WilayaController::class, 'edit']);
 // This route API for communes in algeria
 Route::get('/communes', [CommuneController::class, 'index']);
 Route::post('/communes', [CommuneController::class, 'store']);
-Route::post('/communesW/{id}', [CommuneController::class, 'showcommun']);
+Route::get('/communes/{id}', [CommuneController::class, 'show']);
 Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::get('/test/{id}', [WilayaController::class, "show"]);
 });

@@ -54,7 +54,7 @@ class CommuneController extends Controller
     }
     public function showcommun($id)
     {
-        $commune = Wilaya::find($id);
-        return response()->json($commune->communes);
+        $commune = Commune::find($id);
+        return response()->json($commune);
     }
 }

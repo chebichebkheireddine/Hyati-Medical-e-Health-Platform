@@ -38,13 +38,9 @@
             @endif
         </div>
     </div>
-    <x-slot name="tag_item">
-
-        @foreach ($permissions as $itemp)
-            new MultiSelectTag('permissionedit{{ $itemp->id }}')
-        @endforeach
+    <x-slot name="tagitem">
         @foreach ($tag as $item)
-            new MultiSelectTag('specializationedit{{ $item->id }}')
+            new MultiSelectTag('specializationedit{{ $item->sysId }}')
         @endforeach
     </x-slot>
     <x-slot name="tag_permission">
