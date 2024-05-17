@@ -13,15 +13,11 @@ class Doctor extends Authenticatable
 {
     use HasApiTokens, HasFactory, Notifiable;
 
-    protected $guarded = [];
-    // protected $fillable = ['name', 'user_name', 'email', 'password', 'phone_number', 'address'];
-
-    protected $hidden = [
-        'password',
-
-    ];
+    protected $guard = 'doctor';
     protected $table = "doctors";
     protected $primaryKey = 'sysId';
+    
+
     public $timestamps = false;
     public function specialization()
     {

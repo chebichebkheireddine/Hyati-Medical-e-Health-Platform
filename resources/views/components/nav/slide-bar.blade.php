@@ -31,16 +31,15 @@
                         </a>
                     </li>
                 @endcan
-                @can('create-doctor')
-                    <li class="sidebar-item">
-                        <a class="sidebar-link" href="{{ route('admin.doctor.index') }}" aria-expanded="false">
-                            <span>
-                                <i class="fa-solid fa-user-doctor"></i>
-                            </span>
-                            <span class="hide-menu">Doctor Panel</span>
-                        </a>
-                    </li>
-                @endcan
+
+                <li class="sidebar-item {{ Route::currentRouteName() == 'admin.doctor.index' ? 'selected' : '' }}">
+                    <a class="sidebar-link" href="{{ route('admin.healthcare.index') }}" aria-expanded="false">
+                        <span>
+                            <i class="fa-solid fa-user-doctor"></i>
+                        </span>
+                        <span class="hide-menu"> Healthcare Mangement</span>
+                    </a>
+                </li>
 
                 <li class="sidebar-item">
                     <a href="{{ route('admin.users.index') }}" class="sidebar-link"

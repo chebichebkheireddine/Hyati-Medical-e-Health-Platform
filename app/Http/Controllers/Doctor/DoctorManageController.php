@@ -12,7 +12,7 @@ use App\Models\Wilaya;
 use Illuminate\Support\Facades\DB;
 use Kreait\Firebase\Factory;
 use Kreait\Laravel\Firebase\Facades\Firebase;
-use App\Models\Document;
+use Illuminate\Support\Facades\Hash;
 
 class DoctorManageController extends Controller
 {
@@ -77,7 +77,7 @@ class DoctorManageController extends Controller
                 'lastName' => $attributes['lastName'],
                 'username' => $attributes['username'],
                 'email' => $attributes['email'],
-                'password' =>  bcrypt($attributes['password']),
+                'password' =>  Hash::make($attributes['password']),
                 'phone_number' => $attributes['phone'],
                 'address' => $attributes['address'],
                 'id_wilaya' => $attributes['wilayaId'],

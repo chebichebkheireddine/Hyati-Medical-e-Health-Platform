@@ -4,6 +4,7 @@
 
 use App\Http\Controllers\AuthControllerF;
 use App\Http\Controllers\Doctor\DoctorManageController;
+use App\Http\Controllers\Heathcare\HealthcareController;
 use App\Http\Controllers\PatientController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\sessionController;
@@ -16,6 +17,7 @@ use App\Models\Doctor;
 use App\Models\Specialization;
 use App\Models\System\Permission;
 use App\Models\User;
+use Facade\Ignition\Http\Controllers\HealthCheckController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -46,7 +48,6 @@ Route::get('/admin', function () {
 Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patients.index');
 // Route::post('/admin/patient/add', [PatientController::class, 'store'])->name('admin.patient.add');
 Route::post('/admin/patient/add', [AuthControllerF::class, 'store'])->name('admin.patient.add');
-Route::get('/test/q', [AuthControllerF::class, 'createFirestoreDocument']);
 // List of Configaraton System
 Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
 Route::post('admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');
@@ -63,18 +64,18 @@ Route::post('admin/config/role/add', [RoleController::class, 'create'])->name('a
 Route::patch('admin/config/role/edit/{roles}', [RoleController::class, 'update'])->name('admin.config.role.update');
 Route::delete('admin/config/role/delete/{roles}', [RoleController::class, 'delete'])->name('admin.config.role.delete');
 
-
+Route::get('admin/healthcare', [HealthcareController::class, "index"])->name('admin.healthcare.index');
 
 // Doctor controler
-Route::get("admin/doctor", [DoctorManageController::class, 'index'])
+Route::get("admin/healthcare/doctor", [DoctorManageController::class, 'index'])
     ->name('admin.doctor.index');
 
-Route::post("admin/doctor/add", [DoctorManageController::class, 'create'])
+Route::post("admin/healthcare/doctor/add", [DoctorManageController::class, 'create'])
     ->name("admin.doctor.create");
 
-Route::delete("admin/doctor/delete/{doctor}", [DoctorManageController::class, 'delete'])
+Route::delete("admin/healthcare/doctor/delete/{doctor}", [DoctorManageController::class, 'delete'])
     ->name("admin.doctor.delete");
-Route::patch("admin/doctor/update/{doctor}", [DoctorManageController::class, 'update'])
+Route::patch("admin/healthcare/doctor/update/{doctor}", [DoctorManageController::class, 'update'])
     ->name("admin.doctor.update");
 
 //Users controller
@@ -102,11 +103,11 @@ Route::post("/register/admin", [SessionController::class, 'store'])
     ->middleware('guest')->name('Register.admin');
 
 // logout the users from The nav
-Route::get("/logout", [SessionController::class, 'destroy'])
+Route::get("admin/logout", [SessionController::class, 'destroy'])
     ->middleware('auth')->name('logout');
 
 // login page
-Route::get("/login/admin", [SessionController::class, 'display'])
+Route::get("admin/login", [SessionController::class, 'display'])
     ->middleware('guest')->name('admin.login');
-Route::post("/login/admin", [sessionController::class, 'login'])->middleware('guest')
+Route::post("admin/login", [sessionController::class, 'login'])->middleware('guest')
     ->name('admin.login_post');

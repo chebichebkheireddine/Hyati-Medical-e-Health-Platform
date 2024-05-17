@@ -25,6 +25,9 @@
             @elseif (Route::currentRouteName() == 'admin.doctor.index')
                 <x-admin.doctor.index :specializations="$specializations" :doctors="$doctors" :wilaya="$wilaya" :organization="$organization">
                 </x-admin.doctor.index>
+            @elseif (Route::currentRouteName() == 'admin.healthcare.index')
+                {{--  --}}
+                <x-admin.index></x-admin.index>
             @elseif (Route::currentRouteName() == 'admin.users.index')
                 <x-admin.users.index :users="$users" :organization="$organization" :roles="$roles"
                     :wilaya="$wilaya"></x-admin.users.index>

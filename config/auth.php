@@ -68,6 +68,7 @@ return [
     */
 
     'providers' => [
+
         'users' => [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
@@ -76,10 +77,7 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\Doctor::class,
         ],
-        'patients' => [
-            'driver' => 'eloquent',
-            'model' => App\Models\Apimodel\Patient::class,
-        ],
+
 
         // 'users' => [
         //     'driver' => 'database',
@@ -111,16 +109,11 @@ return [
         ],
         'doctors' => [
             'provider' => 'doctors',
-            'table' => 'password_doctor_resets',
-            'expire' => 60,
-            'throttle' => 60,
-        ],
-        'patients' => [
-            'provider' => 'patients',
             'table' => 'password_resets',
             'expire' => 60,
             'throttle' => 60,
         ],
+
     ],
 
     /*

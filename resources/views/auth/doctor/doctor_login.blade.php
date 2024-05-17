@@ -12,7 +12,7 @@
                             </div>
 
 
-                            <form method="Post" action="#">
+                            <form method="Post" action="{{ route('admin.doctor.login') }}">
                                 @csrf
                                 <x-form.panel>
                                     <x-form.label name="email"></x-form.label>

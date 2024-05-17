@@ -21,21 +21,21 @@
                                             <div
                                                 class="col-4 d-flex flex-column align-items-center justify-content-center py-11">
 
-                                                <img src="./assets/images/icon/docteur.png"
-                                                    class="bg-blue-300 rounded-full " alt="" width="100">
                                                 <a href="{{ route('doctor.login') }}"
                                                     class="text-blue-400 text-center font-semibold text-3xl">
-                                                    Doctor
+
+                                                    <img src="./assets/images/icon/docteur.png"
+                                                        class="bg-blue-300 rounded-full " alt="" width="100">
                                                 </a>
 
                                             </div>
                                             <div
                                                 class="col-4 d-flex flex-column align-items-center justify-content-center  py-11">
-                                                <img src="./assets/images/icon/management.png"
-                                                    class="bg-blue-300 rounded-full  " alt=""width="100px">
+
                                                 <a href="{{ route('admin.login') }}"
                                                     class="text-blue-400 text-lg-center font-semibold text-3xl">
-                                                    Manager
+                                                    <img src="./assets/images/icon/management.png"
+                                                        class="bg-blue-300 rounded-full  " alt=""width="100px">
                                                 </a>
                                             </div>
                                             <div

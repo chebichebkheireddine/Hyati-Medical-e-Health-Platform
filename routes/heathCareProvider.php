@@ -1,6 +1,6 @@
 <?php
 
-use App\Http\Controllers\Doctor\SessionController;
+use App\Http\Controllers\Doctor\SessionDoctorController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 // Doctor Routes
@@ -14,7 +14,12 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-//Doctor ro
+//Doctor route to do the code
+Route::get("/hethecare/doctor", function () {
+    return view("doctor.index");
+})->name("heathcar.doctor.index");
+
 // This is main page
-Route::get("/login/doctor", [SessionController::class, 'index'])->name("doctor.login");
+Route::get("doctor/login", [SessionDoctorController::class, 'index'])->name("doctor.login");
 // Route::post("admin/doctor/index", [UserController::class, "create"])->name("admin.doctor.create");
+Route::post("doctor/login", [SessionDoctorController::class, 'login'])->name("admin.doctor.login");

@@ -16,9 +16,11 @@
                 @endif
 
             </div>
-            <div class= "flex-col mb-1 w-40">
+            <div class= "flex-col  h-25">
                 <form method="Post" action="#">
-                    <x-form.inputSherch name="search" icon="fa fa-magnifying-glass" />
+                    <div class="relative mx-auto text-gray-600">
+                        <x-form.input-sherch name="search" type="search" />
+                    </div>
                 </form>
             </div>
             <div class="flex-col ">
@@ -195,7 +197,7 @@
                                             class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap flex flex-col">
                                             <h1 class="text-sm font-medium text-gray-800  ">
                                                 @foreach ($doctor->specialization as $spec)
-                                                    {{ $spec->specialization_name . '/' }}
+                                                    {{ $spec->specialization_name . '-' }}
                                                 @endforeach
                                             </h1>
                                         </td>

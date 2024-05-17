@@ -32,7 +32,7 @@ class SessionController extends Controller
             'email' => 'required|email|exists:users,email',
             'password' => 'required|min:6|max:80'
         ]);
-        if (auth()->attempt($user)) {
+        if (auth('web')->attempt($user)) {
             // remove The attached session
             session()->regenerate();
             return redirect("/admin");
