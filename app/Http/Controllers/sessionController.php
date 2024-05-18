@@ -54,13 +54,13 @@ class SessionController extends Controller
         // $user['role_id'] = 0;
         $user['password'] = bcrypt($user['password']);
         $users = User::create($user);
-        auth()->login($users);
+        auth('web')->login($users);
         return redirect("admin");
     }
     // logout function
     public function destroy()
     {
-        auth()->logout();
+        auth('web')->logout();
         return redirect('/');
     }
 }

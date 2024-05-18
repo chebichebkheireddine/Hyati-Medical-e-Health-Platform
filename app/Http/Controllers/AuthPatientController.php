@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Hash;
 use Kreait\Firebase\Factory;
 use Kreait\Laravel\Firebase\Facades\Firebase;
 
-class AuthControllerF extends Controller
+class AuthPatientController extends Controller
 {
     protected $auth;
 

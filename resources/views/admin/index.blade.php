@@ -36,7 +36,7 @@
                 <x-admin.permmistion.index :permissions="$permissions" :roles="$roles" :wilaya="$wilaya">
                 </x-admin.permmistion.index>
             @elseif (Route::currentRouteName() == 'admin.patients.index')
-                <x-admin.patient.index>
+                <x-admin.patient.index :wilaya="$wilaya">
                 </x-admin.patient.index>
             @endif
         </div>

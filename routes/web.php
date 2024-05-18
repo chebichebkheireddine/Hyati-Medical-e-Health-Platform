@@ -19,6 +19,8 @@ use App\Models\System\Permission;
 use App\Models\User;
 use Facade\Ignition\Http\Controllers\HealthCheckController;
 use Illuminate\Support\Facades\Route;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -46,8 +48,7 @@ Route::get('/admin', function () {
 })->name('admin.dashboard');
 // This is for Patient information
 Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patients.index');
-// Route::post('/admin/patient/add', [PatientController::class, 'store'])->name('admin.patient.add');
-Route::post('/admin/patient/add', [AuthControllerF::class, 'store'])->name('admin.patient.add');
+Route::post('/admin/patient/add', [PatientController::class, 'store'])->name('admin.patient.add');
 // List of Configaraton System
 Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
 Route::post('admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');
@@ -103,11 +104,16 @@ Route::post("/register/admin", [SessionController::class, 'store'])
     ->middleware('guest')->name('Register.admin');
 
 // logout the users from The nav
-Route::get("admin/logout", [SessionController::class, 'destroy'])
-    ->middleware('auth')->name('logout');
+Route::get("admin/logout", [SessionController::class, 'destroy'])->name('admin.logout');
 
 // login page
 Route::get("admin/login", [SessionController::class, 'display'])
     ->middleware('guest')->name('admin.login');
 Route::post("admin/login", [sessionController::class, 'login'])->middleware('guest')
     ->name('admin.login_post');
+
+
+Route::get('admin/qrcode', function () {
+    $qr = QrCode::generate('Hyati Medical');
+    return view("qrcode", ['qr' => $qr]);
+});

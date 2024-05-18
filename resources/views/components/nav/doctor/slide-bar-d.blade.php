@@ -21,6 +21,23 @@
                     <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                     <span class="hide-menu">Doctor Control</span>
                 </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#" aria-expanded="false">
+                        <span>
+                            <i class="fa fa-user"></i>
+                        </span>
+                        <span class="hide-menu">My Profile</span>
+                    </a>
+                </li>
+                <li class="sidebar-item">
+                    <a class="sidebar-link" href="#" aria-expanded="false">
+                        <span>
+                            <i class="ti ti-layout-dashboard"></i>
+                        </span>
+                        <span class="hide-menu">cons</span>
+                    </a>
+                </li>
+
         </nav>
         <!-- End Sidebar navigation -->
     </div>

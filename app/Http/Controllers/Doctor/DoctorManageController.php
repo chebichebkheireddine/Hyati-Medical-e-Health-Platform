@@ -109,7 +109,7 @@ class DoctorManageController extends Controller
                 // $firestore = $this->firestore->withServiceAccount("D:\Laravel Project\Hyati_med\demo-hyati\key.json")->createFirestore();
                 $database = $this->firestore->database();
                 $collection = $database->collection('doctors')->document($uid);
-                $collection->set([
+                $collection->set(['doctorinformation' => [
                     'nationalId' => $attributes['nationalId'],
                     'orgId' => $attributes['organization'],
                     'firstName' => $attributes['firstName'],
@@ -121,7 +121,7 @@ class DoctorManageController extends Controller
                     'street' => $attributes['address'],
                     'town' => $wilaya->name,
                     'municipality' => $baldya->name,
-                ]);
+                ]]);
             }
         } catch (\Kreait\Firebase\Exception\FirebaseException $e) {
             return redirect()->route('admin.doctor.index')->with('error', 'Error creating doctor: ' . $e->getMessage());

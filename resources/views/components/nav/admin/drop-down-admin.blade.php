@@ -12,6 +12,6 @@
             <i class="ti ti-list-check fs-6"></i>
             <p class="mb-0 fs-3">My Task</p>
         </a>
-        <a href="{{ Route('logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+        <a href="{{ Route('admin.logout') }}" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
     </div>
 </div>

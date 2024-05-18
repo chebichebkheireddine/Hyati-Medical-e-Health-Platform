@@ -22,7 +22,7 @@
     <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
         <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
             <li class="nav-item">
-                <span class="nav-link nav-icon-hover">Welcome,{{ auth('doctor')->user()->firstName }}</span>
+                <span class="nav-link nav-icon-hover">Welcome,Dr{{ auth('doctor')->user()->firstName }}</span>
             </li>
 
             <li class="nav-item  dropdown ">
@@ -46,8 +46,8 @@
                 </div>
             </li>
             <li class="nav-item dropdown">
-                <x-nav.admin.linkdropdownAdmin></x-nav.admin.linkdropdownAdmin>
-                <x-nav.admin.dropDownAdmin></x-nav.admin.dropDownAdmin>
+                <x-nav.doctor.droppdown-admin></x-nav.doctor.droppdown-admin>
+                <x-nav.doctor.link-drop-down-admin></x-nav.doctor.dropDownAdmin>
             </li>
 
         </ul>

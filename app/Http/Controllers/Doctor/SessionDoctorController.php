@@ -22,11 +22,17 @@ class SessionDoctorController extends Controller
         ]);
 
         if (auth('doctor')->attempt($credentials)) {
+            session()->regenerate();
             return redirect("/hethecare/doctor");
         } else {
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
             ]);
         }
+    }
+    public function destroy()
+    {
+        auth('doctor')->logout();
+        return redirect('/');
     }
 }
