@@ -16,7 +16,6 @@ class CreateUsersTable extends Migration
         Schema::create('users', function (Blueprint $table) {
             $table->id("sysId");
             $table->foreignId('orgID')->default(0);
-
             $table->integer('nationalID');
             $table->string('firstName');
             $table->string('lastname');
@@ -28,6 +27,7 @@ class CreateUsersTable extends Migration
             $table->foreignId('id_wilaya');
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');
+            $table->longText('picture')->nullable();
             $table->rememberToken();
             $table->timestamps();
         });

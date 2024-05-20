@@ -28,8 +28,11 @@
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
         data-sidebar-position="fixed" data-header-position="fixed">
+        <!--  Header -->
+
         {{ $slot }}
     </div>
+    </header>
     <script src="{{ asset('/assets/libs/jquery/dist/jquery.min.js') }}"></script>
     <script src="{{ asset('/assets/libs/bootstrap/dist/js/bootstrap.bundle.min.js') }}"></script>
     <script src="{{ asset('/assets/js/sidebarmenu.js') }}"></script>

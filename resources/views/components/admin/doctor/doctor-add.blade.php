@@ -47,26 +47,26 @@
                                 </x-form.modal-body>
                                 {{-- {{--  --}}
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="User Name" />
                                         <x-form.input name="username" />
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="Last Name" />
                                         <x-form.input name="lastName" />
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="First Name" />
                                         <x-form.input name="firstName" />
                                     </x-form.panel>
                                 </x-form.modal-body>
 
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="Picture" />
                                         <x-form.input name="picture" type="file" />
                                     </x-form.panel>
@@ -74,7 +74,7 @@
                             </div>
                             <div class="col-4">
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="wilaya" />
                                         <select name="wilayaId" id="SelectW"class="form-select">
 
@@ -86,7 +86,7 @@
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="baldya" />
                                         <select name="baldyaid" id="SelectBaldya" class="form-select">
 
@@ -95,7 +95,7 @@
                                 </x-form.modal-body>
                                 {{-- Oganzation --}}
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="oganization"></x-form.label>
                                         <select name="organization" id="oganization" class="form-select">
 
@@ -107,7 +107,7 @@
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="National ID" />
                                         <x-form.input name="nationalId" />
                                     </x-form.panel>
@@ -116,25 +116,25 @@
                             <div class="col-4">
 
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="email" />
                                         <x-form.input name="email" type="email" />
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="Phone" />
                                         <x-form.input name="phone" />
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="address" />
                                         <x-form.input name="address" />
                                     </x-form.panel>
                                 </x-form.modal-body>
                                 <x-form.modal-body>
-                                    <x-form.panel>
+                                    <x-form.panel class="mb-1">
                                         <x-form.label name="password" />
                                         <x-form.input name="password" type="password" />
                                     </x-form.panel>
@@ -227,38 +227,15 @@
                                                                         @foreach ($specializations as $sp)
                                                                             <option
                                                                                 value="{{ $sp->specialization_id }}"
-                                                                                {{ in_array($sp->specialization_id, old('specializations', [$doctor->specialization->pluck('specialization_id')->toArray()])) ? 'selected' : '' }}>
+                                                                                {{ in_array($sp->specialization_id, old('specializations', [$doctor->specialization->pluck('specialization_id')->toArray()])) ? 'selected=true' : '' }}>
 
                                                                                 {{ $sp->specialization_name }}</option>
                                                                         @endforeach
                                                                     </select>
                                                                 </x-form.modal-body>
 
-                                                                <script>
-                                                                    function enableItemSelection() {
-                                                                        var ul = document.getElementById('your-ul-id'); // replace 'your-ul-id' with the actual id of your ul element
-                                                                        var options = getOptions(
-                                                                            inputContainer); // assuming getOptions is defined and inputContainer is the select element
-                                                                        var input = document.getElementById(
-                                                                            'your-input-id'); // replace 'your-input-id' with the actual id of your input element
-
-                                                                        // Add click listener to the list items
-                                                                        for (var li of ul.children) {
-                                                                            li.addEventListener('click', (e) => {
-                                                                                options.find((o) => o.value == e.target.dataset.value).selected = true
-                                                                                input.value = null
-                                                                                initOptions() // assuming initOptions is defined
-                                                                                setValues() // assuming setValues is defined
-                                                                                input.focus()
-                                                                            })
-                                                                        }
-                                                                    }
-                                                                </script>
-
-
-                                                                {{-- {{--  --}}
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="User Name" />
                                                                         <x-form.input name="username"
                                                                             :value="old(
@@ -268,7 +245,7 @@
                                                                     </x-form.panel>
                                                                 </x-form.modal-body>
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="Last Name" />
                                                                         <x-form.input name="lastName"
                                                                             :value="old(
@@ -278,7 +255,7 @@
                                                                     </x-form.panel>
                                                                 </x-form.modal-body>
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="First Name" />
                                                                         <x-form.input name="firstName"
                                                                             :value="old(
@@ -288,7 +265,7 @@
                                                                     </x-form.panel>
                                                                 </x-form.modal-body>
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="Picture" />
                                                                         <x-form.input name="picture" type="file"
                                                                             req=" " />
@@ -303,7 +280,7 @@
                                                             </div>
                                                             <div class="col-4">
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="wilaya" />
                                                                         <select name="wilayaId" id="editW"
                                                                             class="form-select">
@@ -316,7 +293,7 @@
                                                                     </x-form.panel>
                                                                 </x-form.modal-body>
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="baldya" />
                                                                         <select name="baldyaid" id="SelectBaldyaE"
                                                                             class="form-select">
@@ -326,7 +303,7 @@
                                                                 </x-form.modal-body>
                                                                 {{-- Oganzation --}}
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label
                                                                             name="oganization"></x-form.label>
                                                                         <select name="organization" id="oganization"
@@ -340,7 +317,7 @@
                                                                     </x-form.panel>
                                                                 </x-form.modal-body>
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="National ID" />
                                                                         <x-form.input name="nationalId"
                                                                             :value="old(
@@ -353,14 +330,14 @@
                                                             <div class="col-4">
 
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="email" />
                                                                         <x-form.input name="email" type="email"
                                                                             :value="old('email', $doctor->email)" />
                                                                     </x-form.panel>
                                                                 </x-form.modal-body>
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="Phone" />
                                                                         <x-form.input name="phone"
                                                                             :value="old(
@@ -370,7 +347,7 @@
                                                                     </x-form.panel>
                                                                 </x-form.modal-body>
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="address" />
                                                                         <x-form.input name="address"
                                                                             :value="old(
@@ -380,7 +357,7 @@
                                                                     </x-form.panel>
                                                                 </x-form.modal-body>
                                                                 <x-form.modal-body>
-                                                                    <x-form.panel>
+                                                                    <x-form.panel class="mb-1">
                                                                         <x-form.label name="password" />
                                                                         <x-form.input name="password" type="password"
                                                                             :value="old(
@@ -414,14 +391,15 @@
                                                     class="rounded  py-1 px-2 ">
 
                                                     <x-slot name="button">
-                                                        <span><i class="fa-solid fa-gear"></i></span>
+
+                                                        <span><i class="fa-solid fa-plus"></i></span>
                                                     </x-slot>
 
                                                     <form method="POST" action="{{ route('admin.doctor.create') }}">
                                                         @csrf
 
                                                         <x-form.modal-body>
-                                                            <x-form.panel>
+                                                            <x-form.panel class="mb-1">
                                                                 <x-form.label name="name" />
                                                                 <x-form.input name="name" />
                                                             </x-form.panel>

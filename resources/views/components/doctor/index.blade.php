@@ -5,14 +5,34 @@
         <div class="card ">
             <div class="card-body rounded-xl ">
                 <form method="post" action="#" id="prescription-form">
-                    <x-form.input id="doctor" name="doctor" placeholder="Patient's doctor" />
 
-                    <x-form.input id="patient" name="patient" placeholder="Patient's Name" />
-                    <div id="drugs">
-                        <x-form.input name="drugs[]" placeholder="Drug" />
+                    <div>
+                        <div class="m-2"id="drugs">
+
+                            <div class="row">
+                                <div class="col-md-3">
+                                    <x-form.input name="drugs[]" placeholder="Drug" />
+                                </div>
+                                <div class="col-md-3">
+                                    <x-form.input name="dosage[]" type="number" placeholder="dosage" />
+                                </div>
+                                <div class="col-md-3">
+                                    <x-form.input name="time[]" type="date" placeholder="Time" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <button class="btn btn-outline-primary" type="button" id="add-drug">Add another
-                        drug</button>
+                    <div class="row">
+                        <div class="col-md-3">
+                            <button class="btn btn-outline-primary" type="button" id="add-drug">Add another
+                        </div>
+                        <div class="col-md-3">
+                            <button class="btn btn-outline-danger" type="button" id="delete-drug">Add another
+                        </div>
+
+
+                    </div>
+                    drug</button>
                     <x-form.textarea name="description" />
                     <button type="submit" class="btn btn-outline-primary">Submit</button>
                 </form>

@@ -1,14 +1,41 @@
 // public/js/prescription.js
-
 document.getElementById('add-drug').addEventListener('click', function() {
     let newDrugInput = document.createElement('input');
+    let newDosageInput = document.createElement('input');
+    let newTimeInput = document.createElement('input');
     newDrugInput.type = 'text';
     newDrugInput.name = 'drugs[]';
     newDrugInput.placeholder = 'Drug';
-    newDrugInput.classList.add('form-control'); // Add Bootstrap class
-    document.getElementById('drugs').appendChild(newDrugInput);
-});
+    newDosageInput.type = 'number';
+    newDosageInput.name = 'dosage[]';
+    newDosageInput.placeholder = 'Dosage';
+    newTimeInput.type = 'date';
+    newTimeInput.name = 'time[]';
+    newDrugInput.classList.add('form-control');
+    newDosageInput.classList.add('form-control');
+    newTimeInput.classList.add('form-control');
 
+    let newDrugDiv = document.createElement('div');
+    newDrugDiv.classList.add('col-md-3');
+    newDrugDiv.appendChild(newDrugInput);
+
+    let newDosageDiv = document.createElement('div');
+    newDosageDiv.classList.add('col-md-3');
+    newDosageDiv.appendChild(newDosageInput);
+
+    let newTimeDiv = document.createElement('div');
+    newTimeDiv.classList.add('col-md-3');
+    newTimeDiv.appendChild(newTimeInput);
+
+    let newRow = document.createElement('div');
+    newRow.classList.add('row');
+    newRow.classList.add('mt-2');
+    newRow.appendChild(newDrugDiv);
+    newRow.appendChild(newDosageDiv);
+    newRow.appendChild(newTimeDiv);
+
+    document.getElementById('drugs').appendChild(newRow);
+});
 document.getElementById('prescription-form').addEventListener('submit', function(e) {
     e.preventDefault();
 

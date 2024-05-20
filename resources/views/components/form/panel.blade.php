@@ -1,3 +1,4 @@
-<div class="mb-3">
+@props(['class' => 'mb-3'])
+<div class="{{ $class }}">
     {{ $slot }}
 </div>

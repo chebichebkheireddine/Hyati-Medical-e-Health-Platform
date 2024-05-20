@@ -23,6 +23,8 @@ class UserController extends Controller
         // TDO: Add the ability to filter users by role
         // $users = User::role('admin')->get();
         $users = User::latest()->role('admin')->get();
+        // We can use this code to get the user with the role
+
         return view("admin.index", [
             "users" => $users,
             "permissions" => Permission::all(),
@@ -40,6 +42,7 @@ class UserController extends Controller
     {
         $data = request()->validate([
             'nationalID' => 'required|min:3|numeric',
+            'picture' => 'required|image',
             'firstName' => 'required',
             'lastname' => 'required',
             'username' => 'required|unique:users,username',
@@ -51,10 +54,12 @@ class UserController extends Controller
             'baldyaid' => 'required',
             'orgId' => 'required',
         ]);
+        $picture = base64_encode(file_get_contents($data['picture']->getPathname()));
         $role = request('role');
         $user = User::create([
             'orgID' => $data['orgId'],
             'nationalID' => $data['nationalID'],
+            'picture' => $picture,
             'firstName' => $data['firstName'],
             'lastname' => $data['lastname'],
             'username' => $data['username'],

@@ -35,7 +35,7 @@
                 <li class="sidebar-item {{ Route::currentRouteName() == 'admin.doctor.index' ? 'selected' : '' }}">
                     <a class="sidebar-link" href="{{ route('admin.healthcare.index') }}" aria-expanded="false">
                         <span>
-                            <i class="fa-solid fa-user-doctor"></i>
+                            <i class="fa-solid fa-people-roof"></i>
                         </span>
                         <span class="hide-menu"> Healthcare Mangement</span>
                     </a>
@@ -46,16 +46,16 @@
                         aria-expanded="false"><!-- a href begin -->
 
                         <span>
-                            <i class="fa-solid fa-user-nurse"></i>
+                            <i class="fa-solid fa-users"></i>
                         </span>
-                        <span class="hide-menu">Create healthcare Users</span>
+                        <span class="hide-menu"> Users Manengement</span>
                     </a>
 
                 </li>
                 <li class="sidebar-item">
                     <a class="sidebar-link" href="{{ route('admin.patients.index') }}" aria-expanded="false">
                         <span>
-                            <i class="fa-solid fa-user-doctor"></i>
+                            <i class="fa-solid fa-stethoscope"></i>
                         </span>
                         <span class="hide-menu">Patient Manengement</span>
                     </a>
