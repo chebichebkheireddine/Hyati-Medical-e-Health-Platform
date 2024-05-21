@@ -8,6 +8,7 @@ use App\Models\Specialization;
 use App\Models\Doctor;
 use App\Models\information\organization;
 use App\Models\System\Permission;
+use App\Models\User;
 use App\Models\Wilaya;
 use Illuminate\Support\Facades\DB;
 use Kreait\Firebase\Factory;
@@ -29,6 +30,7 @@ class DoctorManageController extends Controller
     public function index()
     {
         // code to display the doctor page
+
         return view("admin.index", [
             "specializations" => Specialization::all(),
             "doctors" => Doctor::all(),
@@ -36,6 +38,7 @@ class DoctorManageController extends Controller
             "permissions" => Permission::all(),
             "wilaya" => Wilaya::all(),
             "organization" => organization::all(),
+            "users" => User::all(),
         ]);
     }
     //create doctor with Speciazation
@@ -133,6 +136,7 @@ class DoctorManageController extends Controller
     public function update(Doctor $doctor, Request $request)
     {
         // TODO fix  code updaet
+
         $attributes = $request->validate([
             'picture' => "",
             'nationalId' => 'string|max:255',

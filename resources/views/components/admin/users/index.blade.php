@@ -1,7 +1,8 @@
-@props(['users', 'organization', 'wilaya', 'roles'])
+@props(['users', 'organization', 'wilaya', 'roles', 'permissions'])
 <div class="row">
     <div class="col-12">
-        <x-admin.users.manager :users="$users" :organization="$organization" :wilaya="$wilaya" :roles="$roles">
+        <x-admin.users.manager :users="$users" :organization="$organization" :wilaya="$wilaya" :roles="$roles"
+            :permissions="$permissions">
         </x-admin.users.manager>
         {{-- :baldya="$baldya" --}}
 

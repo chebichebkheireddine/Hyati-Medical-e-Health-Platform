@@ -32,7 +32,8 @@
                     </li>
                 @endcan
 
-                <li class="sidebar-item {{ Route::currentRouteName() == 'admin.doctor.index' ? 'selected' : '' }}">
+                <li
+                    class="sidebar-item {{ Route::currentRouteName() == 'admin.doctor.index' || Route::currentRouteName() == 'admin.doctor.index.config' ? 'selected' : '' }}">
                     <a class="sidebar-link" href="{{ route('admin.healthcare.index') }}" aria-expanded="false">
                         <span>
                             <i class="fa-solid fa-people-roof"></i>

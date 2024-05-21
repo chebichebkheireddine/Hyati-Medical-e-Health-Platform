@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\DB;
 use Kreait\Firebase\Factory;
 use Kreait\Laravel\Firebase\Facades\Firebase;
 use App\Models\Document;
+use App\Models\User;
 
 class HealthcareController extends Controller
 {
@@ -26,6 +27,7 @@ class HealthcareController extends Controller
             "permissions" => Permission::all(),
             "wilaya" => Wilaya::all(),
             "organization" => organization::all(),
+            "users" => User::all(),
         ]);
     }
 }

@@ -226,8 +226,8 @@
 
                                                                         @foreach ($specializations as $sp)
                                                                             <option
-                                                                                value="{{ $sp->specialization_id }}"
-                                                                                {{ in_array($sp->specialization_id, old('specializations', [$doctor->specialization->pluck('specialization_id')->toArray()])) ? 'selected=true' : '' }}>
+                                                                                {{ in_array($sp->specialization_id, $doctor->specialization()->pluck('specializations.specialization_id')->toArray()) ? 'selected' : '' }}
+                                                                                value="{{ $sp->specialization_id }}">
 
                                                                                 {{ $sp->specialization_name }}</option>
                                                                         @endforeach

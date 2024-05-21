@@ -6,6 +6,7 @@ use App\Models\Doctor;
 use Spatie\Permission\Models\Role;
 
 use App\Models\information\organizationType;
+use App\Models\User;
 use Spatie\Permission\Models\Permission;
 use App\Models\Wilaya;
 use Illuminate\Http\Request;
@@ -45,6 +46,7 @@ class PatientController extends Controller
             "wilaya" => Wilaya::all(),
             "permissions" => Permission::all(),
             "roles" => Role::all(),
+            "users" => User::all(),
         ]);
     }
     public function store(Request $request)

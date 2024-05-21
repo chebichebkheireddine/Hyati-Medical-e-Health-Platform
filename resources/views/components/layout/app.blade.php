@@ -51,6 +51,9 @@
     <script>
         {{ $tag_permission ?? '' }}
     </script>
+    <script>
+        {{ $itemPermission ?? '' }}
+    </script>
 </body>
 
 </html>

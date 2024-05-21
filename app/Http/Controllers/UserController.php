@@ -76,10 +76,80 @@ class UserController extends Controller
         }
         return redirect()->route('admin.users.index');
     }
-    public function update()
+
+    public function update(User $user)
     {
+        $data = request()->validate([
+            'nationalID' => 'required|min:3|numeric',
+            'picture' => 'image',
+            'firstName' => 'required',
+            'lastname' => 'required',
+            'username' => 'required',
+            'email' => 'required|email',
+            'password' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'wilayaId' => '',
+            'baldyaid' => '',
+            'orgId' => 'required',
+        ]);
+        if (request('picture')) {
+            $picture = base64_encode(file_get_contents($data['picture']->getPathname()));
+        } else {
+            $picture = $user->picture;
+        }
+        $role = request('role');
+        $user->update([
+            'orgID' => $data['orgId'],
+            'nationalID' => $data['nationalID'],
+            'picture' => $picture,
+            'firstName' => $data['firstName'],
+            'lastname' => $data['lastname'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'id_wilaya' => $data['wilayaId'],
+            'id_commune' => $data['baldyaid'],
+        ]);
+        // If you want to use milible role just use all
+        if ($role) {
+            $user->syncRoles($role);
+        }
+        return redirect()->route('admin.users.index');
     }
-    public function delete()
+    public function delete(User $user)
     {
+        $user->delete();
+        return redirect()->route('admin.users.index')->with('success', 'User deleted successfully');
+    }
+    public function assignPermission(User $user)
+    {
+        $data = request()->validate([
+            'permestions' => 'required',
+        ]);
+        $user->givePermissionTo($data['permestions']);
+        return redirect()->route('admin.users.index');
+    }
+
+    public function syncPermission(User $user)
+    {
+        $action = request()->input('action');
+        $data = request()->validate([
+            'permestionsA' => 'required',
+        ]);
+
+        if ($action === 'update') {
+            // Handle add action
+            $user->syncPermissions($data['permestionsA']);
+            return redirect()->back()->with('success', 'Permissions update successfully.');
+        } elseif ($action === 'delete') {
+            // Handle delete action
+            $user->revokePermissionTo($data['permestionsA']);
+            return redirect()->back()->with('success', 'Permissions deleted successfully.');
+            // return ddd('delete');
+        }
+        // return redirect()->route('admin.users.index');
     }
 }

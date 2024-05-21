@@ -35,10 +35,12 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'create-doctor']);
         Permission::create(['name' => 'edit-doctor']);
         Permission::create(['name' => 'delete-doctor']);
+        Permission::create(['name' => 'full-permission']);
         // Users
         Permission::create(['name' => 'create-users']);
         Permission::create(['name' => 'edit-users']);
         Permission::create(['name' => 'delete-users']);
+        Permission::create(['name' => 'edit-admin-permission']);
 
         // Create Roles
         $superadminRole = Role::create(['name' => 'super admin']);
@@ -54,6 +56,8 @@ class DatabaseSeeder extends Seeder
             'create-users',
             'edit-users',
             'delete-users',
+            'full-permission',
+            'edit-admin-permission'
         ]);
 
 

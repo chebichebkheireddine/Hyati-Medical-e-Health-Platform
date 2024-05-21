@@ -44,7 +44,7 @@ Route::get(
 
 //  gropu of the admin
 Route::get('/admin', function () {
-    return view('admin.index', ["tag" => Doctor::all(), "permissions" => Permission::all()]);
+    return view('admin.index', ["tag" => Doctor::all(), "permissions" => Permission::all(), "users" => User::all()]);
 })->name('admin.dashboard');
 // This is for Patient information
 Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patients.index');
@@ -84,6 +84,9 @@ Route::get('admin/healthcare', [HealthcareController::class, "index"])->name('ad
 // Doctor controler
 Route::get("admin/healthcare/doctor", [DoctorManageController::class, 'index'])
     ->name('admin.doctor.index');
+Route::get("admin/healthcare/doctor/config", [SpecializationController::class, 'index'])
+    ->name('admin.doctor.index.config');
+
 
 Route::post("admin/healthcare/doctor/add", [DoctorManageController::class, 'create'])
     ->name("admin.doctor.create");
@@ -92,6 +95,8 @@ Route::delete("admin/healthcare/doctor/delete/{doctor}", [DoctorManageController
     ->name("admin.doctor.delete");
 Route::patch("admin/healthcare/doctor/update/{doctor}", [DoctorManageController::class, 'update'])
     ->name("admin.doctor.update");
+
+
 
 //Users controller
 Route::get("admin/users", [UserController::class, 'index'])
@@ -102,12 +107,22 @@ Route::post("admin/users/add", [UserController::class, 'create'])
 Route::patch("admin/users/edit/{user}", [UserController::class, 'update'])
     ->name('admin.users.update');
 Route::delete("admin/users/delete/{user}", [UserController::class, 'delete'])->name('admin.users.delete');
+// This is for handel User permissien
+Route::post("admin/users/permissions/add/{user}", [UserController::class, 'assignPermission'])
+    ->name('admin.users.permissions.create');
+
+
+Route::post("admin/users/permissions/sync/{user}", [UserController::class, 'syncPermission'])
+    ->name('admin.users.permissions.sync');
 
 
 // specialization Doctor
-Route::delete("admin/specialization/add", [SpecializationController::class, 'create'])
+Route::delete("admin/healthcare/doctor/specialization/add", [SpecializationController::class, 'create'])
     ->name("admin.specialization.create");
-Route::delete("admin/specialization/delete/{specialization}", [SpecializationController::class, 'delete'])
+Route::patch("admin/healthcare/doctor/specialization/update/{specialization}", [SpecializationController::class, 'update'])
+    ->name("admin.specialization.update");
+
+Route::delete("admin/healthcare/doctor/specialization/delete/{specialization}", [SpecializationController::class, 'delete'])
     ->name("admin.specialization.delete");
 
 // TODO: change the Conntroller
