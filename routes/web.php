@@ -130,9 +130,9 @@ Route::Post("/admin/config", [UserController::class, 'create'])->name('admin.con
 
 // Crate  the user
 Route::get("/register/admin", [SessionController::class, 'register'])
-    ->middleware('guest')->name('Register.admin');
+    ->middleware('guest')->name('Register.admin.index');
 
-Route::post("/register/admin", [SessionController::class, 'store'])
+Route::post("/register/admin", [SessionController::class, 'create'])
     ->middleware('guest')->name('Register.admin');
 
 // logout the users from The nav
@@ -141,7 +141,7 @@ Route::get("admin/logout", [SessionController::class, 'destroy'])->name('admin.l
 // login page
 Route::get("admin/login", [SessionController::class, 'display'])
     ->middleware('guest')->name('admin.login');
-Route::post("admin/login", [sessionController::class, 'login'])->middleware('guest')
+Route::post("admin/login", [sessionController::class, 'login'])->middleware(['guest'])
     ->name('admin.login_post');
 
 

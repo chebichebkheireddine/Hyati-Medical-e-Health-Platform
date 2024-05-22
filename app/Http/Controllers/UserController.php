@@ -63,6 +63,7 @@ class UserController extends Controller
             'firstName' => $data['firstName'],
             'lastname' => $data['lastname'],
             'username' => $data['username'],
+            'is_active' => 1,
             'email' => $data['email'],
             'password' => bcrypt($data['password']),
             'phone' => $data['phone'],

@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Commune;
+use App\Models\Doctor;
+use App\Models\information\organization;
 use App\Models\User;
+use App\Models\Wilaya;
 use Illuminate\Http\Request;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class SessionController extends Controller
 {
@@ -20,7 +26,15 @@ class SessionController extends Controller
 
     public function register()
     {
-        return view('auth.admin.register');
+        return view('auth.admin.register', [
+
+            "permissions" => Permission::all(),
+            "organization" => organization::all(),
+            "wilaya" => Wilaya::all(),
+            "baldya" => Commune::all(),
+            "roles" => Role::all(),
+            "tag" => Doctor::all(),
+        ]);
     }
     public function display()
     {
@@ -32,30 +46,55 @@ class SessionController extends Controller
             'email' => 'required|email|exists:users,email',
             'password' => 'required|min:6|max:80'
         ]);
-        if (auth('web')->attempt($user)) {
+        if (auth('web')->attempt($user) && auth('web')->user()->is_active) {
             // remove The attached session
             session()->regenerate();
             return redirect("/admin");
             // return back()->withErrors($user);
+        } else {
+            return redirect("admin.login_post")->with('messeg', 'Your account is not active');
         }
         return back()->withErrors([
             'email' => 'The provided credentials do not match our records.',
         ]);
         // var_dump(request()->all());
     }
-    public function store(Request $reqest)
+    public function create(Request $reqest)
     {
-        $user = $reqest->validate([
-            'name' => 'required|string|max:255',
-            'username' => 'required|string|max:255|unique:users,username',
+        //   This is for regest
+        $data = request()->validate([
+            'nationalID' => 'required|min:3|numeric',
+            'picture' => 'required|image',
+            'firstName' => 'required',
+            'lastname' => 'required',
+            'username' => 'required|unique:users,username',
             'email' => 'required|email|unique:users,email',
-            'password' => 'required|min:6|max:80'
+            'password' => 'required',
+            'phone' => 'required',
+            'address' => 'required',
+            'wilayaId' => 'required',
+            'baldyaid' => 'required',
+            'orgId' => 'required',
         ]);
-        // $user['role_id'] = 0;
-        $user['password'] = bcrypt($user['password']);
-        $users = User::create($user);
-        auth('web')->login($users);
-        return redirect("admin");
+        $picture = base64_encode(file_get_contents($data['picture']->getPathname()));
+        // $role = request('role');
+        $user = User::create([
+            'orgID' => $data['orgId'],
+            'nationalID' => $data['nationalID'],
+            'picture' => $picture,
+            'firstName' => $data['firstName'],
+            'lastname' => $data['lastname'],
+            'username' => $data['username'],
+            'email' => $data['email'],
+            'password' => bcrypt($data['password']),
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'id_wilaya' => $data['wilayaId'],
+            'id_commune' => $data['baldyaid'],
+        ]);
+        $user->assignRole("admin");
+
+        return redirect()->route('admin.login_post');
     }
     // logout function
     public function destroy()
