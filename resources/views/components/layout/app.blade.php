@@ -30,7 +30,10 @@
         data-sidebar-position="fixed" data-header-position="fixed">
         <!--  Header -->
 
+
         {{ $slot }}
+
+
     </div>
     </header>
     <script src="{{ asset('/assets/libs/jquery/dist/jquery.min.js') }}"></script>

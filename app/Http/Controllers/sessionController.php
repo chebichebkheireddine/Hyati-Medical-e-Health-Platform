@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Commune;
 use App\Models\Doctor;
 use App\Models\information\organization;
+use App\Models\information\organizationType;
 use App\Models\User;
 use App\Models\Wilaya;
 use Illuminate\Http\Request;
@@ -101,5 +102,17 @@ class SessionController extends Controller
     {
         auth('web')->logout();
         return redirect('/');
+    }
+    public function updateContent()
+    {
+        return view('admin.index', [
+            "tag" => Doctor::all(),
+            "itemPermission" => Permission::all(),
+            "typeOrg" => organizationType::all(),
+            "wilaya" => Wilaya::all(),
+            "permissions" => Permission::all(),
+            "roles" => Role::all(),
+            "users" => User::all(),
+        ]);
     }
 }

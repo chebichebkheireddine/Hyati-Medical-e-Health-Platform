@@ -3,6 +3,7 @@
 // use App\Http\Controllers\API\PatientController;
 
 use App\Http\Controllers\AuthControllerF;
+use App\Http\Controllers\ChatController;
 use App\Http\Controllers\Doctor\DoctorManageController;
 use App\Http\Controllers\Heathcare\HealthcareController;
 use App\Http\Controllers\PatientController;
@@ -18,6 +19,8 @@ use App\Models\Specialization;
 use App\Models\System\Permission;
 use App\Models\User;
 use Facade\Ignition\Http\Controllers\HealthCheckController;
+use Illuminate\Http\Request;
+
 use Illuminate\Support\Facades\Route;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 
@@ -124,6 +127,9 @@ Route::patch("admin/healthcare/doctor/specialization/update/{specialization}", [
 
 Route::delete("admin/healthcare/doctor/specialization/delete/{specialization}", [SpecializationController::class, 'delete'])
     ->name("admin.specialization.delete");
+
+Route::get("admin/chat", [ChatController::class, 'index'])
+    ->name("admin.chat.index");
 
 // TODO: change the Conntroller
 Route::Post("/admin/config", [UserController::class, 'create'])->name('admin.config.index');

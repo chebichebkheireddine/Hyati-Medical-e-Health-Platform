@@ -17,8 +17,10 @@
         <div class="container-fluid">
             @if (Route::currentRouteName() == 'admin.dashboard')
                 <x-admin.body>
-
                 </x-admin.body>
+            @elseif (Route::currentRouteName() == 'admin.chat.index')
+                <x-admin.chat>
+                </x-admin.chat>
             @elseif (Route::currentRouteName() == 'admin.config.index')
                 <x-admin.config :users="$users" :wilaya="$wilaya" :typeOrg="$typeOrg">
                 </x-admin.config>

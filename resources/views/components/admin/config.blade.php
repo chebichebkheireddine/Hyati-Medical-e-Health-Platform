@@ -2,11 +2,11 @@
 
 <div class="row">
 
-    <div class="col-12">
+    <div class="col-9">
         <div class="card ">
             <div class="card-body   rounded-xl ">
                 <h2 class="card-title fw-semibold mb-4 ">Genral Confegration</h2>
-                <p class=" mb-3">The Genral Confegration to sutep you ogranzation Like Name and permesstion and Roles
+                <p class=" mb-3">The General Configuration to setup your organization Like Name and permission and Roles
                     name </p>
 
                 <div class="relative w-full px-4 max-w-full  ">
@@ -15,8 +15,7 @@
                         <x-slot name="button">
                             <i class="fa fa-building-ngo ">
                             </i>
-                            Create Organzation
-
+                            Create Organization
                         </x-slot>
                         <form method="Post" action="{{ route('admin.config.oganzation') }}">
                             @csrf
@@ -97,8 +96,7 @@
                         <x-slot name="button">
                             <i class="fa fa-layer-group">
                             </i>
-                            Organzation Type
-
+                            Add Type
                         </x-slot>
                         <form method="Post" action="{{ route('admin.config.oganzationType') }}">
                             @csrf
@@ -127,9 +125,8 @@
 
 
                     {{-- TODO Edit This code --}}
-                    <x-form.btn href="{{ route('admin.config.permmistion.index') }}" name="Permmistion & Roles"
-                        type="submit" class="btn btn-outline-primary btn-lg  m-1"
-                        icon="fa fa-layer-group"></x-form.btn>
+                    <x-form.btn href="{{ route('admin.config.permmistion.index') }}" name="Permission and Roles"
+                        type="submit" class="btn btn-outline-primary btn-lg  m-1" icon="fa fa-key"></x-form.btn>
                 </div>
 
 
