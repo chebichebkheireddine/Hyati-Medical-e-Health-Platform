@@ -3,8 +3,7 @@
     <div class="card-body rounded-xl ">
         <div class="flex flex-wrap items-center">
             <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-left">
-                <h2 class="card-title fw-semibold mb-4 ">Doctor Information</h2>
-                <p class=" mb-3">This Page for Add doctor To the system</p>
+                <h2 class="card-title fw-semibold mb-4 ">Doctor List</h2>
                 @if (session('success'))
                     <div class="alert alert-success mt-4">
                         {{ session('success') }}
@@ -387,6 +386,17 @@
                                                     <button
                                                         class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">Remove</button>
                                                 </form>
+                                                @can('accept-admin')
+                                                    <form method="post"
+                                                        action="{{ route('admin.doctor.removeaccept', ['doctor' => $doctor->sysId]) }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button
+                                                            class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">
+                                                            <i class="fa-solid fa-xmark text-white"></i>
+                                                        </button>
+                                                    </form>
+                                                @endcan
                                                 <x-form.model name="Permission" id="permision"
                                                     class="rounded  py-1 px-2 ">
 
@@ -395,11 +405,11 @@
                                                         <span><i class="fa-solid fa-plus"></i></span>
                                                     </x-slot>
 
-                                                    <form method="POST" action="{{ route('admin.doctor.create') }}">
+                                                    <form method="POST" action="#">
                                                         @csrf
                                                         <x-form.modal-body>
                                                             <x-form.panel class="mb-1">
-                                                                <x-form.label name="name" />
+                                                                <x-form.label name="Permission" />
                                                                 <x-form.input name="name" />
                                                             </x-form.panel>
                                                         </x-form.modal-body>

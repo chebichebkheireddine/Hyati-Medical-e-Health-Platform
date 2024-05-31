@@ -42,12 +42,12 @@ class DatabaseSeeder extends Seeder
         Permission::create(['name' => 'delete-users']);
         Permission::create(['name' => 'edit-admin-permission']);
         Permission::create(['name' => 'accept-admin']);
-        Permission::create(['name' => 'manage-medicalrecord']);
+        Permission::create(['guard_name' => 'doctor', 'name' => 'manage-medicalrecord']);
 
         // Create Roles
         $superadminRole = Role::create(['name' => 'super admin']);
         $adminRole = Role::create(['name' => 'admin']);
-        $doctorRole = Role::create(['name' => 'doctor']);
+        $doctorRole = Role::create(['guard_name' => 'doctor', 'name' => 'doctor']);
 
         // Assign Permissions to Roles
         $superadminRole->givePermissionTo([

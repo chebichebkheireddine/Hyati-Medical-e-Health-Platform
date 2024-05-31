@@ -11,7 +11,11 @@
                                 <x-svg.logo></x-svg.logo>
                             </div>
 
-
+                            @if (session('alert'))
+                                <script>
+                                    alert('{{ session('alert') }}');
+                                </script>
+                            @endif
                             <form method="Post" action="{{ route('admin.doctor.login') }}">
                                 @csrf
                                 <x-form.panel>
@@ -25,6 +29,12 @@
                                 <button class="btn btn-primary w-100 py-8 fs-4 mb-4 rounded-2" type="submit">
                                     Sign In
                                 </button>
+                                <div class="d-flex align-items-center justify-content-center">
+                                    <p class="fs-4 mb-0 fw-bold">Already have an Account?</p>
+                                    <a class="text-primary fw-bold ms-2"
+                                        href="{{ route('Register.doctor.index') }}">Sign
+                                        In</a>
+                                </div>
                             </form>
                         </div>
                     </div>

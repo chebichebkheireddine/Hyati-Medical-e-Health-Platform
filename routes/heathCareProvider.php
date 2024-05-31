@@ -21,7 +21,9 @@ Route::get("/hethecare/doctor", function () {
 
 // This is main page
 Route::get("doctor/login", [SessionDoctorController::class, 'index'])->name("doctor.login");
-// Route::post("admin/doctor/index", [UserController::class, "create"])->name("admin.doctor.create");
+Route::get("doctor/register", [SessionDoctorController::class, 'regesterpage'])->name("Register.doctor.index");
+
 Route::post("doctor/login", [SessionDoctorController::class, 'login'])->name("admin.doctor.login");
+Route::post("doctor/register", [SessionDoctorController::class, 'regester'])->name("Register.doctor");
 Route::get("heathcar/doctor/logout", [SessionDoctorController::class, 'destroy'])
     ->middleware('auth:doctor')->name('doctor.logout');

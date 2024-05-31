@@ -20,9 +20,11 @@ class HealthcareController extends Controller
     //
     public function index()
     {
+        $doctorNotActive = Doctor::all()->where('is_activ', 0);
         return view("admin.index", [
             "specializations" => Specialization::all(),
             "doctors" => Doctor::all(),
+            "doctorNotActive" => $doctorNotActive,
             "tag" => Doctor::all(),
             "permissions" => Permission::all(),
             "wilaya" => Wilaya::all(),

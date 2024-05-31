@@ -25,8 +25,8 @@
                 <x-admin.config :users="$users" :wilaya="$wilaya" :typeOrg="$typeOrg">
                 </x-admin.config>
             @elseif (Route::currentRouteName() == 'admin.doctor.index')
-                <x-admin.doctor.index :users="$users" :specializations="$specializations" :doctors="$doctors" :wilaya="$wilaya"
-                    :organization="$organization">
+                <x-admin.doctor.index :users="$users" :doctorNotActive="$doctorNotActive" :specializations="$specializations" :doctors="$doctors"
+                    :wilaya="$wilaya" :organization="$organization">
                 </x-admin.doctor.index>
             @elseif (Route::currentRouteName() == 'admin.healthcare.index')
                 {{--  --}}

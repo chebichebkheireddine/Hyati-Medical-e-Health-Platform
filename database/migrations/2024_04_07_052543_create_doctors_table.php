@@ -26,6 +26,7 @@ class CreateDoctorsTable extends Migration
             $table->string('password');
             $table->string('phone_number');
             $table->string('address');
+            $table->boolean('is_active')->default(0);
             $table->foreignId('id_commune');
             $table->foreignId('id_wilaya');
 

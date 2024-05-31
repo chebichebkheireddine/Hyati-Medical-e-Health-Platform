@@ -98,6 +98,12 @@ Route::delete("admin/healthcare/doctor/delete/{doctor}", [DoctorManageController
     ->name("admin.doctor.delete");
 Route::patch("admin/healthcare/doctor/update/{doctor}", [DoctorManageController::class, 'update'])
     ->name("admin.doctor.update");
+    // Route for acsept
+    Route::patch("admin/doctor/accept/{doctor}", [DoctorManageController::class, 'acceptuser'])
+    ->name('admin.doctor.accept');
+    Route::patch("admin/doctor/removeaccept/{doctor}", [DoctorManageController::class, 'removeacceptuser'])
+    ->name('admin.doctor.removeaccept');
+    
 
 
 

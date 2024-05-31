@@ -30,11 +30,14 @@ class DoctorManageController extends Controller
     public function index()
     {
         // code to display the doctor page
+        $doctorNotActive = Doctor::where('is_active', 0)->get();
+        $doctorActive = Doctor::where('is_active', 1)->get();
 
         return view("admin.index", [
+            "doctorNotActive" => $doctorNotActive,
             "specializations" => Specialization::all(),
-            "doctors" => Doctor::all(),
-            "tag" => Doctor::all(),
+            "doctors" => $doctorActive,
+            "tag" => $doctorActive,
             "permissions" => Permission::all(),
             "wilaya" => Wilaya::all(),
             "organization" => organization::all(),
@@ -42,7 +45,7 @@ class DoctorManageController extends Controller
         ]);
     }
     //create doctor with Speciazation
-    public function create(Request $request, Factory $factory)
+    public function create(Request $request)
     {
         $attributes = $request->validate([
             'picture' => 'required|image',
@@ -81,6 +84,7 @@ class DoctorManageController extends Controller
                 'lastName' => $attributes['lastName'],
                 'username' => $attributes['username'],
                 'email' => $attributes['email'],
+                'is_active' => 1,
                 'password' =>  Hash::make($attributes['password']),
                 'phone_number' => $attributes['phone'],
                 'address' => $attributes['address'],
@@ -122,6 +126,7 @@ class DoctorManageController extends Controller
                     'email' => $attributes['email'],
                     'speciality' => $doctor->specialization->pluck('specialization_name')->toArray(),
                     'picture' => $picture,
+                    'is_active' => 1,
                     'phoneNumber' => $attributes['phone'],
                     'street' => $attributes['address'],
                     'town' => $wilaya->name,
@@ -180,6 +185,7 @@ class DoctorManageController extends Controller
                 'lastName' => $attributes['lastName'],
                 'username' => $attributes['username'],
                 'email' => $attributes['email'],
+                'is_active' => 1,
                 'password' =>  bcrypt($attributes['password']),
                 'phone_number' => $attributes['phone'],
                 'address' => $attributes['address'],
@@ -247,7 +253,19 @@ class DoctorManageController extends Controller
         return redirect(Route('admin.doctor.index'));
     }
     //store
-    public function store()
+
+    public function acceptuser(Doctor $doctor)
     {
+        $doctor->update(
+            ['is_active' => 1]
+        );
+        return redirect()->back()->with('success', 'User active successfully.');
+    }
+    public function removeacceptuser(Doctor $doctor)
+    {
+        $doctor->update(
+            ['is_active' => 0]
+        );
+        return redirect()->back()->with('success', 'User deactive active successfully.');
     }
 }
