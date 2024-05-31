@@ -68,6 +68,7 @@ class DoctorManageController extends Controller
 
             $createdUser = $this->auth->createUser($doctorProperties);
             // Store image to variable
+
             $picture = base64_encode(file_get_contents($attributes['picture']->getPathname()));
             $uid = $createdUser->uid;
             // Here create table doctor
@@ -87,6 +88,7 @@ class DoctorManageController extends Controller
                 'id_commune' => $attributes['baldyaid'],
 
             ]);
+            $doctor->assignRole('doctor');
             $wilaya = Wilaya::find($attributes['wilayaId']);
             $baldya = $wilaya->communes()->find($attributes['baldyaid']);
 

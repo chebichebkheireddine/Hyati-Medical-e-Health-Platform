@@ -22,24 +22,59 @@
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Panel Control</span>
                     </li>
-                    <li
-                        class="sidebar-item {{ Route::currentRouteName() == 'admin.config.permmistion.index' ? 'selected' : '' }}">
-                        <a class="sidebar-link" href="{{ route('admin.config.index') }}" aria-expanded="false">
+                    <li class="sidebar-item ">
+                        <a class="sidebar-link" href="#" aria-expanded="false" data-toggle="collapse"
+                            data-target="#configuration">
                             <span>
-                                <i class="fa-solid fa-gears"></i> </span>
-                            <span class="hide-menu">Configaration</span>
+                                <i class="fa-solid fa-gears"></i>
+                            </span>
+                            <span class="hide-menu">Configuration</span>
                         </a>
+                        <ul id="configuration" class="collapse">
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('admin.config.permmistion.index') }}">Role and
+                                    Permission</a>
+                            </li>
+                            <li class="sidebar-item">
+                                <a class="sidebar-link" href="{{ route('admin.config.index') }}">Genral
+                                    Configuration</a>
+                            </li>
+                        </ul>
                     </li>
                 @endcan
 
-                <li
-                    class="sidebar-item {{ Route::currentRouteName() == 'admin.doctor.index' || Route::currentRouteName() == 'admin.doctor.index.config' ? 'selected' : '' }}">
-                    <a class="sidebar-link" href="{{ route('admin.healthcare.index') }}" aria-expanded="false">
+                <li class="sidebar-item ">
+                    <a class="sidebar-link" href="#" aria-expanded="false"aria-expanded="false"
+                        data-toggle="collapse" data-target="#Healthcare">
                         <span>
                             <i class="fa-solid fa-people-roof"></i>
                         </span>
                         <span class="hide-menu"> Healthcare Mangement</span>
                     </a>
+                    <ul id="Healthcare" class="collapse">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admin.healthcare.index') }}">
+                                <span class="hide-menu"> Healthcare list</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admin.doctor.index') }}">
+                                <span>
+                                    <i class="fa-solid fa-user-doctor"></i>
+                                </span>
+                                <span class="hide-menu">Doctor</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="{{ route('admin.doctor.index.config') }}">
+                                <span>
+                                    <i class="fa-solid fa-gears"></i>
+                                </span>
+                                <span class="hide-menu">Doctor
+                                    Configuration</span>
+                            </a>
+                        </li>
+                    </ul>
                 </li>
 
                 <li class="sidebar-item">

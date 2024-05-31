@@ -397,7 +397,6 @@
 
                                                     <form method="POST" action="{{ route('admin.doctor.create') }}">
                                                         @csrf
-
                                                         <x-form.modal-body>
                                                             <x-form.panel class="mb-1">
                                                                 <x-form.label name="name" />

@@ -4,7 +4,6 @@
         <div class="flex flex-wrap items-center">
             <div class="relative w-full px-4 max-w-full flex-grow flex-1 text-left">
                 <h2 class="card-title fw-semibold mb-4 ">Users Information </h2>
-                <p class=" mb-3">This Page for Add users To the system</p>
             </div>
             <div class="relative w-full px-4 max-w-full flex-grow flex-1 ">
                 @can('create-admin')
@@ -180,7 +179,7 @@
                                         </td>
                                         <td
                                             class="px-4 py-4 text-sm font-medium text-gray-700 whitespace-nowrap flex flex-col">
-                                            users
+                                            {{ $user->organization->org_name }}
                                         </td>
                                         <td class="px-2 py-2 text-sm whitespace-nowrap">
                                             <div class="flex items-center gap-x-6">
@@ -355,6 +354,17 @@
                                                         <button
                                                             class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">
                                                             <i class="fa fa-user-xmark text-white"></i>
+                                                        </button>
+                                                    </form>
+                                                @endcan
+                                                @can('accept-admin')
+                                                    <form method="post"
+                                                        action="{{ route('admin.users.removeaccept', ['user' => $user->sysId]) }}">
+                                                        @csrf
+                                                        @method('PATCH')
+                                                        <button
+                                                            class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">
+                                                            <i class="fa-solid fa-xmark text-white"></i>
                                                         </button>
                                                     </form>
                                                 @endcan

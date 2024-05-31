@@ -22,10 +22,12 @@ class UserController extends Controller
     {
         // TDO: Add the ability to filter users by role
         // $users = User::role('admin')->get();
-        $users = User::latest()->role('admin')->get();
+        $users = User::latest()->role('admin')->where('is_active', 1)->get();
+        $usersNoActive = User::latest()->role('admin')->where('is_active', 0)->get();
         // We can use this code to get the user with the role
 
         return view("admin.index", [
+            "userNoActive" => $usersNoActive,
             "users" => $users,
             "permissions" => Permission::all(),
             "organization" => organization::all(),
@@ -152,5 +154,21 @@ class UserController extends Controller
             // return ddd('delete');
         }
         // return redirect()->route('admin.users.index');
+
+        // This for acsept user
+    }
+    public function acceptuser(User $user)
+    {
+        $user->update(
+            ['is_active' => 1]
+        );
+        return redirect()->back()->with('success', 'User active successfully.');
+    }
+    public function removeacceptuser(User $user)
+    {
+        $user->update(
+            ['is_active' => 0]
+        );
+        return redirect()->back()->with('success', 'User deactive active successfully.');
     }
 }

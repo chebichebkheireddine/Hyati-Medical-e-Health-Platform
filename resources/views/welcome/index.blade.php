@@ -38,7 +38,7 @@
                                                     <img src="./assets/images/icon/management.png"
                                                         class="bg-blue-300 rounded-full  " alt=""width="100px">
                                                     <a class="text-blue-400 text-lg-center font-semibold text-3xl ">
-                                                        Doctor
+                                                        Users
                                                     </a>
                                                 </a>
                                             </div>

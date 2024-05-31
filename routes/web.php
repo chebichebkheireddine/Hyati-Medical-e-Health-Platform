@@ -109,6 +109,11 @@ Route::post("admin/users/add", [UserController::class, 'create'])
     ->name('admin.users.create');
 Route::patch("admin/users/edit/{user}", [UserController::class, 'update'])
     ->name('admin.users.update');
+Route::patch("admin/users/accept/{user}", [UserController::class, 'acceptuser'])
+    ->name('admin.users.accept');
+
+Route::patch("admin/users/removeaccept/{user}", [UserController::class, 'removeacceptuser'])
+    ->name('admin.users.removeaccept');
 Route::delete("admin/users/delete/{user}", [UserController::class, 'delete'])->name('admin.users.delete');
 // This is for handel User permissien
 Route::post("admin/users/permissions/add/{user}", [UserController::class, 'assignPermission'])

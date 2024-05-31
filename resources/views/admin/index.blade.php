@@ -35,8 +35,8 @@
                 <x-admin.doctor.doctor-config :specializations="$specializations">
                 </x-admin.doctor.doctor-config>
             @elseif (Route::currentRouteName() == 'admin.users.index')
-                <x-admin.users.index :users="$users" :organization="$organization" :roles="$roles" :wilaya="$wilaya"
-                    :permissions="$permissions"></x-admin.users.index>
+                <x-admin.users.index :users="$users" :userNoActive="$userNoActive" :organization="$organization" :roles="$roles"
+                    :wilaya="$wilaya" :permissions="$permissions"></x-admin.users.index>
                 {{-- This is for confige --}}
             @elseif (Route::currentRouteName() == 'admin.config.permmistion.index')
                 <x-admin.permmistion.index :permissions="$permissions" :roles="$roles" :wilaya="$wilaya">
