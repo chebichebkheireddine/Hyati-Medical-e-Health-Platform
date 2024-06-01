@@ -53,10 +53,23 @@ Route::get('/admin', function () {
 Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patients.index');
 Route::post('/admin/patient/add', [PatientController::class, 'store'])->name('admin.patient.add');
 // List of Configaraton System
+
 Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');
-Route::post('admin/config/oganzation', [ConfigController::class, 'create'])->name('admin.config.oganzation');
-Route::post('admin/config/oganzationType', [ConfigController::class, 'createType'])->name('admin.config.oganzationType');
+Route::post('admin/config/oganzation/add', [ConfigController::class, 'create'])->name('admin.config.oganzation');
+Route::post('admin/config/oganzation/update/{org}', [ConfigController::class, 'update'])->name('admin.config.oganzation.update');
+Route::delete('admin/config/oganzation/delete/{org}', [ConfigController::class, 'delete'])->name('admin.config.oganzation.delete');
+
+
+Route::post('admin/config/oganzationType/add', [ConfigController::class, 'createType'])->name('admin.config.oganzationType');
+Route::patch('admin/config/oganzationType/update/{type}', [ConfigController::class, 'updteType'])->name('admin.config.update.oganzationType');
+Route::delete('admin/config/oganzationType/delete/{type}', [ConfigController::class, 'deleteType'])->name('admin.config.delete.oganzationType');
+
+
+
 Route::get('admin/config/permestion', [ConfigController::class, 'index'])->name('admin.config.permmistion.index');
+
+
+
 // Route for the permmmistion
 Route::post('admin/config/permissions/add', [PermissionController::class, 'create'])
     ->name('admin.config.permissions.create');
@@ -98,12 +111,12 @@ Route::delete("admin/healthcare/doctor/delete/{doctor}", [DoctorManageController
     ->name("admin.doctor.delete");
 Route::patch("admin/healthcare/doctor/update/{doctor}", [DoctorManageController::class, 'update'])
     ->name("admin.doctor.update");
-    // Route for acsept
-    Route::patch("admin/doctor/accept/{doctor}", [DoctorManageController::class, 'acceptuser'])
+// Route for acsept
+Route::patch("admin/doctor/accept/{doctor}", [DoctorManageController::class, 'acceptuser'])
     ->name('admin.doctor.accept');
-    Route::patch("admin/doctor/removeaccept/{doctor}", [DoctorManageController::class, 'removeacceptuser'])
+Route::patch("admin/doctor/removeaccept/{doctor}", [DoctorManageController::class, 'removeacceptuser'])
     ->name('admin.doctor.removeaccept');
-    
+
 
 
 

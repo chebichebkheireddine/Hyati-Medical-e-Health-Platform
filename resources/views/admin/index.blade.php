@@ -22,7 +22,7 @@
                 <x-admin.chat>
                 </x-admin.chat>
             @elseif (Route::currentRouteName() == 'admin.config.index')
-                <x-admin.config :users="$users" :wilaya="$wilaya" :typeOrg="$typeOrg">
+                <x-admin.config :users="$users" :wilaya="$wilaya" :typeOrg="$typeOrg" :organizations="$organizations">
                 </x-admin.config>
             @elseif (Route::currentRouteName() == 'admin.doctor.index')
                 <x-admin.doctor.index :users="$users" :doctorNotActive="$doctorNotActive" :specializations="$specializations" :doctors="$doctors"

@@ -263,6 +263,25 @@ $('#SelectW').change(function() {
         }
     });
 });
+// This is for configration  system
+$('#Selectwilaya').change(function() {
+    var wilayaId = $(this).val();
+
+    $.ajax({
+        url: '/api/wilayas/baldya/' + wilayaId,
+        type: 'GET',
+        success: function(response) {
+            var baldyaSelect = $('#BaladyaSelect');
+            baldyaSelect.empty();
+
+            $.each(response, function(index, baldyaid) {
+                baldyaSelect.append('<option value="' + baldyaid.id + '">' + baldyaid
+                    .name + '</option>');
+            });
+        }
+    });
+});
+// End
 $('#editW').change(function() {
     var wilayaId = $(this).val();
 

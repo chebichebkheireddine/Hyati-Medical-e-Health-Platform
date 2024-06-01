@@ -49,6 +49,7 @@ class PatientController extends Controller
             "users" => User::all(),
         ]);
     }
+
     public function store(Request $request)
     {
         $attributes = $request->validate([
@@ -56,11 +57,11 @@ class PatientController extends Controller
             'healthId' => 'required|string|max:255',
             'birthDate' => 'required|date',
             'gender' => 'required|string',
+            'bloodType' => 'required|string',
             'firstName' => 'required|string|max:150',
             'lastName' => 'required|string|max:150',
             'username' => 'required|string|max:255',
             'email' => 'required|email',
-            'password' => 'required|max:80',
             'phone' => 'required|max:255',
             'address' => 'required|max:255',
             "wilayaId" => "required",
@@ -79,18 +80,27 @@ class PatientController extends Controller
         $patient = $this->auth->createUser($patientProperties);
         $uid = $patient->uid;
         if ($patient) {
-            // $firestore = $this->firestore->withServiceAccount("D:\Laravel Project\Hyati_med\demo-hyati\key.json")->createFirestore();
-            // Data
             $database = $this->firestore->database();
             $creationDate = round(microtime(true) * 1000);
-            $password = bin2hex(random_bytes(10)); // Random 20-character string
-            $qrCodeFile = QrCode::generate($attributes['healthId']);
-            $qrCodeData = base64_encode($qrCodeFile); // QR code with the user's ID
+            // Generate a random password
+            function generatePassword($length = 10)
+            {
+                $characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ!@#$%^&*()';
+                $charactersLength = strlen($characters);
+                $randomPassword = '';
+                for ($i = 0; $i < $length; $i++) {
+                    $randomPassword .= $characters[rand(0, $charactersLength - 1)];
+                }
+                return $randomPassword;
+            }
+            $password = generatePassword(); // Random 20-character string
+            // End of generating a random password
+
             do {
                 $pinCode = rand(1000, 9999); // Random 4-digit number
 
                 // Check if the pin code already exists in the database
-                $existingPinCode = $database->collection('Patient Test')
+                $existingPinCode = $database->collection('patients ')
                     ->where('patientInformation.healthCard.pinCode', '=', $pinCode)
                     ->documents()
                     ->rows();
@@ -99,7 +109,7 @@ class PatientController extends Controller
             // $pinCode = rand(1000, 9999); // Random 4-digit number
             // end
             $database = $this->firestore->database();
-            $collection = $database->collection('Patient Test')->document($uid);
+            $collection = $database->collection('patients ')->document($uid);
             $collection->set([
                 "patientInformation" => [
                     'sysId' => $uid,
@@ -114,17 +124,35 @@ class PatientController extends Controller
                     'town' => $wilaya->name,
                     'municipality' => $baldya->name,
                     'street' => $attributes['address'],
-                    'generalMedicalRecord' => ['emty'],
+                    'generalMedicalRecord' => [
+                        'allergies' => [],
+                        'bloodType' => $attributes['bloodType'],
+                        'consultationRecords' => [],
+                        'currentMedications' => [],
+                        'emergencyContacts' => [],
+                        'familyHistory' => "",
+                        'fatherHealthId' => "",
+                        'imagingRecords' => [],
+                        'labRecords' => [],
+                        'medicalHistory' => [],
+                        'metrics' => [],
+                        'motherHealthId' => "",
+                        'vaccinations' => [],
+                        'vitality' => true,
+                    ],
                     'healthCard' => [
                         'creationDate' => $creationDate,
                         'password' => $password,
-                        'qrCodeData' => $qrCodeData,
+                        'qrCodeData' => $attributes['healthId'],
                         'pinCode' => $pinCode,
                     ],
 
                 ]
             ]);
-            return redirect()->route('admin.patient.add')->with('success', 'Patient added successfully');
+            return redirect()->route('admin.patients.index')->with('success', 'Patient added successfully');
         }
+        return redirect()->back()->with('alart', 'Patient added successfully');
     }
 }
+        // $qrCodeFile = QrCode::generate();
+            // $qrCodeData = base64_encode($qrCodeFile); // QR code with the user's ID

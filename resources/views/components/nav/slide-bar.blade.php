@@ -22,39 +22,39 @@
                         <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                         <span class="hide-menu">Panel Control</span>
                     </li>
-                    <li class="sidebar-item ">
-                        <a class="sidebar-link" href="#" aria-expanded="false" data-toggle="collapse"
-                            data-target="#configuration">
+                    <li class="sidebar-item" x-data="{ open: false }">
+                        <a class="sidebar-link" href="#" @click.prevent="open = !open">
                             <span>
                                 <i class="fa-solid fa-gears"></i>
                             </span>
                             <span class="hide-menu">Configuration</span>
                         </a>
-                        <ul id="configuration" class="collapse">
+                        <ul x-show="open" class="transition-all ease-in-out duration-300">
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ route('admin.config.permmistion.index') }}">Role and
-                                    Permission</a>
+                                <a class="sidebar-link" href="{{ route('admin.config.permmistion.index') }}">
+                                    <i class="fa-solid fa-user"></i> Role and Permission
+                                </a>
                             </li>
                             <li class="sidebar-item">
-                                <a class="sidebar-link" href="{{ route('admin.config.index') }}">Genral
-                                    Configuration</a>
+                                <a class="sidebar-link" href="{{ route('admin.config.index') }}">
+                                    <i class="fa-solid fa-cog"></i> General Configuration
+                                </a>
                             </li>
                         </ul>
                     </li>
                 @endcan
 
-                <li class="sidebar-item ">
-                    <a class="sidebar-link" href="#" aria-expanded="false"aria-expanded="false"
-                        data-toggle="collapse" data-target="#Healthcare">
+                <li class="sidebar-item" x-data="{ open: false }">
+                    <a class="sidebar-link" href="#" @click.prevent="open = !open">
                         <span>
                             <i class="fa-solid fa-people-roof"></i>
                         </span>
-                        <span class="hide-menu"> Healthcare Mangement</span>
+                        <span class="hide-menu">Healthcare Management</span>
                     </a>
-                    <ul id="Healthcare" class="collapse">
+                    <ul x-show="open" class="transition-all ease-in-out duration-300">
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="{{ route('admin.healthcare.index') }}">
-                                <span class="hide-menu"> Healthcare list</span>
+                                <span class="hide-menu">Healthcare list</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -70,8 +70,7 @@
                                 <span>
                                     <i class="fa-solid fa-gears"></i>
                                 </span>
-                                <span class="hide-menu">Doctor
-                                    Configuration</span>
+                                <span class="hide-menu">Doctor Configuration</span>
                             </a>
                         </li>
                     </ul>

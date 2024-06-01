@@ -251,13 +251,12 @@
                         <span class="p-2  hover:text-blue-400 rounded-full">
                             <i class="fa fa-microphone"></i>
                         </span>
-                        <span class="p-2 bg-blue-400 hover:text-white rounded-full">
+                        <span class="p-2 bg-blue-400 hover:text-white rounded-3 w-5">
                             <i class="fa fa-paper-plane fa-3xxl"></i>
                         </span>
                     </div>
                 </div>
             </div>
-
         </div>
     </div>
 </div>

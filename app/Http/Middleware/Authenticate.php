@@ -20,6 +20,8 @@ class Authenticate extends Middleware
                 return route('welcome.index');
             } elseif (Request::is(app()->getLocale() . 'heathcar/doctor/index')) {
                 return route('welcome.index');
+            } elseif (Request::is(app()->getLocale() . 'heathcar/doctor/logout')) {
+                return route('welcome.index');
             } else {
                 return route('welcome.index');
             }

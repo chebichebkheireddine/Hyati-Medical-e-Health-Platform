@@ -13,6 +13,7 @@ class CreateOrganizationsTable extends Migration
      */
     public function up()
     {
+
         Schema::create('organizations', function (Blueprint $table) {
             $table->id("org_id");
             $table->string("org_name");
@@ -21,7 +22,8 @@ class CreateOrganizationsTable extends Migration
             $table->string("org_address");
             $table->string("org_wilaya");
             $table->string("org_baldya");
-            $table->string("org_type");
+            $table->unsignedBigInteger("org_type");
+            $table->foreign("org_type")->references("type_id")->on("organization_types")->onUpdate('cascade')->onDelete('cascade');
         });
         Schema::create('organization_types', function (Blueprint $table) {
             $table->id("type_id");

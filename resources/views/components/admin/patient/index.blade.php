@@ -5,15 +5,13 @@
             <div class="card-body   rounded-xl ">
                 <h2 class="card-title fw-semibold mb-4 ">Patient information</h2>
                 <p class=" mb-3">This is The genral page to put your patient information </p>
-                @if (session('success'))
-                    <div class="alert alert-success mt-4">
-                        {{ session('success') }}
-                    </div>
-                @elseif (session('error'))
-                    <div class="alert alert-danger mt-4">
-                        {{ session('error') }}
-                    </div>
-                @endif
+                <script>
+                    @if (session('alart'))
+                        alert("{{ session('alart') }}");
+                    @elseif (session('alart'))
+                        alert("{{ session('alart') }}");
+                    @endif
+                </script>
                 <div class="relative w-full px-4 max-w-full  ">
                     {{-- this is temolet to add user --}}
                     <x-form.model name="Add Patient " id="Patient" class="btn btn-outline-primary btn-lg  m-1"
@@ -99,6 +97,22 @@
                                             <x-form.input name="healthId" />
                                         </x-form.panel>
                                     </x-form.modal-body>
+                                    <x-form.modal-body>
+                                        <x-form.panel>
+                                            <x-form.label name="Blood Type" />
+                                            <select name="bloodType" class="form-select">
+                                                <option value="">Select Blood Type</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option>
+                                            </select>
+                                        </x-form.panel>
+                                    </x-form.modal-body>
                                 </div>
                                 <div class="col-4">
 
@@ -126,6 +140,7 @@
                                             <x-form.input name="password" type="password" />
                                         </x-form.panel>
                                     </x-form.modal-body>
+
                                 </div>
                             </div>
                             <!-- Modal footer -->
