@@ -39,6 +39,11 @@ class PatientController extends Controller
     }
     public function index()
     {
+        $patients = $this->firestore->database()->collection('patients ')->documents();
+        $patientsArray = [];
+        foreach ($patients as $patient) {
+            $patientsArray[] = $patient->data();
+        }
         return view('admin.index', [
             "tag" => Doctor::all(),
             "itemPermission" => Permission::all(),
@@ -47,6 +52,7 @@ class PatientController extends Controller
             "permissions" => Permission::all(),
             "roles" => Role::all(),
             "users" => User::all(),
+            "patients" => $patientsArray,
         ]);
     }
 
