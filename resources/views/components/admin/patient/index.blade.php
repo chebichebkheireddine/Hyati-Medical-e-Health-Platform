@@ -34,12 +34,7 @@
                                         </select>
                                     </x-form.modal-body>
                                     {{-- {{--  --}}
-                                    <x-form.modal-body>
-                                        <x-form.panel>
-                                            <x-form.label name="User Name" />
-                                            <x-form.input name="username" />
-                                        </x-form.panel>
-                                    </x-form.modal-body>
+
                                     <x-form.modal-body>
                                         <x-form.panel>
                                             <x-form.label name="Last Name" />
@@ -95,22 +90,7 @@
                                             <x-form.input name="healthId" />
                                         </x-form.panel>
                                     </x-form.modal-body>
-                                    <x-form.modal-body>
-                                        <x-form.panel>
-                                            <x-form.label name="Blood Type" />
-                                            <select name="bloodType" class="form-select">
-                                                <option value="">Select Blood Type</option>
-                                                <option value="A+">A+</option>
-                                                <option value="A-">A-</option>
-                                                <option value="B+">B+</option>
-                                                <option value="B-">B-</option>
-                                                <option value="AB+">AB+</option>
-                                                <option value="AB-">AB-</option>
-                                                <option value="O+">O+</option>
-                                                <option value="O-">O-</option>
-                                            </select>
-                                        </x-form.panel>
-                                    </x-form.modal-body>
+
                                 </div>
                                 <div class="col-4">
 
@@ -134,11 +114,20 @@
                                     </x-form.modal-body>
                                     <x-form.modal-body>
                                         <x-form.panel>
-                                            <x-form.label name="password" />
-                                            <x-form.input name="password" type="password" />
+                                            <x-form.label name="Blood Type" />
+                                            <select name="bloodType" class="form-select">
+                                                <option value="">Select Blood Type</option>
+                                                <option value="A+">A+</option>
+                                                <option value="A-">A-</option>
+                                                <option value="B+">B+</option>
+                                                <option value="B-">B-</option>
+                                                <option value="AB+">AB+</option>
+                                                <option value="AB-">AB-</option>
+                                                <option value="O+">O+</option>
+                                                <option value="O-">O-</option>
+                                            </select>
                                         </x-form.panel>
                                     </x-form.modal-body>
-
                                 </div>
                             </div>
                             <!-- Modal footer -->
@@ -204,7 +193,251 @@
                                                     </td>
                                                     <td class="px-2 py-2 text-sm whitespace-nowrap">
                                                         <div class="flex items-center gap-x-6">
+                                                            <x-form.model name="Edit Patient"
+                                                                id="Patient{{ $patient['id'] }}"
+                                                                class="rounded bg-green-400 text-white font-weight-bolder py-1 px-2 hover:text-sky-400"
+                                                                size="modal-xl">
 
+                                                                <x-slot name="button">
+                                                                    Edit
+                                                                </x-slot>
+
+                                                                <form method="post"
+                                                                    action="{{ route('admin.patient.update', ['patient' => $patient['id']]) }}"
+                                                                    enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    @method('patch')
+                                                                    <div class="row">
+                                                                        <div class="col-4">
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label
+                                                                                        name="Gender"></x-form.label>
+                                                                                    <select name="gender"
+                                                                                        id="Gender"
+                                                                                        class="form-select">
+                                                                                        <option value="">Select
+                                                                                            Gender</option>
+                                                                                        <option value="M"
+                                                                                            {{ old('gender', $patient['patientInformation']['gender']) == 'M' ? 'selected' : '' }}>
+                                                                                            Male</option>
+                                                                                        <option value="F"
+                                                                                            {{ old('gender', $patient['patientInformation']['gender']) == 'F' ? 'selected' : '' }}>
+                                                                                            Female</option>
+                                                                                    </select>
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+
+
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="Last Name" />
+                                                                                    <x-form.input name="lastName"
+                                                                                        value="{{ old('lastName', $patient['patientInformation']['lastName']) }}" />
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="First Name" />
+                                                                                    <x-form.input name="firstName"
+                                                                                        value="{{ old('firstName', $patient['patientInformation']['firstName']) }}" />
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="Picture" />
+                                                                                    <x-form.input name="picture"
+                                                                                        type="file" />
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+                                                                        </div>
+
+                                                                        <div class="col-4">
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="wilaya" />
+                                                                                    <select name="wilayaId"
+                                                                                        id="SelectwilayaPatient"
+                                                                                        class="form-select">
+                                                                                        @foreach ($wilaya as $item1)
+                                                                                            <option
+                                                                                                value="{{ $item1->id }}"
+                                                                                                {{ old('wilayaId', $patient['patientInformation']['town']) == $item1->id ? 'selected' : '' }}>
+                                                                                                {{ $item1->name }}
+                                                                                            </option>
+                                                                                        @endforeach
+                                                                                    </select>
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="baldya" />
+                                                                                    <select name="baldyaid"
+                                                                                        id="baldyaidt"
+                                                                                        class="form-select">
+                                                                                        <!-- Assume baldya options are populated with JavaScript -->
+                                                                                    </select>
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label
+                                                                                        name="Birthday"></x-form.label>
+                                                                                    <x-form.input name="birthDate"
+                                                                                        type="date"
+                                                                                        value="{{ old('birthDate', \Carbon\Carbon::createFromTimestampMs($patient['patientInformation']['birthDate'])->format('Y-m-d')) }}" />
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="heath ID" />
+                                                                                    <x-form.input name="healthId"
+                                                                                        value="{{ old('healthId', $patient['patientInformation']['healthId']) }}" />
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+
+                                                                        </div>
+
+                                                                        <div class="col-4">
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="email" />
+                                                                                    <x-form.input name="email"
+                                                                                        type="email"
+                                                                                        value="{{ old('email', $patient['patientInformation']['email']) }}" />
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="Phone" />
+                                                                                    <x-form.input name="phone"
+                                                                                        value="{{ old('phone', $patient['patientInformation']['phoneNumber']) }}" />
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="address" />
+                                                                                    <x-form.input name="address"
+                                                                                        value="{{ old('address', $patient['patientInformation']['street']) }}" />
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+                                                                            <x-form.modal-body>
+                                                                                <x-form.panel>
+                                                                                    <x-form.label name="Blood Type" />
+                                                                                    <select name="bloodType"
+                                                                                        class="form-select">
+                                                                                        <option value="">Select
+                                                                                            Blood Type</option>
+                                                                                        <option value="A+"
+                                                                                            {{ old('bloodType', $patient['patientInformation']['generalMedicalRecord']['bloodType']) == 'A+'
+                                                                                                ? 'selected'
+                                                                                                : '' }}>
+                                                                                            A+</option>
+                                                                                        <option value="A-"
+                                                                                            {{ old('bloodType', $patient['patientInformation']['generalMedicalRecord']['bloodType']) == 'A-'
+                                                                                                ? 'selected'
+                                                                                                : '' }}>
+                                                                                            A-</option>
+                                                                                        <option value="B+"
+                                                                                            {{ old('bloodType', $patient['patientInformation']['generalMedicalRecord']['bloodType']) == 'B+'
+                                                                                                ? 'selected'
+                                                                                                : '' }}>
+                                                                                            B+</option>
+                                                                                        <option value="B-"
+                                                                                            {{ old('bloodType', $patient['patientInformation']['generalMedicalRecord']['bloodType']) == 'B-'
+                                                                                                ? 'selected'
+                                                                                                : '' }}>
+                                                                                            B-</option>
+                                                                                        <option value="AB+"
+                                                                                            {{ old('bloodType', $patient['patientInformation']['generalMedicalRecord']['bloodType']) == 'AB+'
+                                                                                                ? 'selected'
+                                                                                                : '' }}>
+                                                                                            AB+</option>
+                                                                                        <option value="AB-"
+                                                                                            {{ old('bloodType', $patient['patientInformation']['generalMedicalRecord']['bloodType']) == 'AB-'
+                                                                                                ? 'selected'
+                                                                                                : '' }}>
+                                                                                            AB-</option>
+                                                                                        <option value="O+"
+                                                                                            {{ old('bloodType', $patient['patientInformation']['generalMedicalRecord']['bloodType']) == 'O+'
+                                                                                                ? 'selected'
+                                                                                                : '' }}>
+                                                                                            O+</option>
+                                                                                        <option value="O-"
+                                                                                            {{ old('bloodType', $patient['patientInformation']['generalMedicalRecord']['bloodType']) == 'O-'
+                                                                                                ? 'selected'
+                                                                                                : '' }}>
+                                                                                            O-</option>
+                                                                                    </select>
+                                                                                </x-form.panel>
+                                                                            </x-form.modal-body>
+
+
+                                                                        </div>
+                                                                    </div>
+
+                                                                    <!-- Modal footer -->
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="btn btn-success"
+                                                                            data-bs-dismiss="modal">Edit</button>
+                                                                    </div>
+                                                                </form>
+                                                            </x-form.model>
+                                                            <form method="post"
+                                                                action="{{ route('admin.patient.delete', ['patient' => $patient['id']]) }}">
+                                                                @csrf
+                                                                @method('DELETE')
+
+                                                                <button
+                                                                    class="rounded bg-red-400 py-1 px-2 text-white hover:text-sky-400 pl-4">Remove</button>
+                                                            </form>
+                                                            <x-form.model
+                                                                name="Patient : {{ $patient['patientInformation']['firstName'] }} {{ $patient['patientInformation']['lastName'] }}"
+                                                                id="{{ $patient['id'] }}"
+                                                                class=" font-weight-bolder py-1 px-2 hover:text-sky-400">
+
+                                                                <x-slot name="button">
+                                                                    <i class="fa-solid fa-circle-info"></i>
+                                                                </x-slot>
+
+                                                                <form method="post"
+                                                                    action="{{ route('admin.patient.update.password', ['patient' => $patient['id']]) }}"
+                                                                    enctype="multipart/form-data">
+                                                                    @csrf
+                                                                    @method('patch')
+
+                                                                    <x-form.modal-body>
+                                                                        <x-form.panel>
+                                                                            <x-form.label name="Qr Code" />
+                                                                            <div
+                                                                                style="display: flex; justify-content: center;">
+                                                                                {{ QrCode::generate($patient['patientInformation']['healthId']) }}
+                                                                            </div>
+                                                                        </x-form.panel>
+                                                                    </x-form.modal-body>
+                                                                    <x-form.modal-body>
+                                                                        <x-form.panel>
+                                                                            <x-form.label name="Password" />
+                                                                            <x-form.input name="password"
+                                                                                value="{{ old('password', $patient['patientInformation']['healthCard']['password']) }}" />
+                                                                        </x-form.panel>
+                                                                    </x-form.modal-body>
+                                                                    <!-- Modal footer -->
+                                                                    <div class="modal-footer">
+                                                                        <button type="submit" class="btn btn-success"
+                                                                            data-bs-dismiss="modal">Edit</button>
+                                                                    </div>
+                                                                </form>
+                                                            </x-form.model>
                                                         </div>
                                                     </td>
                                                 </tr>

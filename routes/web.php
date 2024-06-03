@@ -52,6 +52,9 @@ Route::get('/admin', function () {
 // This is for Patient information
 Route::get('/admin/patient', [PatientController::class, 'index'])->name('admin.patients.index');
 Route::post('/admin/patient/add', [PatientController::class, 'store'])->name('admin.patient.add');
+Route::patch('/admin/patient/update/{patient}', [PatientController::class, 'update'])->name('admin.patient.update');
+Route::delete('/admin/patient/delete/{patient}', [PatientController::class, 'delete'])->name('admin.patient.delete');
+Route::patch('/admin/patient/update/{patient}/password', [PatientController::class, 'updatePassword'])->name('admin.patient.update.password');
 // List of Configaraton System
 
 Route::get('admin/config', [ConfigController::class, 'index'])->name('admin.config.index');

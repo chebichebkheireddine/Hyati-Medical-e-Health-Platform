@@ -282,6 +282,24 @@ $('#Selectwilaya').change(function() {
     });
 });
 // End
+// This is for configration  system
+$('#SelectwilayaPatient').change(function() {
+    var wilayaId = $(this).val();
+
+    $.ajax({
+        url: '/api/wilayas/baldya/' + wilayaId,
+        type: 'GET',
+        success: function(response) {
+            var baldyaSelect = $('#baldyaidt');
+            baldyaSelect.empty();
+
+            $.each(response, function(index, baldyaid) {
+                baldyaSelect.append('<option value="' + baldyaid.id + '">' + baldyaid
+                    .name + '</option>');
+            });
+        }
+    });
+});
 $('#editW').change(function() {
     var wilayaId = $(this).val();
 
